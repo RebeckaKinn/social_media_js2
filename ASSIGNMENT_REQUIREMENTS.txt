@@ -1,0 +1,219 @@
+SOCIAL MEDIA APPLICATION - ASSIGNMENT REQUIREMENTS
+==================================================
+
+PROJECT GOAL
+------------
+Build the front end of a social media application using JavaScript and
+Noroff's provided API.
+
+Users must be able to register, log in, browse posts, manage their own posts,
+view profiles, and follow or unfollow other users.
+
+
+NON-NEGOTIABLE TECHNICAL REQUIREMENTS
+-------------------------------------
+- Language: JavaScript
+- Front-end frameworks: Not allowed
+  - Do not use React, Vue, Angular, or similar frameworks.
+- Modules: Use ES6 modules.
+- API: Use Noroff's API, including the Auth, Posts, and Profiles endpoints.
+- Documentation:
+  - Create a README.md explaining how to install and run the project.
+  - Add JSDoc annotations to at least three functions.
+- UI and CSS:
+  - Include at least a basic, usable interface.
+  - Only basic styling is required.
+- Formatting:
+  - Keep the code consistently formatted.
+  - Prettier is recommended.
+- Deployment:
+  - Deploy the finished application using GitHub Pages, Netlify, or Vercel.
+- Code structure:
+  - Avoid large files containing many unrelated functions.
+  - Create modular and reusable code.
+
+
+REQUIRED FEATURES
+-----------------
+[ ] Register a new user on a registration page.
+[ ] Log in as a registered user on a login page.
+[ ] View all posts on the feed page.
+[ ] View a single post by clicking a post in the feed.
+[ ] Create a new post.
+[ ] Edit posts owned by the logged-in user.
+[ ] Delete posts owned by the logged-in user.
+[ ] View all posts created by another user.
+[ ] Follow another user.
+[ ] Unfollow another user.
+[ ] Search posts using a search bar.
+[ ] View the logged-in user's own profile.
+
+
+REQUIRED PAGES
+--------------
+[ ] Login page
+[ ] Registration page
+[ ] Posts/feed page
+[ ] Individual post page
+[ ] Logged-in user's profile page
+
+
+SUGGESTED PROJECT PHASES
+========================
+
+PHASE 1 - PROJECT SETUP AND PLANNING
+------------------------------------
+Requirements used in this phase:
+- Create and clone the GitHub repository.
+- Use GitHub Projects to track tasks and progress.
+- Set up JavaScript with ES6 modules.
+- Plan a modular folder and file structure.
+- Set up formatting, preferably with Prettier.
+
+Tasks:
+[ ] Confirm the repository is created and cloned.
+[ ] Create a GitHub Project board.
+[ ] Convert each required feature into a task.
+[ ] Set up ES6 module entry points and folders.
+[ ] Set up Prettier or another consistent formatting workflow.
+[ ] Decide which deployment platform to use.
+
+
+PHASE 2 - SHARED API AND AUTHENTICATION
+---------------------------------------
+Requirements used in this phase:
+- Use Noroff's API documentation.
+- Use the Noroff Auth endpoints.
+- Register a new user.
+- Log in a registered user.
+- Use ES6 modules and reusable functions.
+
+Tasks:
+[ ] Create a reusable API request function.
+[ ] Create authentication token storage and retrieval helpers.
+[ ] Build the registration page and connect it to the API.
+[ ] Build the login page and connect it to the API.
+[ ] Store the authenticated user's token and profile details.
+[ ] Handle and display authentication errors.
+[ ] Redirect users appropriately after authentication.
+
+
+PHASE 3 - POSTS AND FEED
+------------------------
+Requirements used in this phase:
+- View all posts.
+- View an individual post.
+- Search posts.
+- Use the Noroff Posts endpoints.
+- Include a basic usable UI.
+
+Tasks:
+[ ] Build the posts/feed page.
+[ ] Fetch and display all posts.
+[ ] Make each post link to its individual post page.
+[ ] Build the individual post page.
+[ ] Fetch and display a single post.
+[ ] Add a search bar that filters or searches posts.
+[ ] Add loading, empty, and error states.
+
+
+PHASE 4 - POST MANAGEMENT
+-------------------------
+Requirements used in this phase:
+- Create a post.
+- Edit the logged-in user's own posts.
+- Delete the logged-in user's own posts.
+- Keep code modular and reusable.
+
+Tasks:
+[ ] Build a form for creating posts.
+[ ] Connect post creation to the API.
+[ ] Show edit controls only on posts owned by the logged-in user.
+[ ] Build and connect the edit-post form.
+[ ] Show delete controls only on posts owned by the logged-in user.
+[ ] Add delete confirmation and connect deletion to the API.
+[ ] Update the interface after create, edit, and delete actions.
+
+
+PHASE 5 - PROFILES AND SOCIAL FEATURES
+--------------------------------------
+Requirements used in this phase:
+- View the logged-in user's own profile.
+- View posts created by another user.
+- Follow and unfollow other users.
+- Use the Noroff Profiles endpoints.
+
+Tasks:
+[ ] Build the logged-in user's profile page.
+[ ] Display profile information and the user's posts.
+[ ] Build a way to view another user's profile and posts.
+[ ] Add a follow button for other users.
+[ ] Add an unfollow button for followed users.
+[ ] Update follow status in the interface after each action.
+
+
+PHASE 6 - DOCUMENTATION, TESTING, AND DEPLOYMENT
+------------------------------------------------
+Requirements used in this phase:
+- Add JSDoc annotations to at least three functions.
+- Create a README.md explaining how to run the project.
+- Test the application and track bugs in GitHub Issues.
+- Keep code formatted.
+- Deploy to GitHub Pages, Netlify, or Vercel.
+- Commit regularly using meaningful commit messages.
+
+Tasks:
+[ ] Add JSDoc annotations to at least three useful functions.
+[ ] Write installation and local-development instructions in README.md.
+[ ] Document the deployed application URL in README.md.
+[ ] Format all project files.
+[ ] Test every required user story.
+[ ] Create GitHub Issues for discovered bugs.
+[ ] Fix or document all known blocking bugs.
+[ ] Deploy the application.
+[ ] Verify the deployed application works.
+[ ] Commit and push the finished work.
+
+
+FINAL COMPLETION CHECKLIST
+==========================
+
+Technical requirements:
+[ ] The application uses JavaScript.
+[ ] No front-end framework is used.
+[ ] ES6 modules are used throughout the application.
+[ ] Noroff Auth, Posts, and Profiles API endpoints are used.
+[ ] At least three functions include JSDoc annotations.
+[ ] README.md explains how to install and run the project.
+[ ] The interface has basic usable styling.
+[ ] The code is consistently formatted.
+[ ] The code is split into modular, reusable files.
+[ ] The application is deployed to GitHub Pages, Netlify, or Vercel.
+
+Required pages:
+[ ] Login page works.
+[ ] Registration page works.
+[ ] Posts/feed page works.
+[ ] Individual post page works.
+[ ] Logged-in user's profile page works.
+
+Required user stories:
+[ ] A new user can register.
+[ ] A registered user can log in.
+[ ] A user can view all posts.
+[ ] A user can view one selected post.
+[ ] A logged-in user can create a post.
+[ ] A logged-in user can edit their own posts.
+[ ] A logged-in user can delete their own posts.
+[ ] A user can view posts created by another user.
+[ ] A logged-in user can follow another user.
+[ ] A logged-in user can unfollow another user.
+[ ] A user can search posts.
+[ ] A logged-in user can view their own profile.
+
+Project process:
+[ ] GitHub Projects is used to track work.
+[ ] Meaningful commits are made regularly.
+[ ] Bugs are tested and tracked using GitHub Issues.
+[ ] The deployed application has been tested.
+[ ] All required features work without blocking errors.
