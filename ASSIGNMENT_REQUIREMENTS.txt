@@ -71,12 +71,12 @@ Requirements used in this phase:
 - Set up formatting, preferably with Prettier.
 
 Tasks:
-[ ] Confirm the repository is created and cloned.
-[ ] Create a GitHub Project board.
-[ ] Convert each required feature into a task.
+[x] Confirm the repository is created and cloned.
+[x] Create a GitHub Project board.
+[x] Convert each required feature into a task.
 [ ] Set up ES6 module entry points and folders.
-[ ] Set up Prettier or another consistent formatting workflow.
-[ ] Decide which deployment platform to use.
+[x] Set up Prettier or another consistent formatting workflow.
+[x] Decide which deployment platform to use.
 
 
 PHASE 2 - SHARED API AND AUTHENTICATION
