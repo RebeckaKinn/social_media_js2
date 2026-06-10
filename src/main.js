@@ -1,4 +1,4 @@
-import "./style.css";
+import "./styles/base.css";
 
 document.querySelector("#app").innerHTML = /*html*/ `
 <section>
