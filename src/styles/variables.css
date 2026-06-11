@@ -1,7 +1,20 @@
 :root {
+  --color-primary: #fe42a4;
+  --color-secondary: #6f2ed6;
+
+  --background-color: #e1e1e1;
+  --text-color: #131313;
+
+  --shadow-color: rgba(0, 0, 0, 0.2);
+
+  --main-font: "Poppins", sans-serif;
+  --secondary-font: "Roboto", sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --background-color: #262626;
+    --text-color: #e1e1e1;
+    --shadow-color: rgba(0, 0, 0, 0.5);
   }
 }
