@@ -3,6 +3,7 @@ import LoginPage from "./pages/login.js";
 import PostPage from "./pages/post.js";
 import ProfilePage from "./pages/profile.js";
 import RegisterPage from "./pages/register.js";
+import Fallback from "./pages/fallback.js";
 
 const routes = [
   { pattern: /^\/$/, render: FeedPage },
@@ -29,11 +30,7 @@ export function renderRoute() {
     return route.render(match);
   }
 
-  return /*html*/ `
-    <h1>Page not found</h1>
-    <p>The page you requested does not exist.</p>
-    <a href="#/">Return home</a>
-  `;
+  return Fallback();
 }
 
 export function startRouter(onRouteChange) {
