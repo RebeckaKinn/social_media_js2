@@ -1,0 +1,49 @@
+section.form {
+  position: relative;
+  isolation: isolate;
+  flex-grow: 1;
+}
+
+section.form::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("../assets/hero.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: auto 50%;
+  opacity: 0.35;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 400px;
+  height: fit-content;
+  padding: 2rem;
+  background-color: var(--surface-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px var(--shadow-color);
+  backdrop-filter: blur(10px);
+}
+form {
+  width: 100%;
+}
+form div label {
+  font-weight: 100;
+  font-size: var(--font-size-small);
+}
+form div input,
+textarea {
+  font-family: var(--secondary-font);
+  padding: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  border-radius: var(--border-radius);
+}
+
+@media (prefers-color-scheme: dark) {
+  form div input,
+  textarea {
+    border-color: var(--surface-color);
+  }
+}

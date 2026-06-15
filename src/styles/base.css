@@ -2,6 +2,8 @@
 @import "variables.css";
 @import "layout.css";
 @import "components.css";
+@import "header.css";
+@import "form.css";
 @import "pages.css";
 
 #main-content {
@@ -11,7 +13,6 @@
 }
 a {
   display: inline-block;
-  color: var(--color-secondary);
   font-weight: 500;
   transition:
     color 150ms ease,

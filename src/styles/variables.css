@@ -11,6 +11,8 @@
   --main-font: "Poppins", sans-serif;
   --secondary-font: "Roboto", sans-serif;
 
+  --border-radius: 0.4rem;
+
   --font-size-small: 0.875rem;
   --font-size-body: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
   --font-size-h3: clamp(1.5rem, 1.2rem + 1.25vw, 2rem);
@@ -38,6 +40,7 @@ button {
 
 h1 {
   font-size: var(--font-size-h1);
+  margin: 0;
 }
 
 h2 {
@@ -59,6 +62,9 @@ button {
 .italic {
   font-style: italic;
 }
+a {
+  color: var(--color-secondary);
+}
 header a {
   color: var(--text-color);
 }
@@ -69,5 +75,8 @@ header a {
     --text-color: #e1e1e1;
     --surface-color: rgba(255, 255, 255, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.5);
+  }
+  a {
+    color: var(--color-primary);
   }
 }
