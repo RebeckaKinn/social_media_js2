@@ -41,6 +41,12 @@ textarea {
   border-radius: var(--border-radius);
 }
 
+#login-message {
+  color: var(--color-primary);
+  font-weight: 700;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   form div input,
   textarea {

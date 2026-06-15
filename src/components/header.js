@@ -1,4 +1,7 @@
 import logo from "../assets/hero.png";
+import { logout } from "../api/auth.js";
+
+let headerController;
 
 export default function Header() {
   return /*html*/ `
@@ -22,8 +25,7 @@ export default function Header() {
       <ul class="flex row gap-2">
         <li><a href="#/">HOME</a></li>
         <li><a href="#/profile">PROFILE</a></li>
-        <li><a href="#/login">LOGIN</a></li>
-        <li><a href="#/register">REGISTER</a></li>
+        <li><a id="logout-link" href="#/login">LOGOUT</a></li>
       </ul>
     </nav>
     
@@ -32,10 +34,16 @@ export default function Header() {
 }
 
 export function setupHeader() {
+  headerController?.abort();
+  headerController = new AbortController();
+
   const menuToggle = document.querySelector(".menu-toggle");
   const navigation = document.querySelector(".header-nav");
+  const logoutLink = document.querySelector("#logout-link");
 
   if (!menuToggle || !navigation) return;
+
+  const { signal } = headerController;
 
   function closeMenu() {
     navigation.classList.remove("is-open");
@@ -44,21 +52,41 @@ export function setupHeader() {
     menuToggle.setAttribute("aria-label", "Open navigation menu");
   }
 
-  menuToggle.addEventListener("click", () => {
-    const isOpen = navigation.classList.toggle("is-open");
-    menuToggle.classList.toggle("is-open", isOpen);
-    menuToggle.setAttribute("aria-expanded", String(isOpen));
-    menuToggle.setAttribute(
-      "aria-label",
-      isOpen ? "Close navigation menu" : "Open navigation menu",
-    );
-  });
+  menuToggle.addEventListener(
+    "click",
+    () => {
+      const isOpen = navigation.classList.toggle("is-open");
+      menuToggle.classList.toggle("is-open", isOpen);
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Close navigation menu" : "Open navigation menu",
+      );
+    },
+    { signal },
+  );
 
-  navigation.addEventListener("click", (event) => {
-    if (event.target.closest("a")) closeMenu();
-  });
+  navigation.addEventListener(
+    "click",
+    (event) => {
+      if (event.target.closest("a")) closeMenu();
+    },
+    { signal },
+  );
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeMenu();
-  });
+  logoutLink?.addEventListener(
+    "click",
+    () => {
+      logout();
+    },
+    { signal },
+  );
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (event.key === "Escape") closeMenu();
+    },
+    { signal },
+  );
 }
