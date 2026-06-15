@@ -7,12 +7,14 @@ export async function login(email, password) {
   });
 
   localStorage.setItem("accessToken", result.data.accessToken);
+  localStorage.setItem("userName", result.data.userName);
 
   return result.data;
 }
 
 export function logout() {
   localStorage.removeItem("accessToken");
+  localStorage.removeItem("userName");
 }
 
 export function isAuthenticated() {
