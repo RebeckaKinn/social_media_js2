@@ -6,7 +6,7 @@ import { renderRoute, startRouter } from "./router.js";
 document.querySelector("#app").innerHTML = /*html*/ `
 <section class="flex column">
   ${header()}
-  <main id="main-content"></main>
+  <main id="main-content" class="flex column gap-2"></main>
   ${footer()}
 </section>
 `;
