@@ -9,14 +9,21 @@
   min-height: 100vh;
 }
 a {
-  color: var(--color-primary);
+  display: inline-block;
+  color: var(--color-secondary);
   font-weight: 500;
-  transition: color 150ms ease;
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
 }
 
 a:hover {
+  color: var(--text-color);
+  text-decoration: none;
+  transform: scale(1.08);
+}
+header a:hover {
   color: var(--color-secondary);
-  text-decoration: underline;
 }
 
 button {
