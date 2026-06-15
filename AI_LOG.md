@@ -17,3 +17,7 @@ Purpose: Asked for tips regarding the folder structure for the project. Took ins
 Tool used: CODEX
 Date: 11 June 2026
 Purpose: Asked it about routing and how I can use it without needing to refresh the page. Learned about hash-based routing, and using it with functions instead of an id on a html-tag. I have done similar before in one of the projects when I used MVC, so the routing setup was familiar to me. But I learned a new way to use it, and make it listen to change.
+
+Tool used: CODEX
+Date: 15 June 2026
+Purpose: Asked the AI on tips on how to setup the burger menu toggle. I didn't want to use the checkbox that I have been using before, since the header is not refreshed when the app switches to another page. I read through the code it gave me, and I think it went on an easy approach since it used querySelector. I assembled the code and edited the files to make it work on the current project.
