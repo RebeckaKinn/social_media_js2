@@ -2,7 +2,7 @@ export default function RegisterPage() {
   return /*html*/ `
     <section class="form flex justify-center" aria-labelledby="register-heading">
       <div class="form-container flex column align-center">  
-        <h1>Register</h1>
+        <h1>pinkripple</h1>
         <p>Create an account to join the community.</p>
 
         <form id="register-form" class="flex column gap-1">

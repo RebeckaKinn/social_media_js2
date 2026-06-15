@@ -2,7 +2,7 @@ export default function LoginPage() {
   return /*html*/ `
     <section class="form flex justify-center" aria-labelledby="login-heading">
       <div class="form-container flex column align-center">  
-        <h1>Log in</h1>
+        <h1>pinkripple</h1>
         <p>Log in to view and share posts.</p>
 
         <form id="login-form" class="flex column gap-1">
