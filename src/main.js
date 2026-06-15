@@ -4,7 +4,7 @@ import footer from "./components/footer.js";
 import { renderRoute, startRouter } from "./router.js";
 
 document.querySelector("#app").innerHTML = /*html*/ `
-<section>
+<section class="flex column">
   ${header()}
   <main id="main-content"></main>
   ${footer()}

@@ -52,6 +52,13 @@ button {
   letter-spacing: 0.03em;
 }
 
+.small-txt {
+  font-size: var(--font-size-small);
+}
+.italic {
+  font-style: italic;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background-color: #262626;
