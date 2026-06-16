@@ -41,7 +41,8 @@ textarea {
   border-radius: var(--border-radius);
 }
 
-#login-message {
+#login-message,
+#register-message {
   color: var(--color-primary);
   font-weight: 700;
   text-align: center;

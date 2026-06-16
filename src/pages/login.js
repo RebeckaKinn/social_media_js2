@@ -34,8 +34,8 @@ export default function LoginPage() {
 
             <button type="submit">Log in</button>
             <span class="small-txt flex column center">
-            <div>Don't have an account?</div>
-            <a href="#/register">Register here!</a>
+              <div>Don't have an account?</div>
+              <a href="#/register">Register here!</a>
             </span>
             <p id="login-message" class="small-txt" role="status" aria-live="polite"></p>
   

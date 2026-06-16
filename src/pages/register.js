@@ -1,3 +1,5 @@
+import { register } from "../api/auth.js";
+
 export default function RegisterPage() {
   return /*html*/ `
     <section class="form flex justify-center" aria-labelledby="register-heading">
@@ -54,13 +56,12 @@ export default function RegisterPage() {
             </div>
 
             <div class="flex column">
-              <label for="register-profile-image">Profile image</label>
+              <label for="register-avatar-url">Profile image URL</label>
               <input
-                id="register-profile-image"
-                name="profile-image"
-                type="file"
-                accept="image/*"
-                optional
+                id="register-avatar-url"
+                name="avatarUrl"
+                type="url"
+                placeholder="https://img.service.com/avatar.jpg"
               >
             </div>
 
@@ -69,9 +70,44 @@ export default function RegisterPage() {
               <div>Already have an account?</div>
               <a href="#/login">Log in here!</a>
             </span>
+            <p id="register-message" class="small-txt" role="status" aria-live="polite"></p>
   
         </form>
       </div>
     </section>
   `;
+}
+
+export function setupRegisterPage() {
+  const form = document.querySelector("#register-form");
+  const message = document.querySelector("#register-message");
+
+  if (!form || !message) return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const formData = new FormData(form);
+
+    message.textContent = "";
+    submitButton.disabled = true;
+    submitButton.textContent = "Registering...";
+
+    try {
+      await register(
+        formData.get("name"),
+        formData.get("email"),
+        formData.get("password"),
+        formData.get("bio"),
+        formData.get("avatarUrl"),
+      );
+      window.location.hash = "#/login";
+    } catch (error) {
+      message.textContent = error.message;
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = "Register";
+    }
+  });
 }
