@@ -16,7 +16,11 @@ async function loadPosts(page = 1, limit = 10) {
   const result = await getPosts(page, limit);
   return result.data;
 }
-
+/**
+ * Sets up the feed page by loading and displaying posts.
+ * Has fallback if there is an issue with fetching the posts, as well as
+ * loading per post.
+ */
 export function setupFeedPage() {
   const postsFeed = document.querySelector("#posts-feed");
   const page = 1;
