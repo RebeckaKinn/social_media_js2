@@ -38,12 +38,20 @@ footer {
 
 .post-card {
   background-color: var(--surface-color);
+  width: fit-content;
+  min-width: 20rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 .post-image {
-  height: 5rem;
-  aspect-ratio: 1/1;
-  border-radius: 50%;
+  height: 20rem;
+  width: 100%;
+  max-width: 30rem;
+}
+.post-image img {
+  object-fit: contain;
 }
 
 .post-tags li {

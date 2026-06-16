@@ -1,7 +1,6 @@
 import { getPosts } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
-import defaultImage from "/default_person.jpg";
 
 export default function FeedPage() {
   return /*html*/ `
@@ -46,40 +45,59 @@ export function setupFeedPage() {
 }
 
 function createPostCard(post) {
-  const imageUrl = post.media?.url || defaultImage;
+  const imageUrl = post.media?.url || "";
   const imageAlt = post.media?.alt || post.title || "Post image";
 
   return /*html*/ `
     <article data-post-id="${post.id}" class="post-card">
-      <section>
-        <div class="post-image">
-          <img src="${imageUrl}" alt="${imageAlt}">
-        </div>
-        <h3>${post.title || "Untitled"}</h3>
-      </section>
+
+      <section class="flex column">
+          <h3>${post.title || "Untitled"}</h3>
+        
+          <section>
+          <div>
+            <span>created:</span>
+            <span>${formatDate(post.created)}</span>
+          </div>
+          ${
+            !checkIsUpdated(post.created, post.updated)
+              ? /*HTML*/ `
+            <div>
+              <span>updated:</span>
+              <span>${formatDate(post.updated)}</span>
+            </div>
+            `
+              : ""
+          }
+        </section>
+        </section>
+
+
+
       <section>
         <p>${post.body || ""}</p>
-      </section>
-      <section>
-        <div>
-          <span>created:</span>
-          <span>${formatDate(post.created)}</span>
-        </div>
         ${
-          !checkIsUpdated(post.created, post.updated)
+          imageUrl != ""
             ? /*HTML*/ `
-          <div>
-            <span>updated:</span>
-            <span>${formatDate(post.updated)}</span>
+          <div class="post-image">
+            <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
           </div>
           `
             : ""
         }
-        <ul class="post-tags flex gap-1">${generateTags(post.tags)}</ul>
       </section>
-      <section>
-        <div>comments: ${post._count.comments}<span></span></div>
-        <div>reactions: ${post._count.reactions}<span></span></div>
+      
+        <ul class="post-tags flex gap-1">${generateTags(post.tags)}</ul>
+     
+      <section class="flex gap-2">
+        <div>
+          <span>&#x1F5E8;</span>
+          <span>${post._count.comments}</span>
+        </div>
+        <div>
+          <span>&#9786;</span>
+          <span>${post._count.reactions}</span>
+        </div>
       </section>
     </article>
   `;
