@@ -1,6 +1,7 @@
 import { getPosts } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
+import defaultImage from "/default_person.jpg";
 
 export default function FeedPage() {
   return /*html*/ `
@@ -45,10 +46,93 @@ export function setupFeedPage() {
 }
 
 function createPostCard(post) {
+  const imageUrl = post.media?.url || defaultImage;
+  const imageAlt = post.media?.alt || post.title || "Post image";
+
   return /*html*/ `
-    <article class="post-card">
-      <h3>${post.title || "Untitled post"}</h3>
-      ${post.body ? `<p>${post.body}</p>` : ""}
+    <article data-post-id="${post.id}" class="post-card">
+      <section>
+        <div class="post-image">
+          <img src="${imageUrl}" alt="${imageAlt}">
+        </div>
+        <h3>${post.title || "Untitled"}</h3>
+      </section>
+      <section>
+        <p>${post.body || ""}</p>
+      </section>
+      <section>
+        <div>
+          <span>created:</span>
+          <span>${formatDate(post.created)}</span>
+        </div>
+        ${
+          !checkIsUpdated(post.created, post.updated)
+            ? /*HTML*/ `
+          <div>
+            <span>updated:</span>
+            <span>${formatDate(post.updated)}</span>
+          </div>
+          `
+            : ""
+        }
+        <ul class="post-tags flex gap-1">${generateTags(post.tags)}</ul>
+      </section>
+      <section>
+        <div>comments: ${post._count.comments}<span></span></div>
+        <div>reactions: ${post._count.reactions}<span></span></div>
+      </section>
     </article>
   `;
 }
+
+function checkIsUpdated(created, updated) {
+  return Boolean(created == updated);
+}
+
+function formatDate(dateString) {
+  return new Intl.DateTimeFormat("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  }).format(new Date(dateString));
+}
+
+function generateTags(list) {
+  return list
+    .map(
+      (e) => /*HTML*/ `
+      <li class="small-txt italic">#${e}</li>
+    `,
+    )
+    .join("");
+}
+
+/*
+{
+      "id": 0,
+      "title": "string",
+      "body": "string",
+      "tags": ["string"],
+      "media": {
+        "url": "https://url.com/image.jpg",
+        "alt": "string"
+      },
+      "created": "2022-09-04T08:08:38.830Z",
+      "updated": "2022-09-04T08:08:38.830Z",
+      "_count": {
+        "comments": 0,
+        "reactions": 0
+      }
+    },
+*/
+
+/*
+for clicking the post to open it. 
+
+article.addEventListener("click", () => {
+  const postId = article.dataset.postId;
+  window.location.hash = `#/post/${postId}`;
+});
+*/

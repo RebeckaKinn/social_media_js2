@@ -37,4 +37,16 @@ footer {
 }
 
 .post-card {
+  background-color: var(--surface-color);
+}
+
+.post-image {
+  height: 5rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.post-tags li {
+  color: var(--color-primary);
+  width: fit-content;
 }
