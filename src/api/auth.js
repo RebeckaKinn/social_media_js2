@@ -1,5 +1,10 @@
 import { apiRequest } from "./client.js";
-
+/**
+ * Logs in a user.
+ * @param {string} email - The user's email.
+ * @param {string} password - The user's password.
+ * @returns {Promise<Object>} The API response.
+ */
 export async function login(email, password) {
   const result = await apiRequest("/auth/login", {
     method: "POST",
@@ -9,6 +14,15 @@ export async function login(email, password) {
   return result.data;
 }
 
+/**
+ * Registers a new user.
+ * @param {string} name - The user's name.
+ * @param {string} email - The user's email.
+ * @param {string} password - The user's password.
+ * @param {string} bio - The user's biography.
+ * @param {string} avatarUrl - The URL of the user's avatar.
+ * @returns {Promise<Object>} The API response.
+ */
 export async function register(name, email, password, bio, avatarUrl) {
   const userData = {
     name,
@@ -37,7 +51,11 @@ export function logout() {
 export function isAuthenticated() {
   return Boolean(localStorage.getItem("accessToken"));
 }
-
+/**
+ * Saves the access token and user name in local storage.
+ * @param {string} accessToken - The access token.
+ * @param {string} userName - The user's name.
+ */
 function saveTokenInLocalStorage(accessToken, userName) {
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("userName", userName);

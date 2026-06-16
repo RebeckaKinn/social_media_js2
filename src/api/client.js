@@ -7,7 +7,12 @@ const API_KEY = import.meta.env.VITE_API_KEY;
 export function hasApiConfig() {
   return Boolean(API_URL && API_KEY);
 }
-
+/**
+ * Makes a request to the API.
+ * @param {string} path - The API endpoint.
+ * @param {Object} options - The request options.
+ * @returns {Promise<Object>} The API response.
+ */
 export async function apiRequest(path, options = {}) {
   if (!hasApiConfig()) {
     throw new Error("Missing API information.");
