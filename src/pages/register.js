@@ -9,7 +9,7 @@ export default function RegisterPage() {
 
         <form id="register-form" class="flex column gap-1">
           <div class="flex column">
-            <label for="register-name">Name</label>
+            <label for="register-name">Name*</label>
               <input
                 id="register-name"
                 name="name"
@@ -21,7 +21,7 @@ export default function RegisterPage() {
             </div>
 
             <div class="flex column">
-              <label for="register-email">Email</label>
+              <label for="register-email">Email*</label>
               <input
                 id="register-email"
                 name="email"
@@ -33,7 +33,7 @@ export default function RegisterPage() {
             </div>
 
             <div class="flex column">
-              <label for="register-password">Password</label>
+              <label for="register-password">Password*</label>
               <input
                 id="register-password"
                 name="password"
@@ -65,6 +65,7 @@ export default function RegisterPage() {
               >
             </div>
 
+            <span class="small-txt italic">* Required fields</span>
             <button type="submit">Register</button>
             <span class="small-txt flex column center">
               <div>Already have an account?</div>

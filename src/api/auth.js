@@ -6,7 +6,7 @@ export async function login(email, password) {
     body: JSON.stringify({ email, password }),
   });
   saveTokenInLocalStorage(result.data.accessToken, result.data.userName);
-
+  console.log(result.data);
   return result.data;
 }
 
@@ -17,15 +17,10 @@ export async function register(name, email, password, bio, avatarUrl) {
     password,
   };
 
-  if (bio.trim()) {
-    userData.bio = bio.trim();
-  }
-
-  if (avatarUrl.trim()) {
-    userData.avatar = {
-      url: avatarUrl.trim(),
-      alt: `${name}'s profile image`,
-    };
+  userData.bio = bio.trim() || "";
+  console.log(avatarUrl);
+  if (URL.canParse(avatarUrl)) {
+    userData.avatar = { url: avatarUrl.trim(), alt: `${name}'s profile image` };
   }
 
   const result = await apiRequest("/auth/register", {
@@ -33,6 +28,7 @@ export async function register(name, email, password, bio, avatarUrl) {
     body: JSON.stringify(userData),
   });
   saveTokenInLocalStorage(result.data.accessToken, result.data.userName);
+  console.log(result.data);
   return result.data;
 }
 
