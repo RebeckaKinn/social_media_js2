@@ -13,7 +13,7 @@ function Main() {
     ? /*html*/ `
       <section class="flex column">
         ${header()}
-        <main id="main-content" class="flex column gap-2">${content}</main>
+        <main id="main-content" class="main-content flex column gap-2">${content}</main>
         ${footer()}
       </section>
     `

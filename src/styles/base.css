@@ -7,9 +7,11 @@
 @import "pages.css";
 
 #main-content {
-  padding: 2rem;
   padding-top: 5rem;
   min-height: 100vh;
+}
+.main-content {
+  padding: 2rem;
 }
 a {
   display: inline-block;
