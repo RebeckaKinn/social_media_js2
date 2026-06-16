@@ -4,11 +4,15 @@
 const API_URL = import.meta.env.VITE_API_URL;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-if (!API_URL || !API_KEY) {
-  throw new Error("Missing API information.");
+export function hasApiConfig() {
+  return Boolean(API_URL && API_KEY);
 }
 
 export async function apiRequest(path, options = {}) {
+  if (!hasApiConfig()) {
+    throw new Error("Missing API information.");
+  }
+
   const accessToken = localStorage.getItem("accessToken");
   const headers = new Headers(options.headers);
 
