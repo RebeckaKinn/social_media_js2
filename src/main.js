@@ -1,6 +1,7 @@
 import "./styles/base.css";
 import header, { setupHeader } from "./components/header.js";
 import footer from "./components/footer.js";
+import { setupFeedPage } from "./pages/feed.js";
 import { setupLoginPage } from "./pages/login.js";
 import { setupRegisterPage } from "./pages/register.js";
 import { renderRoute, startRouter } from "./router.js";
@@ -22,6 +23,7 @@ function Main() {
     `;
 
   setupHeader();
+  setupFeedPage();
   setupLoginPage();
   setupRegisterPage();
 }
