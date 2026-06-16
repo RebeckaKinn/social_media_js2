@@ -25,3 +25,7 @@ Purpose: Asked the AI on tips on how to setup the burger menu toggle. I didn't w
 Tool used: CODEX
 Date: 15 June 2026
 Purpose: I asked for another way to make the header and footer to be "gone" when you were not logged in, since I have used ternary operators for that before. I learned about the abort() action and sending signals down on each event listener. Wanted to try it out since it was a new way of doing something I had done several times before, so that was fun.
+
+Tool used: CODEX
+Date: 16 June 2026
+Purpose: Asked it about refactoring due to security meassures. Wanted to use less innerHTML so that HTML-injection would not be a problem, but it became a lot really fast, so chose to do it the way I know how first, and then change the structure later. But I learned that I could shorten my code by usin Array.from, which was a better way than I originally did.
