@@ -5,7 +5,11 @@ let headerController;
 
 export default function Header() {
   return /*html*/ `
-  <header class="flex column">
+  <header class="flex">
+  <div class="header-search flex row align-center">
+        <img class="header-search-logo" src="${logo}" alt="" loading="lazy">
+        <input id="search" class="header-search-input" type="search" placeholder="Search..." aria-label="Search">
+      </div>
     <button
       class="menu-toggle"
       type="button"
@@ -19,13 +23,10 @@ export default function Header() {
     </button>
     <div id="main-menu" class="header-menu">
       <nav id="main-navigation" class="header-nav" aria-label="Main navigation">
-      <div class="header-search flex row align-center">
-        <img class="header-search-logo" src="${logo}" alt="" loading="lazy">
-        <input id="search" class="header-search-input" type="search" placeholder="Search..." aria-label="Search">
-      </div>
+      
       <ul class="flex row gap-2">
-        <li><a href="#/">HOME</a></li>
         <li><a href="#/profile">PROFILE</a></li>
+        <li><a href="#/">FEED</a></li>
         <li><a id="logout-link" href="#/login">LOGOUT</a></li>
       </ul>
       </nav>

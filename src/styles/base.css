@@ -79,4 +79,8 @@ img {
   .main-content {
     padding: 1rem;
   }
+  .main-parent {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
