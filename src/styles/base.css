@@ -5,7 +5,7 @@
 @import "header.css";
 @import "form.css";
 @import "pages.css";
-
+@import "posts.css";
 #main-content {
   padding-top: 5rem;
   min-height: 100vh;
