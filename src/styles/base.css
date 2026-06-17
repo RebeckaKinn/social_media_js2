@@ -13,7 +13,8 @@
 }
 
 #main-content {
-  padding-top: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 5rem;
   min-height: 100vh;
   overflow-y: scroll;
 }
@@ -67,6 +68,16 @@ button:focus-visible {
 button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
+}
+
+.alternative-button {
+  align-self: center;
+  width: 100%;
+  max-width: 20rem;
+  background-color: var(--surface-color);
+  color: var(--text-color);
+
+  box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 img {

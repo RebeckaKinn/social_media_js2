@@ -11,7 +11,7 @@ export default function FeedPage() {
     <p>Explore the latest posts and connect with your network.</p>
     <section id="posts-feed" class="flex column align-center gap-2" aria-live="polite">
     </section>
-    
+    <button class="alternative-button">Show more posts</button>
   `;
 }
 
