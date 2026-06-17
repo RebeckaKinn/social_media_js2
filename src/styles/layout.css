@@ -23,6 +23,9 @@
 .space-between {
   justify-content: space-between;
 }
+.self-center {
+  align-self: center;
+}
 .wrap {
   flex-wrap: wrap;
 }

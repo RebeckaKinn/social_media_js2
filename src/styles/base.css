@@ -67,3 +67,9 @@ img {
   width: 100%;
   object-fit: contain;
 }
+
+@media (max-width: 800px) {
+  .main-content {
+    padding: 1rem;
+  }
+}

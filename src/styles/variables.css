@@ -50,7 +50,7 @@ h2 {
 h3 {
   font-size: var(--font-size-h3);
 }
-p,
+
 a,
 button {
   letter-spacing: 0.03em;

@@ -39,22 +39,61 @@ footer {
 .post-card {
   background-color: var(--surface-color);
   width: fit-content;
-  min-width: 20rem;
+  width: 100%;
+  max-width: 40rem;
+  min-height: 10rem;
   padding: 1rem;
   border-radius: var(--border-radius);
   box-shadow: 0 4px 8px var(--shadow-color);
 }
 
-.post-image {
-  height: 20rem;
-  width: 100%;
-  max-width: 30rem;
+.post-card p {
+  line-height: 1.3;
 }
+
 .post-image img {
   object-fit: contain;
 }
 
 .post-tags li {
-  color: var(--color-primary);
   width: fit-content;
+  background-color: var(--shadow-color);
+  padding: 0 0.5rem;
+  border-radius: var(--border-radius);
+}
+
+.post-title {
+  font-weight: 500;
+  margin: 0;
+}
+
+.post-timestamp {
+  font-size: var(--font-size-small);
+  font-weight: 200;
+  color: var(--color-primary);
+}
+
+.post-timestamp .separator {
+  color: var(--text-color);
+  margin: 0 0.5rem;
+}
+
+.post-count .count-element {
+  gap: 0.3rem;
+  margin-top: 1rem;
+  color: var(--text-color);
+}
+.post-count .count-element div {
+  aspect-ratio: 1/1;
+  width: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .post-timestamp {
+    flex-direction: column;
+  }
+
+  .post-timestamp .separator {
+    display: none;
+  }
 }
