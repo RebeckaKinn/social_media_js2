@@ -33,3 +33,7 @@ Purpose: Asked it about refactoring due to security meassures. Wanted to use les
 Tool used: CODEX
 Date: 16 June 2026
 Purpose: Asked for a good structure for the JSDoc comments.
+
+Tool used: CODEX
+Date: 17 June 2026
+Purpose: Used for debugging a CSS problem with the menu on mobile. It gave me a lot of changes, but ended up with figuring out that it was the backdrop-filter that made the menu not be visible on the entire screen.

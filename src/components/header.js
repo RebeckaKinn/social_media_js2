@@ -35,7 +35,14 @@ export default function Header() {
   </header>
   `;
 }
-
+/**
+ * Sets up event listeners for the header menu functionality.
+ *
+ * Manages the mobile menu toggle, navigation link clicks, logout handler,
+ * and keyboard escape key. Uses AbortController to clean up previous listeners
+ * before adding new ones, preventing duplicate event listeners when the header
+ * is re-rendered on route changes.
+ */
 export function setupHeader() {
   headerController?.abort();
   headerController = new AbortController();
