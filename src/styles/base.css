@@ -6,9 +6,16 @@
 @import "form.css";
 @import "pages.css";
 @import "posts.css";
+
+.main-parent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+
 #main-content {
   padding-top: 5rem;
   min-height: 100vh;
+  overflow-y: scroll;
 }
 .main-content {
   padding: 2rem;

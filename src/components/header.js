@@ -1,23 +1,24 @@
 import logo from "../assets/hero.png";
 import { logout } from "../api/auth.js";
-
+import footer from "./footer.js";
 let headerController;
 
 export default function Header() {
   return /*html*/ `
-  <header>
+  <header class="flex column">
     <button
       class="menu-toggle"
       type="button"
       aria-label="Open navigation menu"
-      aria-controls="main-navigation"
+        aria-controls="main-menu"
       aria-expanded="false"
     >
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <nav id="main-navigation" class="header-nav" aria-label="Main navigation">
+    <div id="main-menu" class="header-menu">
+      <nav id="main-navigation" class="header-nav" aria-label="Main navigation">
       <div class="header-search flex row align-center">
         <img class="header-search-logo" src="${logo}" alt="" loading="lazy">
         <input id="search" class="header-search-input" type="search" placeholder="Search..." aria-label="Search">
@@ -27,8 +28,9 @@ export default function Header() {
         <li><a href="#/profile">PROFILE</a></li>
         <li><a id="logout-link" href="#/login">LOGOUT</a></li>
       </ul>
-    </nav>
-    
+      </nav>
+      ${footer()}
+    </div>
   </header>
   `;
 }
@@ -38,15 +40,16 @@ export function setupHeader() {
   headerController = new AbortController();
 
   const menuToggle = document.querySelector(".menu-toggle");
+  const menuContainer = document.querySelector(".header-menu");
   const navigation = document.querySelector(".header-nav");
   const logoutLink = document.querySelector("#logout-link");
 
-  if (!menuToggle || !navigation) return;
+  if (!menuToggle || !navigation || !menuContainer) return;
 
   const { signal } = headerController;
 
   function closeMenu() {
-    navigation.classList.remove("is-open");
+    menuContainer.classList.remove("is-open");
     menuToggle.classList.remove("is-open");
     menuToggle.setAttribute("aria-expanded", "false");
     menuToggle.setAttribute("aria-label", "Open navigation menu");
@@ -55,7 +58,7 @@ export function setupHeader() {
   menuToggle.addEventListener(
     "click",
     () => {
-      const isOpen = navigation.classList.toggle("is-open");
+      const isOpen = menuContainer.classList.toggle("is-open");
       menuToggle.classList.toggle("is-open", isOpen);
       menuToggle.setAttribute("aria-expanded", String(isOpen));
       menuToggle.setAttribute(
