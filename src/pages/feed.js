@@ -9,9 +9,9 @@ export default function FeedPage() {
     <h1>pinkripple</h1>
     <h2>Welcome to pinkripple!</h2>
     <p>Explore the latest posts and connect with your network.</p>
-    ${LoadingPost()}
     <section id="posts-feed" class="flex column align-center gap-2" aria-live="polite">
     </section>
+    
   `;
 }
 
@@ -131,25 +131,6 @@ function generateTags(list) {
     )
     .join("");
 }
-
-/*
-{
-      "id": 0,
-      "title": "string",
-      "body": "string",
-      "tags": ["string"],
-      "media": {
-        "url": "https://url.com/image.jpg",
-        "alt": "string"
-      },
-      "created": "2022-09-04T08:08:38.830Z",
-      "updated": "2022-09-04T08:08:38.830Z",
-      "_count": {
-        "comments": 0,
-        "reactions": 0
-      }
-    },
-*/
 
 /*
 for clicking the post to open it. 

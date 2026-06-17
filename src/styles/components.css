@@ -35,3 +35,39 @@ footer {
   margin: 0;
   text-align: center;
 }
+
+.loading-card > div {
+  background-color: var(--transparent-color);
+  width: 100%;
+  border-radius: var(--border-radius);
+}
+.loading-card > div:first-child {
+  width: 60%;
+  height: 3rem;
+}
+.loading-card > div:nth-child(2) {
+  height: 2rem;
+}
+
+.loading-card > div:last-child {
+  height: 10rem;
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--transparent-color) 20%,
+    transparent 50%,
+    var(--transparent-color) 70%
+  );
+  background-size: 400%;
+  animation: shimmer 1.5s infinite linear;
+}
+@keyframes shimmer {
+  0% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
