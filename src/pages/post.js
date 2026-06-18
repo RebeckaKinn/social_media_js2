@@ -1,37 +1,9 @@
 import commentIcon from "../assets/icons/comment.svg";
 import reactionIcon from "../assets/icons/reaction.svg";
+import { getProfileAvatar } from "./profile.js";
 
 /*
-{
-  "author": {
-    "name": "Spellemann",
-    "email": "PerSpellemann@stud.noroff.no",
-    "bio": "From pres.",
-    "avatar": {
-      "url": "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=400&w=400",
-      "alt": ""
-    },
-    "banner": {
-      "url": "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=500&w=1500",
-      "alt": ""
-    }
-  },
-  "comments": [
-    {
-      "id": 5164,
-      "body": "test",
-      "created": "2026-06-10T12:15:21.938Z",
-      "postId": 10586,
-      "owner": "Nicklasoeen",
-      "replyToId": null,
-      "author": {
-        "name": "Nicklasoeen",
-        "email": "nicoee05516@stud.noroff.no",
-        "bio": "I am a front-end developer in training, learning about APIs!",
-        "avatar": { "url": "...", "alt": "" },
-        "banner": { "url": "...", "alt": "" }
-      }
-    }
+
   ],
   "reactions": [
     {
@@ -47,9 +19,8 @@ export function createPostCard(post, additionalInfo = false) {
   const imageAlt = post.media?.alt || post.title || "Post image";
   const creatorInfo = additionalInfo ? showCreatorInfo(post.author) : "";
   const commentSection = additionalInfo
-    ? showCommentSection(post.comments)
+    ? showCommentSection(post.id, post.comments)
     : "";
-
   return /*html*/ `
     <article data-post-id="${post.id}" class="post-card">
       ${creatorInfo}
@@ -134,27 +105,24 @@ function generateTags(list) {
 }
 
 function showCreatorInfo(creator) {
+  if (!creator) return;
   return /*HTML*/ `
     <section class="profile-heading flex gap-2 align-center">
-      <div class="profile-icon">
-        <img src="${creator.avatar.url}" alt="${creator.avatar.alt || ""}" loading="lazy">
-      </div>
+      ${getProfileAvatar(creator.avatar?.url, creator.avatar?.alt)}
       <h2>${creator.name}</h2>
     </section>
   `;
 }
 
-function showCommentSection(comments) {
+function showCommentSection(postId, comments = []) {
   let commentSection = "";
   if (comments.length > 0) {
     comments.forEach((c) => {
-      console.log(c);
+      if (c.postId !== postId) return;
       commentSection += /*HTML*/ `
-      <article class="comment-section post-card" data-post-id="${c.id}">
+      <article class="post-card" data-post-id="${c.id}">
         <section class="profile-heading flex gap-1 align-center">
-          <div class="profile-icon">
-            <img src="${c.author.avatar.url}" alt="${c.author.avatar.alt || ""}" loading="lazy">
-          </div>
+          ${getProfileAvatar(c.author?.avatar?.url, c.author?.avatar?.alt)}
           <h3>${c.author.name}</h3>
         </section>
         <section class="post-timestamp flex">
@@ -169,8 +137,20 @@ function showCommentSection(comments) {
     });
   }
   return /*HTML*/ `
-    <section>
-    
+    <section class="comment-section flex column gap-1">
+      <div class="new-comment flex column">
+        <div class="flex">
+          ${getProfileAvatar()}
+          <textarea
+                id="new-post"
+                name="post"
+                type="text"
+                placeholder="What's on your mind?"
+                optional
+          ></textarea>
+        </div>
+        <button>comment</button>
+      </div>
     ${commentSection}
     </section>
   `;

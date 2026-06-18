@@ -10,7 +10,7 @@ export async function login(email, password) {
     method: "POST",
     body: JSON.stringify({ email, password }),
   });
-  saveTokenInLocalStorage(result.data.accessToken, result.data.userName);
+  saveTokenInLocalStorage(result.data.accessToken, result.data.name);
   return result.data;
 }
 
@@ -39,7 +39,7 @@ export async function register(name, email, password, bio, avatarUrl) {
     method: "POST",
     body: JSON.stringify(userData),
   });
-  saveTokenInLocalStorage(result.data.accessToken, result.data.userName);
+  saveTokenInLocalStorage(result.data.accessToken, result.data.name);
   return result.data;
 }
 
@@ -59,4 +59,13 @@ export function isAuthenticated() {
 function saveTokenInLocalStorage(accessToken, userName) {
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("userName", userName);
+}
+
+export function getCurrentLogInCredentials() {
+  const creds = {
+    accessToken: localStorage.getItem("accessToken"),
+    userName: localStorage.getItem("userName"),
+  };
+  console.log("Retrieved credentials:", creds);
+  return creds;
 }

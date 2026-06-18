@@ -4,7 +4,7 @@ import Fallback from "./fallback.js";
 import { createPostCard } from "./post.js";
 import { showModal } from "../components/modal.js";
 
-const POSTS_PER_PAGE = 2;
+const POSTS_PER_PAGE = 4;
 let currentPage = 1;
 
 export default function FeedPage() {
@@ -27,7 +27,7 @@ function renderPosts(posts, append = false) {
   const postsFeed = document.querySelector("#posts-feed");
   if (!postsFeed) return;
 
-  const html = posts.map(createPostCard).join("");
+  const html = posts.map((e) => createPostCard(e)).join("");
   if (append) {
     postsFeed.insertAdjacentHTML("beforeend", html);
   } else {
@@ -77,6 +77,7 @@ export function setupFeedPage() {
         title: "Could not load posts",
         message: error.message,
       });
+      console.error("Could not load posts:", error);
       setLoadButtonState({
         disabled: true,
         text: "Failed to load",
@@ -132,7 +133,7 @@ export function setupFeedPage() {
   if (loadButton) {
     loadButton.addEventListener("click", loadMorePosts);
   }
-  testModal();
+  // testModal();
 }
 async function showPostModal(postId) {
   try {
