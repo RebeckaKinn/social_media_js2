@@ -1,8 +1,10 @@
 import { getPosts } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
-import commentIcon from "../assets/icons/comment.svg";
-import reactionIcon from "../assets/icons/reaction.svg";
+import { createPostCard } from "./post.js";
+
+const POSTS_PER_PAGE = 2;
+let currentPage = 1;
 
 export default function FeedPage() {
   return /*html*/ `
@@ -11,125 +13,117 @@ export default function FeedPage() {
     <p>Explore the latest posts and connect with your network.</p>
     <section id="posts-feed" class="flex column align-center gap-2" aria-live="polite">
     </section>
-    <button class="alternative-button">Show more posts</button>
+    <button id="load-more-posts-btn" class="alternative-button">Show more posts</button>
   `;
 }
 
-async function loadPosts(page = 1, limit = 10) {
+async function loadPosts(page = 1, limit = POSTS_PER_PAGE) {
   const result = await getPosts(page, limit);
   return result.data;
 }
-/**
- * Sets up the feed page by loading and displaying posts.
- * Has fallback if there is an issue with fetching the posts, as well as
- * loading per post.
- */
-export function setupFeedPage() {
+
+function renderPosts(posts, append = false) {
   const postsFeed = document.querySelector("#posts-feed");
-  const page = 1;
-  const limit = 10;
+  if (!postsFeed) return;
+
+  const html = posts.map(createPostCard).join("");
+  if (append) {
+    postsFeed.insertAdjacentHTML("beforeend", html);
+  } else {
+    postsFeed.innerHTML = html;
+  }
+}
+
+function setLoadButtonState({
+  disabled = false,
+  text = "Show more posts",
+  hidden = false,
+}) {
+  const button = document.querySelector("#load-more-posts-btn");
+  if (!button) return;
+  button.disabled = disabled;
+  button.textContent = text;
+  button.hidden = hidden;
+}
+
+export function setupFeedPage() {
+  currentPage = 1;
+  const postsFeed = document.querySelector("#posts-feed");
+  const loadButton = document.querySelector("#load-more-posts-btn");
 
   if (!postsFeed) return;
 
-  postsFeed.innerHTML = Array.from({ length: limit }, () => LoadingPost()).join(
-    "",
-  );
+  const loadInitialPosts = async () => {
+    postsFeed.innerHTML = Array.from({ length: POSTS_PER_PAGE }, () =>
+      LoadingPost(),
+    ).join("");
+    setLoadButtonState({
+      disabled: true,
+      text: "Loading posts...",
+      hidden: false,
+    });
 
-  loadPosts(page, limit)
-    .then((posts) => {
-      postsFeed.innerHTML = posts.map(createPostCard).join("");
-    })
-    .catch((error) => {
+    try {
+      const posts = await loadPosts(currentPage);
+      renderPosts(posts, false);
+      setLoadButtonState({
+        disabled: false,
+        text: "Show more posts",
+        hidden: posts.length < POSTS_PER_PAGE,
+      });
+    } catch (error) {
       postsFeed.innerHTML = Fallback({
         title: "Could not load posts",
         message: error.message,
       });
+      setLoadButtonState({
+        disabled: true,
+        text: "Failed to load",
+        hidden: false,
+      });
+    }
+  };
+
+  const loadMorePosts = async () => {
+    currentPage += 1;
+    setLoadButtonState({
+      disabled: true,
+      text: "Loading more...",
+      hidden: false,
     });
-}
 
-function createPostCard(post) {
-  const imageUrl = post.media?.url || "";
-  const imageAlt = post.media?.alt || post.title || "Post image";
+    try {
+      const posts = await loadPosts(currentPage);
+      if (posts.length > 0) {
+        renderPosts(posts, true);
+      }
+      setLoadButtonState({
+        disabled: false,
+        text: "Show more posts",
+        hidden: posts.length < POSTS_PER_PAGE,
+      });
+      if (posts.length === 0) {
+        setLoadButtonState({
+          disabled: true,
+          text: "No more posts",
+          hidden: false,
+        });
+      }
+    } catch (error) {
+      setLoadButtonState({
+        disabled: false,
+        text: "Load more posts",
+        hidden: false,
+      });
+      console.error("Failed to load more posts:", error);
+    }
+  };
 
-  return /*html*/ `
-    <article data-post-id="${post.id}" class="post-card">
+  loadInitialPosts();
 
-      <section class="flex column">
-        <h3 class="post-title">${post.title || "Untitled"}</h3>
-      </section>
-
-      <section>
-        <p>${post.body || ""}</p>
-        ${
-          imageUrl != ""
-            ? /*HTML*/ `
-          <div class="post-image">
-            <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
-          </div>
-          `
-            : ""
-        }
-        <section class="post-timestamp flex">
-            <div>
-              <span>created:</span>
-              <span>${formatDate(post.created)}</span>
-            </div>
-             ${
-               !checkIsUpdated(post.created, post.updated)
-                 ? /*HTML*/ `
-              <span class="separator">|</span>
-              <div>
-                <span>updated:</span>
-                <span>${formatDate(post.updated)}</span>
-              </div>
-            `
-                 : ""
-             }
-        </section>
-      </section>
-      <section>
-        <ul class="post-tags flex gap-1">${generateTags(post.tags)}</ul>
-      </section>
-      <section class="post-count flex gap-2">
-        ${generateSocialCount(post._count.comments, commentIcon, "Comments")}
-        ${generateSocialCount(post._count.reactions, reactionIcon, "Reactions")}
-      </section>
-    </article>
-  `;
-}
-function generateSocialCount(count, imgSrc, imgAlt) {
-  return /*HTML*/ `
-    <a class="count-element flex center">
-      <div class="flex">
-        <img src="${imgSrc}" alt="${imgAlt}" class="icon">
-      </div>
-      <span>${count}</span>
-    </a>
-  `;
-}
-
-function checkIsUpdated(created, updated) {
-  return Boolean(created == updated);
-}
-
-function formatDate(dateString) {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  }).format(new Date(dateString));
-}
-
-function generateTags(list) {
-  return list
-    .map(
-      (e) => /*HTML*/ `
-      <li class="small-txt italic">#${e}</li>
-    `,
-    )
-    .join("");
+  if (loadButton) {
+    loadButton.addEventListener("click", loadMorePosts);
+  }
 }
 
 /*
