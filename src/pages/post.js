@@ -45,10 +45,14 @@ import reactionIcon from "../assets/icons/reaction.svg";
 export function createPostCard(post, additionalInfo = false) {
   const imageUrl = post.media?.url || "";
   const imageAlt = post.media?.alt || post.title || "Post image";
+  const creatorInfo = additionalInfo ? showCreatorInfo(post.author) : "";
+  const commentSection = additionalInfo
+    ? showCommentSection(post.comments)
+    : "";
 
   return /*html*/ `
     <article data-post-id="${post.id}" class="post-card">
-
+      ${creatorInfo}
       <section class="flex column">
         <h3 class="post-title">${post.title || "Untitled"}</h3>
       </section>
@@ -89,6 +93,8 @@ export function createPostCard(post, additionalInfo = false) {
         ${generateSocialCount(post._count.comments, commentIcon, "Comments")}
         ${generateSocialCount(post._count.reactions, reactionIcon, "Reactions")}
       </section>
+
+      ${commentSection}
     </article>
   `;
 }
@@ -125,4 +131,42 @@ function generateTags(list) {
     `,
     )
     .join("");
+}
+
+function showCreatorInfo(creator) {
+  return /*HTML*/ `
+    <section class="profile-heading flex gap-2 align-center">
+      <div class="profile-icon">
+        <img src="${creator.avatar.url}" alt="${creator.avatar.alt || ""}" loading="lazy">
+      </div>
+      <h2>${creator.name}</h2>
+    </section>
+  `;
+}
+
+function showCommentSection(comments) {
+  let commentSection = "";
+  if (comments.length > 0) {
+    comments.forEach((c) => {
+      console.log(c);
+      commentSection += /*HTML*/ `
+      <article data-post-id="${c.id}">
+        <h3>${c.owner}</h3>
+        <p>${c.body}</p>
+         <section class="post-timestamp flex">
+            <div>
+              <span>created:</span>
+              <span>${formatDate(c.created)}</span>
+            </div>
+        </section>
+      </article>
+      `;
+    });
+  }
+  return /*HTML*/ `
+    <section>
+    
+    ${commentSection}
+    </section>
+  `;
 }

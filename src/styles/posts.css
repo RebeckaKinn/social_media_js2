@@ -54,6 +54,22 @@
   width: 1.5rem;
 }
 
+.profile-heading {
+  padding-bottom: 2rem;
+}
+.profile-heading h2 {
+  margin: 0;
+}
+
+.profile-icon {
+  max-height: 10rem;
+  aspect-ratio: 1/1;
+}
+.profile-icon img {
+  border-radius: 50%;
+  box-shadow: 0 4px 8px var(--shadow-color);
+}
+
 @media (max-width: 500px) {
   .post-timestamp {
     flex-direction: column;
