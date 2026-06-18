@@ -41,3 +41,7 @@ Purpose: Used for debugging a CSS problem with the menu on mobile. It gave me a 
 Tool used: CODEX
 Date: 18 June 2026
 Purpose: I first used Moodle and the examples there to get the feed to load more posts, but had a problem with then removeing the previous posts. I then asked AI for what could be a solution. Learned then about insertAdjacentHTML("beforeend", html), and how I could use that to make sure the elements stay on the page.
+
+Tool used: CODEX
+Date: 18 June 2026
+Purpose: Used it for debugging the comment section for each post on the feed. It didn't work well, but after a while I figured it out.

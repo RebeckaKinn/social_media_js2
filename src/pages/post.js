@@ -139,7 +139,7 @@ function showCommentSection(postId, comments = []) {
   return /*HTML*/ `
     <section class="comment-section flex column gap-1">
       <div class="new-comment flex column">
-        <div class="flex">
+        <div class="flex gap-1">
           ${getProfileAvatar()}
           <textarea
                 id="new-post"
