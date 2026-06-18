@@ -51,7 +51,7 @@ button {
     transform 150ms ease;
 }
 
-button:hover {
+button:not[alternative-button]:hover {
   background-color: var(--color-secondary);
 }
 
