@@ -9,6 +9,10 @@
   box-shadow: 0 4px 8px var(--shadow-color);
 }
 
+.modal-overlay .post-card {
+  background-color: var(--background-color);
+}
+
 .post-card p {
   line-height: 1.3;
 }

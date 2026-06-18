@@ -1,7 +1,8 @@
-import { getPosts } from "../api/posts.js";
+import { getPosts, getPostById } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
 import { createPostCard } from "./post.js";
+import { showModal } from "../components/modal.js";
 
 const POSTS_PER_PAGE = 2;
 let currentPage = 1;
@@ -120,17 +121,35 @@ export function setupFeedPage() {
   };
 
   loadInitialPosts();
+  postsFeed.addEventListener("click", (event) => {
+    const postArticle = event.target.closest("article[data-post-id]");
+    if (!postArticle) return;
+
+    const postId = postArticle.dataset.postId;
+    showPostModal(postId);
+  });
 
   if (loadButton) {
     loadButton.addEventListener("click", loadMorePosts);
   }
+  testModal();
+}
+async function showPostModal(postId) {
+  try {
+    const result = await getPostById(postId);
+    const post = result.data;
+    console.log(post);
+    showModal(createPostCard(post, true));
+  } catch (error) {
+    console.error("Failed to load post:", error);
+  }
 }
 
-/*
-for clicking the post to open it. 
+async function testModal() {
+  const result = await getPostById(10586);
+  const post = result.data;
 
-article.addEventListener("click", () => {
-  const postId = article.dataset.postId;
-  window.location.hash = `#/post/${postId}`;
-});
-*/
+  document.querySelector("#posts-feed").innerHTML = showModal(
+    createPostCard(post, true),
+  );
+}

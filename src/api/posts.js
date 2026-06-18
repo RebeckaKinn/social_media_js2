@@ -5,7 +5,12 @@ export async function getPosts(page = 1, limit = 10) {
 }
 
 export async function getPostById(id) {
-  return await apiRequest(`/social/posts/${id}`);
+  const params = new URLSearchParams({
+    _author: "true",
+    _comments: "true",
+    _reactions: "true",
+  });
+  return await apiRequest(`/social/posts/${id}?${params}`);
 }
 
 export async function searchPosts(query, page = 1, limit = 10) {

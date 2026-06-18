@@ -1,14 +1,48 @@
 import commentIcon from "../assets/icons/comment.svg";
 import reactionIcon from "../assets/icons/reaction.svg";
 
-export default function PostPage({ id } = {}) {
-  return /*html*/ `
-    <h1>Post</h1>
-    <p>Viewing post ${id ?? ""}.</p>
-  `;
+/*
+{
+  "author": {
+    "name": "Spellemann",
+    "email": "PerSpellemann@stud.noroff.no",
+    "bio": "From pres.",
+    "avatar": {
+      "url": "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=400&w=400",
+      "alt": ""
+    },
+    "banner": {
+      "url": "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=500&w=1500",
+      "alt": ""
+    }
+  },
+  "comments": [
+    {
+      "id": 5164,
+      "body": "test",
+      "created": "2026-06-10T12:15:21.938Z",
+      "postId": 10586,
+      "owner": "Nicklasoeen",
+      "replyToId": null,
+      "author": {
+        "name": "Nicklasoeen",
+        "email": "nicoee05516@stud.noroff.no",
+        "bio": "I am a front-end developer in training, learning about APIs!",
+        "avatar": { "url": "...", "alt": "" },
+        "banner": { "url": "...", "alt": "" }
+      }
+    }
+  ],
+  "reactions": [
+    {
+      "symbol": "👍",
+      "count": 1,
+      "reactors": ["Nicklasoeen"]
+    }
+  ]
 }
-
-export function createPostCard(post) {
+*/
+export function createPostCard(post, additionalInfo = false) {
   const imageUrl = post.media?.url || "";
   const imageAlt = post.media?.alt || post.title || "Post image";
 
