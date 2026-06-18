@@ -150,15 +150,20 @@ function showCommentSection(comments) {
     comments.forEach((c) => {
       console.log(c);
       commentSection += /*HTML*/ `
-      <article data-post-id="${c.id}">
-        <h3>${c.owner}</h3>
-        <p>${c.body}</p>
-         <section class="post-timestamp flex">
-            <div>
-              <span>created:</span>
-              <span>${formatDate(c.created)}</span>
-            </div>
+      <article class="comment-section post-card" data-post-id="${c.id}">
+        <section class="profile-heading flex gap-1 align-center">
+          <div class="profile-icon">
+            <img src="${c.author.avatar.url}" alt="${c.author.avatar.alt || ""}" loading="lazy">
+          </div>
+          <h3>${c.author.name}</h3>
         </section>
+        <section class="post-timestamp flex">
+           <div>
+             <span>created:</span>
+             <span>${formatDate(c.created)}</span>
+           </div>
+       </section>
+        <p>${c.body}</p>
       </article>
       `;
     });

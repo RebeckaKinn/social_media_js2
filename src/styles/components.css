@@ -88,6 +88,3 @@ footer {
   display: flex;
   justify-content: center;
 }
-.modal-overlay .profile-icon {
-  max-height: 5rem;
-}

@@ -11,6 +11,7 @@
 
 .modal-overlay .post-card {
   background-color: var(--background-color);
+  height: fit-content;
 }
 
 .post-card p {
@@ -68,6 +69,24 @@
 .profile-icon img {
   border-radius: 50%;
   box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.modal-overlay .profile-icon {
+  max-height: 5rem;
+}
+.comment-section .profile-icon {
+  max-height: 3rem;
+}
+
+.comment-section {
+  margin-top: 2rem;
+}
+.comment-section h3 {
+  margin: 0;
+  font-size: var(--font-size-highlight);
+}
+.comment-section .profile-heading {
+  padding-bottom: 1rem;
 }
 
 @media (max-width: 500px) {
