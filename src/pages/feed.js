@@ -3,6 +3,7 @@ import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
 import { createPostCard } from "./post.js";
 import { showModal } from "../components/modal.js";
+import { getCurrentProfileAvatar } from "./profile.js";
 
 const POSTS_PER_PAGE = 4;
 let currentPage = 1;
@@ -133,24 +134,16 @@ export function setupFeedPage() {
   if (loadButton) {
     loadButton.addEventListener("click", loadMorePosts);
   }
-  // testModal();
 }
 async function showPostModal(postId) {
   try {
-    const result = await getPostById(postId);
+    const [result, currentProfileAvatar] = await Promise.all([
+      getPostById(postId),
+      getCurrentProfileAvatar(),
+    ]);
     const post = result.data;
-    console.log(post);
-    showModal(createPostCard(post, true));
+    showModal(createPostCard(post, true, currentProfileAvatar));
   } catch (error) {
     console.error("Failed to load post:", error);
   }
-}
-
-async function testModal() {
-  const result = await getPostById(10586);
-  const post = result.data;
-
-  document.querySelector("#posts-feed").innerHTML = showModal(
-    createPostCard(post, true),
-  );
 }

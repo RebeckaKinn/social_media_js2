@@ -66,6 +66,5 @@ export function getCurrentLogInCredentials() {
     accessToken: localStorage.getItem("accessToken"),
     userName: localStorage.getItem("userName"),
   };
-  console.log("Retrieved credentials:", creds);
   return creds;
 }

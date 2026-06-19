@@ -14,12 +14,16 @@ import { getProfileAvatar } from "./profile.js";
   ]
 }
 */
-export function createPostCard(post, additionalInfo = false) {
+export function createPostCard(
+  post,
+  additionalInfo = false,
+  currentProfileAvatar = getProfileAvatar(),
+) {
   const imageUrl = post.media?.url || "";
   const imageAlt = post.media?.alt || post.title || "Post image";
   const creatorInfo = additionalInfo ? showCreatorInfo(post.author) : "";
   const commentSection = additionalInfo
-    ? showCommentSection(post.id, post.comments)
+    ? showCommentSection(post.id, post.comments, currentProfileAvatar)
     : "";
   return /*html*/ `
     <article data-post-id="${post.id}" class="post-card">
@@ -114,7 +118,11 @@ function showCreatorInfo(creator) {
   `;
 }
 
-function showCommentSection(postId, comments = []) {
+function showCommentSection(
+  postId,
+  comments = [],
+  currentProfileAvatar = getProfileAvatar(),
+) {
   let commentSection = "";
   if (comments.length > 0) {
     comments.forEach((c) => {
@@ -140,7 +148,7 @@ function showCommentSection(postId, comments = []) {
     <section class="comment-section flex column gap-1">
       <div class="new-comment flex column">
         <div class="flex gap-1">
-          ${getProfileAvatar()}
+          ${currentProfileAvatar}
           <textarea
                 id="new-post"
                 name="post"
