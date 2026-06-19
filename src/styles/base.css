@@ -86,6 +86,10 @@ img {
   object-fit: contain;
 }
 
+body.modal-open {
+  overflow: hidden;
+}
+
 @media (max-width: 850px) {
   .main-content {
     padding: 1rem;

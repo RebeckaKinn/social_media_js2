@@ -9,6 +9,7 @@ export function showModal(content) {
   modal.className = "modal-overlay";
   modal.innerHTML = content;
 
+  document.body.classList.add("modal-open");
   document.body.appendChild(modal);
   currentModal = modal;
 
@@ -21,5 +22,6 @@ export function closeModal() {
   if (currentModal) {
     currentModal.remove();
     currentModal = null;
+    document.body.classList.remove("modal-open");
   }
 }
