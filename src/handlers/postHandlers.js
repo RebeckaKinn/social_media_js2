@@ -1,5 +1,5 @@
 import { getPostById } from "../api/posts.js";
-import { getCurrentProfileAvatar } from "../pages//profile.js";
+import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
 
