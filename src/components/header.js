@@ -1,6 +1,6 @@
 import logo from "../assets/hero.png";
 import { logout } from "../api/auth.js";
-import { getProfileAvatar } from "../pages/profile.js";
+import { getProfileAvatar } from "./ProfileAvatar.js";
 import footer from "./footer.js";
 let headerController;
 

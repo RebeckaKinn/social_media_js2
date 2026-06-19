@@ -1,7 +1,7 @@
 import { getPosts, getPostById } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "./fallback.js";
-import { createPostCard } from "./post.js";
+import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
 import { getCurrentProfileAvatar } from "./profile.js";
 
