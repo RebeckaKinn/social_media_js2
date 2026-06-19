@@ -1,7 +1,7 @@
 import "./styles/base.css";
 import header, { setupHeader } from "./components/header.js";
 // import footer from "./components/footer.js";
-import { setupFeedPage } from "./pages/feed.js";
+import { setupFeedPage } from "./handlers/feedHandlers.js";
 import { setupLoginPage, setupRegisterPage } from "./handlers/authHandlers.js";
 import { getCurrentProfileAvatar } from "./pages/profile.js";
 import { renderRoute, startRouter } from "./router.js";
