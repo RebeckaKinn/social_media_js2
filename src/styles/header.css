@@ -23,6 +23,12 @@ header {
   flex-direction: column;
 }
 
+.header-profile-link .profile-icon {
+  width: 2rem;
+  min-height: 0;
+  max-height: none;
+}
+
 .menu-toggle {
   display: none;
   width: 2.75rem;
@@ -33,7 +39,6 @@ header {
 }
 
 .menu-toggle span {
-  display: block;
   width: 100%;
   height: 2px;
   background-color: var(--text-color);
@@ -183,7 +188,6 @@ header {
   }
 
   .header-nav a {
-    display: block;
     padding: 0.75rem 1rem;
     border-radius: 0.5rem;
   }

@@ -4,16 +4,18 @@ import header, { setupHeader } from "./components/header.js";
 import { setupFeedPage } from "./pages/feed.js";
 import { setupLoginPage } from "./pages/login.js";
 import { setupRegisterPage } from "./pages/register.js";
+import { getCurrentProfileAvatar } from "./pages/profile.js";
 import { renderRoute, startRouter } from "./router.js";
 
-function Main() {
+async function Main() {
   const app = document.querySelector("#app");
   const { content, showShell } = renderRoute();
+  const profileAvatar = showShell ? await getCurrentProfileAvatar() : "";
 
   app.innerHTML = showShell
     ? /*html*/ `
       <section class="main-parent">
-        ${header()}
+        ${header(profileAvatar)}
         <main id="main-content" class="main-content flex column gap-2">${content}</main>
         
       </section>

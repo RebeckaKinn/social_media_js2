@@ -1,9 +1,10 @@
 import logo from "../assets/hero.png";
 import { logout } from "../api/auth.js";
+import { getProfileAvatar } from "../pages/profile.js";
 import footer from "./footer.js";
 let headerController;
 
-export default function Header() {
+export default function Header(profileAvatar = getProfileAvatar()) {
   return /*html*/ `
   <header class="flex">
   <div class="header-search flex row align-center">
@@ -25,7 +26,12 @@ export default function Header() {
       <nav id="main-navigation" class="header-nav" aria-label="Main navigation">
       
       <ul class="flex row gap-2">
-        <li><a href="#/profile">PROFILE</a></li>
+        <li>
+          <a href="#/profile" class="header-profile-link flex row align-center gap-1">
+            ${profileAvatar}
+            <span>PROFILE</span>
+          </a>
+        </li>
         <li><a href="#/">FEED</a></li>
         <li><a id="logout-link" href="#/login">LOGOUT</a></li>
       </ul>
