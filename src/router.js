@@ -1,6 +1,5 @@
 import FeedPage from "./pages/feed.js";
 import LoginPage from "./pages/login.js";
-//import PostPage from "./pages/post.js";
 import ProfilePage from "./pages/profile.js";
 import RegisterPage from "./pages/register.js";
 import Fallback from "./pages/fallback.js";
@@ -12,11 +11,6 @@ const routes = [
   { pattern: /^\/profile$/, render: ProfilePage, public: false },
   { pattern: /^\/login$/, render: LoginPage, public: true },
   { pattern: /^\/register$/, render: RegisterPage, public: true },
-  // {
-  //   pattern: /^\/post\/([^/]+)$/,
-  //   render: ([, id]) => PostPage({ id: decodeURIComponent(id) }),
-  //   public: false,
-  // },
 ];
 
 function getPath() {

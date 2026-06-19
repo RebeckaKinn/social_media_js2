@@ -16,7 +16,6 @@ export function TimestampItem(label, time) {
 export function PostTimestamp(created, updated = null) {
   let timeIsAlike = isSameDate(created, updated);
   if (updated === null) timeIsAlike = true;
-  console.log("timeIsAlike:", timeIsAlike);
   return /*HTML*/ `
     <section class="post-timestamp flex">
         ${TimestampItem("created", created)}

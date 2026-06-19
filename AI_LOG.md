@@ -45,3 +45,7 @@ Purpose: I first used Moodle and the examples there to get the feed to load more
 Tool used: CODEX
 Date: 18 June 2026
 Purpose: Used it for debugging the comment section for each post on the feed. It didn't work well, but after a while I figured it out.
+
+Tool used: CODEX
+Date: 19 June 2026
+Purpose: Asked for tips for a file structure to refactor the post logic and HTML. Did not use AI to refactor for me, but used some of the folder and file structure suggestions before I did the rest myself.
