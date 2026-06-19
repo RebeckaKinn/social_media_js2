@@ -14,7 +14,9 @@ export function showModal(content) {
   currentModal = modal;
 
   modal.addEventListener("click", (e) => {
-    if (e.target === modal) closeModal();
+    if (e.target === modal || e.target.closest(".close-modal-btn")) {
+      closeModal();
+    }
   });
 }
 

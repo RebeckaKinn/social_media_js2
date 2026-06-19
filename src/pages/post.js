@@ -1,5 +1,6 @@
 import commentIcon from "../assets/icons/comment.svg";
 import reactionIcon from "../assets/icons/reaction.svg";
+import closeIcon from "../assets/icons/close.svg";
 import { getProfileAvatar } from "./profile.js";
 
 /*
@@ -25,8 +26,10 @@ export function createPostCard(
   const commentSection = additionalInfo
     ? showCommentSection(post.id, post.comments, currentProfileAvatar)
     : "";
+
   return /*html*/ `
     <article data-post-id="${post.id}" class="post-card">
+   
       ${creatorInfo}
       <section class="flex column">
         <h3 class="post-title">${post.title || "Untitled"}</h3>
@@ -77,10 +80,18 @@ function generateSocialCount(count, imgSrc, imgAlt) {
   return /*HTML*/ `
     <a class="count-element flex center">
       <div class="flex">
-        <img src="${imgSrc}" alt="${imgAlt}" class="icon">
+        <img src="${imgSrc}" alt="${imgAlt}">
       </div>
       <span>${count}</span>
     </a>
+  `;
+}
+
+function closeModalIcon() {
+  return /*HTML*/ `
+    <button class="close-modal-btn" aria-label="Close post" type="button">
+      <img src="${closeIcon}" alt="">
+    </button>
   `;
 }
 
@@ -111,9 +122,12 @@ function generateTags(list) {
 function showCreatorInfo(creator) {
   if (!creator) return;
   return /*HTML*/ `
-    <section class="profile-heading flex gap-2 align-center">
+    <section class="profile-heading flex space-between">
+      <div class="flex gap-2 align-center">
       ${getProfileAvatar(creator.avatar?.url, creator.avatar?.alt)}
       <h2>${creator.name}</h2>
+      </div>
+      ${closeModalIcon()}
     </section>
   `;
 }

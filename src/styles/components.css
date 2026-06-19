@@ -86,3 +86,12 @@ footer {
   align-items: flex-start;
   justify-content: center;
 }
+
+.close-modal-btn {
+  height: 2rem;
+  aspect-ratio: 1/1;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
