@@ -11,3 +11,21 @@ export async function getCurrentProfileAvatar() {
     return getProfileAvatar();
   }
 }
+
+export function ProfileBanner({ name, avatar, banner }) {
+  return /*HTML*/ `
+    <div class="flex gap-2 align-center">
+        ${profileBanner(banner.url, banner.alt)}
+        ${getProfileAvatar(avatar?.url, avatar?.alt)}
+        <h2>${name}</h2>
+      </div>
+  `;
+}
+
+function profileBanner(url, alt) {
+  return /*HTML*/ `
+  <div>
+      <img src="${url}" alt="${alt || ""}" loading="lazy">
+    </div>
+  `;
+}

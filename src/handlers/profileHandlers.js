@@ -2,15 +2,25 @@ import { getPostsByProfile } from "../api/posts.js";
 import { getProfileByName, getLoggedInProfile } from "../api/profiles.js";
 import { setupPostFeed } from "./postFeedHandlers.js";
 import { showNewPostSection } from "./postHandlers.js";
+import { ProfileBanner } from "../components/profile/profileHeaders.js";
+import { ProfileBio } from "../components/profile/profileInformation.js";
 
 const POSTS_PER_PAGE = 4;
-export function setupProfilePage() {
+
+export async function setupProfilePage() {
   const banner = document.querySelector("#profile-banner");
   const bio = document.querySelector("#profile-bio");
   const info = document.querySelector("#profile-info");
 
   if (!banner) return;
-  const user = getLoggedInProfile();
+  const user = await getProfileForCurrentRoute();
+  console.log(user);
+  banner.innerHTML = ProfileBanner({
+    name: user.name,
+    avatar: user.avatar,
+    banner: user.banner,
+  });
+  bio.innerHTML = ProfileBio(user.bio);
 
   showNewPostSection();
   setupPostFeed({
@@ -23,4 +33,21 @@ export function setupProfilePage() {
     },
     fallbackTitle: "Could not load profile posts",
   });
+}
+
+function getProfileNameFromRoute() {
+  const path = window.location.hash.slice(1) || "/profile";
+  const match = path.match(/^\/profile\/([^/]+)$/);
+  return match ? decodeURIComponent(match[1]) : "";
+}
+
+async function getProfileForCurrentRoute() {
+  const profileName = getProfileNameFromRoute();
+
+  if (!profileName) {
+    return await getLoggedInProfile();
+  }
+
+  const result = await getProfileByName(profileName);
+  return result.data;
 }
