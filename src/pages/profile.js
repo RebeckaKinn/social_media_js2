@@ -8,6 +8,8 @@ export default function ProfilePage() {
     <section id="profile-bio">bio info</section>
     <section id="profile-info">more info?</section>
     <section id="new-post">create post</section>
-    <section id="profile-post-feed">my earlier posts</section>
+    <section id="profile-post-feed" class="flex column align-center gap-2" aria-live="polite">
+    </section>
+    <button id="load-more-posts-btn" class="alternative-button">Show more posts</button>
   `;
 }
