@@ -1,8 +1,9 @@
+import { getCurrentLogInCredentials } from "../api/auth.js";
+
 export default function FeedPage() {
+  const user = getCurrentLogInCredentials() || "";
   return /*html*/ `
-    <h1>pinkripple</h1>
-    <h2>Welcome to pinkripple!</h2>
-    <p>Explore the latest posts and connect with your network.</p>
+    <h1 class="feed-title">Welcome ${user.userName}</h1>
     <section id="new-post"></section>
     <section id="posts-feed" class="flex column align-center gap-2" aria-live="polite">
     </section>

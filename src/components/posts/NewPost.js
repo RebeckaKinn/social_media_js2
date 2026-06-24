@@ -23,3 +23,5 @@ export async function NewPost() {
       </div>
   `;
 }
+
+function openImageUploader() {}
