@@ -10,6 +10,7 @@ const routes = [
   { pattern: /^\/$/, render: FeedPage, public: false },
   { pattern: /^\/profile$/, render: ProfilePage, public: false },
   { pattern: /^\/login$/, render: LoginPage, public: true },
+  { pattern: /^\/profile\/([^/]+)$/, render: ProfilePage, public: false },
   { pattern: /^\/register$/, render: RegisterPage, public: true },
 ];
 

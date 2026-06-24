@@ -26,8 +26,8 @@ export function ShowCommentSection(
         <div class="flex gap-1">
           ${currentProfileAvatar}
           <textarea
-                id="new-post"
-                name="post"
+                id="new-comment"
+                name="comment"
                 type="text"
                 placeholder="What's on your mind?"
                 optional

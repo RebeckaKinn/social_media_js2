@@ -5,6 +5,7 @@ import { setupFeedPage } from "./handlers/feedHandlers.js";
 import { setupLoginPage, setupRegisterPage } from "./handlers/authHandlers.js";
 import { getCurrentProfileAvatar } from "./components/profile/profileHeaders.js";
 import { renderRoute, startRouter } from "./router.js";
+import { setupProfilePage } from "./handlers/profileHandlers.js";
 
 async function Main() {
   const app = document.querySelector("#app");
@@ -25,6 +26,7 @@ async function Main() {
 
   setupHeader();
   setupFeedPage();
+  setupProfilePage();
   setupLoginPage();
   setupRegisterPage();
 }

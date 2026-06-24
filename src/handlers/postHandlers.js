@@ -2,6 +2,7 @@ import { getPostById } from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
+import { NewPost } from "../components/posts/NewPost.js";
 
 export async function showPostModal(postId) {
   try {
@@ -14,4 +15,11 @@ export async function showPostModal(postId) {
   } catch (error) {
     console.error("Failed to load post:", error);
   }
+}
+
+export async function showNewPostSection() {
+  const newPost = document.querySelector("#new-post");
+  if (!newPost) return;
+  const newPostSection = await NewPost();
+  newPost.innerHTML = newPostSection;
 }

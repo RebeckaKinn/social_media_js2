@@ -1,7 +1,7 @@
 import { getPosts } from "../api/posts.js";
 import LoadingPost from "../components/loading.js";
 import Fallback from "../pages/fallback.js";
-import { showPostModal } from "./postHandlers.js";
+import { showPostModal, showNewPostSection } from "./postHandlers.js";
 import { PostList } from "../components/posts/PostList.js";
 
 const POSTS_PER_PAGE = 4;
@@ -13,7 +13,7 @@ export function setupFeedPage() {
   const loadButton = document.querySelector("#load-more-posts-btn");
 
   if (!postsFeed) return;
-
+  showNewPostSection();
   const loadInitialPosts = async () => {
     postsFeed.innerHTML = Array.from({ length: POSTS_PER_PAGE }, () =>
       LoadingPost(),
