@@ -5,7 +5,8 @@
 
 .feed-title,
 #new-post,
-#posts-feed {
+#posts-feed,
+#profile-post-feed {
   width: 100%;
   max-width: 40rem;
 }

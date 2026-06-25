@@ -2,6 +2,7 @@ import LoadingPost from "../components/loading.js";
 import Fallback from "../pages/fallback.js";
 import { PostList } from "../components/posts/PostList.js";
 import { showPostModal } from "./postHandlers.js";
+import { GeneralPlaceholder } from "../components/placeholder.js";
 
 export function renderPosts(container, posts = [], { append = false } = {}) {
   if (!container) return;
@@ -54,6 +55,17 @@ export function setupPostFeed({
     try {
       const posts = await loadPosts(currentPage, postsPerPage);
 
+      if (posts.length === 0) {
+        postsContainer.innerHTML = GeneralPlaceholder(
+          "This user has no posts yet",
+        );
+
+        setLoadButtonState(loadButton, {
+          hidden: true,
+        });
+
+        return;
+      }
       renderPosts(postsContainer, posts);
 
       setLoadButtonState(loadButton, {

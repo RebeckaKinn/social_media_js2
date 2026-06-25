@@ -103,6 +103,10 @@ body.modal-open {
   background-color: var(--surface-color);
   padding: 2rem;
   text-align: center;
+
+  width: 100%;
+  max-width: 40rem;
+  min-height: 10rem;
 }
 
 @media (max-width: 850px) {
