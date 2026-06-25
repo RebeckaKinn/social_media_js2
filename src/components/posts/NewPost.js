@@ -1,5 +1,6 @@
 import { getCurrentProfileAvatar } from "../profile/profileHeaders.js";
-import { CloseModalButton } from "./CloseModalButton.js";
+import { CloseModalOriginalButton } from "./CloseModalButton.js";
+import { GeneralPlaceholder } from "../placeholder.js";
 
 export async function NewPost() {
   const profileAvatar = await getCurrentProfileAvatar();
@@ -14,7 +15,7 @@ export async function NewPost() {
                 placeholder="What's on your mind?"
           ></textarea>
         </div>
-        <div>
+        <div class="flex row gap-1 justify-end">
             <button id="post-image-uploader">upload image</button>
             <button>post</button>
         </div>
@@ -24,24 +25,20 @@ export async function NewPost() {
 
 export function ImageUploaderPopUp() {
   return /*HTML*/ `
-    <section class="post-card new-post image-uploader-container">
-     <section class="profile-heading flex space-between">
+    <section class="post-card image-uploader-container flex column gap-2">
           <h3>Upload image</h3>
-          ${CloseModalButton()}
-        </section>
-      <div>
+      <div class="flex">
+        <label for="content-image" class="file-upload-button">Upload image</label>
         <input id="content-image" type="file" accept="image/*">
       </div>
       <div id="filePreview" class="post-image">
-         ${ImagePrewviewPlaceholder()}
+         ${GeneralPlaceholder("Your image will be displayed here")}
+      </div>
+      <div class="flex row gap-1 justify-end">
+        <button>save</button>
+        ${CloseModalOriginalButton()}
       </div>
     </section>
-  `;
-}
-
-function ImagePrewviewPlaceholder() {
-  return /*HTML*/ `
-    <p>Your image will be displayed here</p>
   `;
 }
 

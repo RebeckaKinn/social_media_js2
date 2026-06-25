@@ -38,7 +38,8 @@ header a:hover {
   color: var(--color-secondary);
 }
 
-button {
+button,
+.file-upload-button {
   padding: 0.625rem 1.25rem;
   border-radius: 0.375rem;
   color: #131313;
@@ -55,17 +56,20 @@ button:not(.alternative-button):hover {
   background-color: var(--color-secondary);
 }
 
-button:active {
+button:active,
+.file-upload-button:active {
   transform: translateY(1px);
 }
 
 a:focus-visible,
-button:focus-visible {
+button:focus-visible,
+.file-upload-button:focus-visible {
   outline: 0.1875rem solid var(--color-secondary);
   outline-offset: 0.1875rem;
 }
 
-button:disabled {
+button:disabled,
+.file-upload-button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
 }
@@ -79,7 +83,10 @@ button:disabled {
 
   box-shadow: 0 4px 8px var(--shadow-color);
 }
-
+.inverted-button {
+  background-color: var(--surface-color);
+  color: var(--text-color);
+}
 img {
   height: 100%;
   width: 100%;
@@ -88,6 +95,14 @@ img {
 
 body.modal-open {
   overflow: hidden;
+}
+
+.placeholder {
+  border: 1px solid var(--text-color);
+  border-radius: var(--border-radius);
+  background-color: var(--surface-color);
+  padding: 2rem;
+  text-align: center;
 }
 
 @media (max-width: 850px) {
