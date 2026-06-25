@@ -18,6 +18,9 @@
   min-height: 100vh;
   overflow-y: scroll;
 }
+#main-content > section {
+  width: 100%;
+}
 .main-content {
   padding: 2rem;
 }
@@ -106,7 +109,7 @@ body.modal-open {
 
   width: 100%;
   max-width: 40rem;
-  min-height: 10rem;
+  min-height: 5rem;
 }
 
 @media (max-width: 850px) {

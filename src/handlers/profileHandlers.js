@@ -3,7 +3,10 @@ import { getProfileByName, getLoggedInProfile } from "../api/profiles.js";
 import { setupPostFeed } from "./postFeedHandlers.js";
 import { showNewPostSection } from "./postHandlers.js";
 import { ProfileBanner } from "../components/profile/profileHeaders.js";
-import { ProfileBio } from "../components/profile/profileInformation.js";
+import {
+  ProfileBio,
+  ProfileInformation,
+} from "../components/profile/profileInformation.js";
 
 const POSTS_PER_PAGE = 4;
 
@@ -21,7 +24,11 @@ export async function setupProfilePage() {
     banner: user.banner,
   });
   bio.innerHTML = ProfileBio(user.bio);
-
+  info.innerHTML = ProfileInformation({
+    followers: user._count.followers,
+    following: user._count.following,
+    posts: user._count.posts,
+  });
   showNewPostSection();
   setupPostFeed({
     containerSelector: "#profile-post-feed",

@@ -10,3 +10,36 @@
   width: 100%;
   max-width: 40rem;
 }
+
+.profile-stats-container {
+  width: 100%;
+  max-width: 30rem;
+  padding: 0 1rem;
+}
+.profile-stats b {
+  font-size: var(--font-size-highlight);
+}
+.profile-stats p {
+  margin: 0;
+}
+
+.bio-container {
+  width: 100%;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: transparent;
+
+  border-image: linear-gradient(
+      to right,
+      var(--background-color),
+      var(--color-secondary),
+      var(--color-primary),
+      var(--color-secondary),
+      var(--background-color)
+    )
+    1;
+}
+.bio-container p {
+  margin: 0;
+  padding-bottom: 1rem;
+}
