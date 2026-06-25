@@ -1,5 +1,6 @@
 import { getProfileAvatar } from "../ProfileAvatar.js";
 import { CommentCard } from "./CommentCard.js";
+import { FormTextarea } from "../forms/fields.js";
 
 export function ShowCommentSection(
   postId,
@@ -25,13 +26,14 @@ export function ShowCommentSection(
       <div class="new-comment flex column">
         <div class="flex gap-1">
           ${currentProfileAvatar}
-          <textarea
-                id="new-comment"
-                name="comment"
-                type="text"
-                placeholder="What's on your mind?"
-                optional
-          ></textarea>
+          <form>
+            ${FormTextarea({
+              labelText: "",
+              id: "new-comment",
+              name: "comment",
+              placeholder: "What's on your mind?",
+            })}
+          </form>
         </div>
         <button>comment</button>
       </div>
