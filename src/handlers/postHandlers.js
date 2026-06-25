@@ -2,7 +2,7 @@ import { getPostById } from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
-import { NewPost } from "../components/posts/NewPost.js";
+import { NewPost, ImageUploaderPopUp } from "../components/posts/NewPost.js";
 
 export async function showPostModal(postId) {
   try {
@@ -22,4 +22,31 @@ export async function showNewPostSection() {
   if (!newPost) return;
   const newPostSection = await NewPost();
   newPost.innerHTML = newPostSection;
+
+  const imageUploader = document.querySelector("#post-image-uploader");
+  imageUploader.addEventListener("click", (event) => {
+    event.preventDefault();
+    const popUp = ImageUploaderPopUp();
+    showModal(popUp);
+    imagePreview();
+  });
+}
+
+function imagePreview() {
+  const fileInput = document.querySelector("#content-image");
+  const filePreview = document.querySelector("#filePreview");
+  let saveableUrlString = "";
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        saveableUrlString = e.target.result;
+
+        filePreview.src = saveableUrlString;
+        filePreview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    }
+  });
 }

@@ -49,3 +49,7 @@ Purpose: Used it for debugging the comment section for each post on the feed. It
 Tool used: CODEX
 Date: 19 June 2026
 Purpose: Asked for tips for a file structure to refactor the post logic and HTML. Did not use AI to refactor for me, but used some of the folder and file structure suggestions before I did the rest myself.
+
+Tool used: Goodle Search AI
+Date: 25 June 2026
+Purpose: Needed some guidelines to create a preview for the image that you upload for the post, as well as converting it into string since the API requires string URL. Might change it later if the API doesn't like the converted string.

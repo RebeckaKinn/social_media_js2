@@ -1,6 +1,5 @@
 .post-card {
   background-color: var(--surface-color);
-  width: fit-content;
   width: 100%;
   max-width: 40rem;
   min-height: 10rem;

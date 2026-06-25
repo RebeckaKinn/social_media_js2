@@ -16,7 +16,7 @@ async function Main() {
     ? /*html*/ `
       <section class="main-parent">
         ${header(profileAvatar)}
-        <main id="main-content" class="main-content flex column gap-2">${content}</main>
+        <main id="main-content" class="main-content flex column align-center gap-2">${content}</main>
         
       </section>
     `
