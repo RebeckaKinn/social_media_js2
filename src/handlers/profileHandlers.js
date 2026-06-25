@@ -1,3 +1,4 @@
+import { getCurrentLogInCredentials } from "../api/auth.js";
 import { getPostsByProfile } from "../api/posts.js";
 import { getProfileByName, getLoggedInProfile } from "../api/profiles.js";
 import { setupPostFeed } from "./postFeedHandlers.js";
@@ -17,13 +18,19 @@ export async function setupProfilePage() {
 
   if (!banner) return;
   const user = await getProfileForCurrentRoute();
-  console.log(user);
+  const { userName } = getCurrentLogInCredentials();
+  const isOwnProfile = user.name === userName;
+  console.log(isOwnProfile);
   banner.innerHTML = ProfileBanner({
     name: user.name,
     avatar: user.avatar,
     banner: user.banner,
+    isOwnProfile,
   });
-  bio.innerHTML = ProfileBio(user.bio);
+  bio.innerHTML = ProfileBio({
+    isOwnProfile: isOwnProfile,
+    bio: user.bio,
+  });
   info.innerHTML = ProfileInformation({
     followers: user._count.followers,
     following: user._count.following,

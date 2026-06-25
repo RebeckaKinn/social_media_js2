@@ -12,7 +12,7 @@ export async function getCurrentProfileAvatar() {
   }
 }
 
-export function ProfileBanner({ name, avatar, banner }) {
+export function ProfileBanner({ name, avatar, banner, isOwnProfile }) {
   return /*HTML*/ `
     <div class="profile-banner flex gap-2 align-center">
         ${profileBannerBackgorund(banner.url, banner.alt)}
