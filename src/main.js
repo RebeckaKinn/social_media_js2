@@ -6,8 +6,11 @@ import { setupLoginPage, setupRegisterPage } from "./handlers/authHandlers.js";
 import { getCurrentProfileAvatar } from "./components/profile/profileHeaders.js";
 import { renderRoute, startRouter } from "./router.js";
 import { setupProfilePage } from "./handlers/profileHandlers.js";
+import { closeModal } from "./components/modal.js";
 
 async function Main() {
+  closeModal();
+
   const app = document.querySelector("#app");
   const { content, showShell } = renderRoute();
   const profileAvatar = showShell ? await getCurrentProfileAvatar() : "";

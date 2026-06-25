@@ -5,10 +5,10 @@ export function PostHeader({ creator, showCloseButton = false }) {
 
   return /*html*/ `
     <section class="profile-heading flex space-between">
-      <div class="flex gap-2 align-center">
+      <a href="#/profile/${encodeURIComponent(creator.name)}" class="flex gap-2 align-center">
         ${getProfileAvatar(creator.avatar?.url, creator.avatar?.alt)}
         <h2>${creator.name}</h2>
-      </div>
+      </a>
       ${showCloseButton ? CloseModalButton() : ""}
     </section>
   `;

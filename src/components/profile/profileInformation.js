@@ -2,7 +2,9 @@ import { GeneralPlaceholder } from "../placeholder.js";
 
 export function ProfileBio(text = "") {
   return /*HTML*/ `
-    <div class="bio-container small-txt">${text}</div>
+    <div class="bio-container small-txt">
+      <p>${text}</p>
+    </div>
   `;
 }
 
