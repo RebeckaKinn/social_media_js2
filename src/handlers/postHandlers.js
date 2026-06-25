@@ -2,7 +2,11 @@ import { getPostById } from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
-import { NewPost, ImageUploaderPopUp } from "../components/posts/NewPost.js";
+import {
+  NewPost,
+  ImageUploaderPopUp,
+  ImagePreview,
+} from "../components/posts/NewPost.js";
 
 export async function showPostModal(postId) {
   try {
@@ -28,11 +32,11 @@ export async function showNewPostSection() {
     event.preventDefault();
     const popUp = ImageUploaderPopUp();
     showModal(popUp);
-    imagePreview();
+    imagePreviewHandler();
   });
 }
 
-function imagePreview() {
+function imagePreviewHandler() {
   const fileInput = document.querySelector("#content-image");
   const filePreview = document.querySelector("#filePreview");
   let saveableUrlString = "";
@@ -42,9 +46,10 @@ function imagePreview() {
       const reader = new FileReader();
       reader.onload = function (e) {
         saveableUrlString = e.target.result;
-
-        filePreview.src = saveableUrlString;
-        filePreview.style.display = "block";
+        filePreview.innerHTML = ImagePreview({
+          url: saveableUrlString,
+          alt: "Image preview",
+        });
       };
       reader.readAsDataURL(file);
     }

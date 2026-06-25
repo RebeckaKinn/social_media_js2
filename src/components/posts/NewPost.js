@@ -24,13 +24,29 @@ export async function NewPost() {
 
 export function ImageUploaderPopUp() {
   return /*HTML*/ `
-    <section class="post-card new-post">
-      ${CloseModalButton()}
+    <section class="post-card new-post image-uploader-container">
+     <section class="profile-heading flex space-between">
+          <h3>Upload image</h3>
+          ${CloseModalButton()}
+        </section>
       <div>
-        <span for="content-image">Upload image</span>
         <input id="content-image" type="file" accept="image/*">
       </div>
-      <img id="filePreview" src="" alt="File Preview">
+      <div id="filePreview" class="post-image">
+         ${ImagePrewviewPlaceholder()}
+      </div>
     </section>
+  `;
+}
+
+function ImagePrewviewPlaceholder() {
+  return /*HTML*/ `
+    <p>Your image will be displayed here</p>
+  `;
+}
+
+export function ImagePreview({ url = "", alt = "" }) {
+  return /*HTML*/ `
+    <img id="filePreview" src="${url}" alt="${alt}" loading="lazy">
   `;
 }

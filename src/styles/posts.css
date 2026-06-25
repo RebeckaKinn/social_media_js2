@@ -117,6 +117,10 @@
   align-self: flex-end;
 }
 
+.image-uploader-container h3 {
+  margin: 0;
+}
+
 @media (max-width: 500px) {
   .post-timestamp {
     flex-direction: column;
