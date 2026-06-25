@@ -1,6 +1,7 @@
 import { getCurrentProfileAvatar } from "../profile/profileHeaders.js";
 import { CloseModalOriginalButton } from "./CloseModalButton.js";
 import { GeneralPlaceholder } from "../placeholder.js";
+import { FormInput, FormTextarea } from "../forms/fields.js";
 
 export async function NewPost() {
   const profileAvatar = await getCurrentProfileAvatar();
@@ -9,11 +10,20 @@ export async function NewPost() {
   <article class="post-card new-post">
         <div class="flex gap-1">
           ${profileAvatar}
-          <textarea
-                id="new-post-content"
-                name="post"
-                placeholder="What's on your mind?"
-          ></textarea>
+          <form class="flex column gap-1">
+          ${FormInput({
+            labelText: "",
+            id: "new-post-title",
+            name: "new-title",
+            placeholder: "Title",
+          })}
+          ${FormTextarea({
+            labelText: "",
+            id: "new-post-body",
+            name: "new-post",
+            placeholder: "What's on your mind?",
+          })}
+          </form>
         </div>
         <div class="flex row gap-1 justify-end">
             <button id="post-image-uploader">upload image</button>

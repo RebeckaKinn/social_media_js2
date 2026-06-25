@@ -37,6 +37,7 @@ form div label {
 form div input,
 textarea {
   font-family: var(--secondary-font);
+  font-size: var(--font-size-small);
   padding: 0.7rem;
   border: 1px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
   border-radius: var(--border-radius);
