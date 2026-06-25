@@ -8,6 +8,8 @@ import {
   ProfileBio,
   ProfileInformation,
 } from "../components/profile/profileInformation.js";
+import { showModal } from "../components/modal.js";
+import { EditProfile } from "../components/profile/profileEdit.js";
 
 const POSTS_PER_PAGE = 4;
 
@@ -20,17 +22,13 @@ export async function setupProfilePage() {
   const user = await getProfileForCurrentRoute();
   const { userName } = getCurrentLogInCredentials();
   const isOwnProfile = user.name === userName;
-  console.log(isOwnProfile);
   banner.innerHTML = ProfileBanner({
     name: user.name,
     avatar: user.avatar,
     banner: user.banner,
     isOwnProfile,
   });
-  bio.innerHTML = ProfileBio({
-    isOwnProfile: isOwnProfile,
-    bio: user.bio,
-  });
+  bio.innerHTML = ProfileBio(user.bio);
   info.innerHTML = ProfileInformation({
     followers: user._count.followers,
     following: user._count.following,
@@ -47,6 +45,7 @@ export async function setupProfilePage() {
     },
     fallbackTitle: "Could not load profile posts",
   });
+  connectProfileEdits(isOwnProfile);
 }
 
 function getProfileNameFromRoute() {
@@ -64,4 +63,15 @@ async function getProfileForCurrentRoute() {
 
   const result = await getProfileByName(profileName);
   return result.data;
+}
+
+function connectProfileEdits(isOwnProfile) {
+  if (!isOwnProfile) return;
+  const profileEdit = document.querySelector("#profile-edit");
+  profileEdit.addEventListener("click", (event) => {
+    event.preventDefault();
+    const popUp = EditProfile();
+    showModal(popUp);
+    // imagePreviewHandler();
+  });
 }
