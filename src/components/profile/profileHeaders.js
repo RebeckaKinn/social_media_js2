@@ -14,17 +14,19 @@ export async function getCurrentProfileAvatar() {
 
 export function ProfileBanner({ name, avatar, banner }) {
   return /*HTML*/ `
-    <div class="flex gap-2 align-center">
-        ${profileBanner(banner.url, banner.alt)}
-        ${getProfileAvatar(avatar?.url, avatar?.alt)}
-        <h2>${name}</h2>
+    <div class="profile-banner flex gap-2 align-center">
+        ${profileBannerBackgorund(banner.url, banner.alt)}
+        <div class="profile-banner-content flex gap-2 align-center">
+          ${getProfileAvatar(avatar?.url, avatar?.alt)}
+          <h2>${name}</h2>
+        </div>
       </div>
   `;
 }
 
-function profileBanner(url, alt) {
+function profileBannerBackgorund(url, alt) {
   return /*HTML*/ `
-  <div>
+    <div class="profile-banner-background">
       <img src="${url}" alt="${alt || ""}" loading="lazy">
     </div>
   `;
