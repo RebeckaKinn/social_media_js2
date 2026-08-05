@@ -10,43 +10,55 @@ export async function NewPost() {
   <article class="post-card new-post">
         <div class="flex gap-1">
           ${profileAvatar}
-          <form class="flex column gap-1">
+          <form id="new-post-form" class="flex column gap-1">
           ${FormInput({
             labelText: "",
             id: "new-post-title",
-            name: "new-title",
-            placeholder: "Title",
+            name: "title",
+            placeholder: "Title (REQUIRED)",
           })}
           ${FormTextarea({
             labelText: "",
             id: "new-post-body",
-            name: "new-post",
+            name: "body",
             placeholder: "What's on your mind?",
           })}
+          ${FormInput({
+            labelText: "",
+            id: "post-media-url",
+            name: "url",
+            type: "url",
+            placeholder: "Image URL (max 300 characters)",
+            maxlength: 300,
+          })}
+          ${FormInput({
+            labelText: "",
+            id: "post-media-alt",
+            name: "media-alt",
+            placeholder: "Image description",
+          })}
+          ${ImageUploaderPreview()}
+          ${FormInput({
+            labelText: "",
+            id: "post-tags",
+            name: "post-tags",
+            placeholder: "Post tags (comma-separated)",
+          })}
+          <div class="flex row gap-1 justify-end">
+              <button type="submit">post</button>
+          </div>
           </form>
-        </div>
-        <div class="flex row gap-1 justify-end">
-            <button id="post-image-uploader">upload image</button>
-            <button>post</button>
+          <p id="post-error-message" class="small-txt" role="status" aria-live="polite"></p>
         </div>
       </article>
   `;
 }
 
-export function ImageUploaderPopUp() {
+function ImageUploaderPreview() {
   return /*HTML*/ `
     <section class="post-card image-uploader-container flex column gap-2">
-          <h3>Upload image</h3>
-      <div class="flex">
-        <label for="content-image" class="file-upload-button">Upload image</label>
-        <input id="content-image" type="file" accept="image/*">
-      </div>
-      <div id="filePreview" class="post-image">
+      <div id="image-url-preview-container" class="post-image">
          ${GeneralPlaceholder("Your image will be displayed here")}
-      </div>
-      <div class="flex row gap-1 justify-end">
-        <button>save</button>
-        ${CloseModalOriginalButton()}
       </div>
     </section>
   `;
@@ -54,6 +66,6 @@ export function ImageUploaderPopUp() {
 
 export function ImagePreview({ url = "", alt = "" }) {
   return /*HTML*/ `
-    <img id="filePreview" src="${url}" alt="${alt}" loading="lazy">
+    <img id="image-url-preview" src="${url}" alt="${alt}" loading="lazy">
   `;
 }

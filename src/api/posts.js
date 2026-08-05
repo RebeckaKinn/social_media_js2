@@ -34,3 +34,10 @@ export async function getPostsByProfile(name, page = 1, limit = 10) {
     `/social/profiles/${name}/posts?limit=${limit}&page=${page}`,
   );
 }
+
+export async function createNewPost(postData) {
+  return await apiRequest("/social/posts", {
+    method: "POST",
+    body: JSON.stringify(postData),
+  });
+}

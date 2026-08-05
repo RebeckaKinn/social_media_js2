@@ -6,6 +6,7 @@ export function FormInput({
   autocomplete = "",
   placeholder = "",
   isRequired = false,
+  maxlength = "",
 }) {
   return /*HTML*/ `
     <div class="flex column">
@@ -17,6 +18,7 @@ export function FormInput({
             autocomplete="${autocomplete}"
             placeholder="${placeholder}"
             ${isRequired ? "required" : ""}
+            ${maxlength ? `maxlength="${maxlength}"` : ""}
         >
     </div>
     `;

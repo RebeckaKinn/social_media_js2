@@ -1,12 +1,8 @@
-import { getPostById } from "../api/posts.js";
+import { createNewPost, getPostById } from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { showModal } from "../components/modal.js";
-import {
-  NewPost,
-  ImageUploaderPopUp,
-  ImagePreview,
-} from "../components/posts/NewPost.js";
+import { NewPost, ImagePreview } from "../components/posts/NewPost.js";
 
 export async function showPostModal(postId) {
   try {
@@ -24,34 +20,89 @@ export async function showPostModal(postId) {
 export async function showNewPostSection() {
   const newPost = document.querySelector("#new-post");
   if (!newPost) return;
-  const newPostSection = await NewPost();
-  newPost.innerHTML = newPostSection;
 
-  const imageUploader = document.querySelector("#post-image-uploader");
-  imageUploader.addEventListener("click", (event) => {
+  newPost.innerHTML = await NewPost();
+  imagePreviewHandler();
+  const form = newPost.querySelector("#new-post-form");
+  const message = document.querySelector("#post-error-message");
+
+  if (!form || !message) return;
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const popUp = ImageUploaderPopUp();
-    showModal(popUp);
-    imagePreviewHandler();
+
+    const submitButton = form.querySelector('button[type="submit"]');
+    const formData = new FormData(form);
+
+    const postData = {
+      title: formData.get("title").trim(),
+    };
+
+    const body = formData.get("body").trim() || "";
+    const mediaUrl = formData.get("url").trim() || "";
+    const mediaAlt = formData.get("media-alt").trim() || "";
+
+    if (body) {
+      postData.body = body;
+    }
+
+    if (mediaUrl) {
+      postData.media = {
+        url: mediaUrl,
+        alt: mediaAlt,
+      };
+    }
+    const tags = (formData.get("post-tags") || "")
+      .split(",")
+      .map((tag) => tag.trim())
+      .filter(Boolean);
+
+    if (tags.length > 0) {
+      postData.tags = tags;
+    }
+    message.textContent = "";
+    submitButton.disabled = true;
+
+    try {
+      const result = await createNewPost(postData);
+      form.reset();
+
+      window.location.reload();
+    } catch (error) {
+      message.textContent = error.message;
+      console.error("Could not create post:", error);
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 }
 
 function imagePreviewHandler() {
-  const fileInput = document.querySelector("#content-image");
-  const filePreview = document.querySelector("#filePreview");
-  let saveableUrlString = "";
-  fileInput.addEventListener("change", function () {
-    const file = this.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (e) {
-        saveableUrlString = e.target.result;
-        filePreview.innerHTML = ImagePreview({
-          url: saveableUrlString,
-          alt: "Image preview",
-        });
-      };
-      reader.readAsDataURL(file);
+  const urlInput = document.querySelector("#post-media-url");
+  const altInput = document.querySelector("#post-media-alt");
+  const message = document.querySelector("#post-error-message");
+  const previewContainer = document.querySelector(
+    "#image-url-preview-container",
+  );
+
+  if (!urlInput || !previewContainer || !message) return;
+
+  urlInput.addEventListener("input", () => {
+    const url = urlInput.value.trim();
+    const alt = altInput.value.trim() || "Image preview";
+
+    if (!url) {
+      previewContainer.innerHTML = "";
+      return;
     }
+    if (url.length > 300) {
+      message.textContent =
+        "The image URL must be 300 characters or fewer. Please use a shorter public image URL.";
+      return;
+    }
+
+    previewContainer.innerHTML = ImagePreview({
+      url,
+      alt,
+    });
   });
 }

@@ -44,7 +44,8 @@ textarea {
 }
 
 #login-message,
-#register-message {
+#register-message,
+#post-error-message {
   color: var(--color-primary);
   font-weight: 700;
   text-align: center;
