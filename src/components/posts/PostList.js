@@ -1,5 +1,7 @@
 import { createPostCard } from "./PostCard.js";
 
-export function PostList(posts = []) {
-  return posts.map((post) => createPostCard(post)).join("");
+export function PostList(posts = [], showDeleteButton = false) {
+  return posts
+    .map((post) => createPostCard(post, false, undefined, showDeleteButton))
+    .join("");
 }

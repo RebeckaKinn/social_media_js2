@@ -44,6 +44,7 @@ export async function setupProfilePage() {
       return result.data;
     },
     fallbackTitle: "Could not load profile posts",
+    showDeleteButton: isOwnProfile,
   });
   connectProfileEdits(isOwnProfile);
 }

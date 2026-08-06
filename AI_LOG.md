@@ -53,3 +53,7 @@ Purpose: Asked for tips for a file structure to refactor the post logic and HTML
 Tool used: Goodle Search AI
 Date: 25 June 2026
 Purpose: Needed some guidelines to create a preview for the image that you upload for the post, as well as converting it into string since the API requires string URL. Might change it later if the API doesn't like the converted string.
+
+Tool used: CODEX
+Date: 06 August 2026
+Purpose: I got confused when I got some errors while adding the delete-functionality on a function. Used Codex to help me find the error, since it has been a while since I worked on this project due to summer vacation. I have become a little blind in my own code, and needed a little help getting back on track.

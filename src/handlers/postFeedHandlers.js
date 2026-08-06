@@ -1,13 +1,17 @@
 import LoadingPost from "../components/loading.js";
 import Fallback from "../pages/fallback.js";
 import { PostList } from "../components/posts/PostList.js";
-import { showPostModal } from "./postHandlers.js";
+import { handleDeletePost, showPostModal } from "./postHandlers.js";
 import { GeneralPlaceholder } from "../components/placeholder.js";
 
-export function renderPosts(container, posts = [], { append = false } = {}) {
+export function renderPosts(
+  container,
+  posts = [],
+  { append = false, showDeleteButton = false } = {},
+) {
   if (!container) return;
 
-  const html = PostList(posts);
+  const html = PostList(posts, showDeleteButton);
 
   if (append) {
     container.insertAdjacentHTML("beforeend", html);
@@ -33,6 +37,7 @@ export function setupPostFeed({
   loadPosts,
   postsPerPage = 4,
   fallbackTitle = "Could not load posts",
+  showDeleteButton = false,
 }) {
   let currentPage = 1;
 
@@ -66,7 +71,7 @@ export function setupPostFeed({
 
         return;
       }
-      renderPosts(postsContainer, posts);
+      renderPosts(postsContainer, posts, { showDeleteButton });
 
       setLoadButtonState(loadButton, {
         disabled: false,
@@ -102,7 +107,10 @@ export function setupPostFeed({
       const posts = await loadPosts(currentPage, postsPerPage);
 
       if (posts.length > 0) {
-        renderPosts(postsContainer, posts, { append: true });
+        renderPosts(postsContainer, posts, {
+          append: true,
+          showDeleteButton,
+        });
       }
 
       setLoadButtonState(loadButton, {
@@ -121,8 +129,14 @@ export function setupPostFeed({
     }
   }
 
-  postsContainer.addEventListener("click", (event) => {
+  postsContainer.addEventListener("click", async (event) => {
     const postArticle = event.target.closest("article[data-post-id]");
+    const deleteButton = event.target.closest(".delete-post-button");
+
+    if (deleteButton) {
+      await handleDeletePost(deleteButton);
+      return;
+    }
     if (!postArticle) return;
 
     showPostModal(postArticle.dataset.postId);

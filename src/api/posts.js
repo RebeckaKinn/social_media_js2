@@ -41,3 +41,9 @@ export async function createNewPost(postData) {
     body: JSON.stringify(postData),
   });
 }
+
+export async function deletePost(id) {
+  return await apiRequest(`/social/posts/${id}`, {
+    method: "DELETE",
+  });
+}

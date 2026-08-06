@@ -33,6 +33,10 @@ export async function apiRequest(path, options = {}) {
     headers,
   });
 
+  if (response.status === 204) {
+    return null;
+  }
+
   const result = await response.json();
 
   if (!response.ok) {

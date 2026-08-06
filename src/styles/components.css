@@ -121,3 +121,11 @@ footer {
   position: relative;
   z-index: 1;
 }
+
+.delete-post-button {
+  background-color: var(--shadow-color);
+  color: var(--text-color);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}

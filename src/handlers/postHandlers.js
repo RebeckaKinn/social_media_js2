@@ -1,7 +1,7 @@
-import { createNewPost, getPostById } from "../api/posts.js";
+import { createNewPost, deletePost, getPostById } from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
-import { showModal } from "../components/modal.js";
+import { closeModal, showModal } from "../components/modal.js";
 import { NewPost, ImagePreview } from "../components/posts/NewPost.js";
 
 export async function showPostModal(postId) {
@@ -11,9 +11,53 @@ export async function showPostModal(postId) {
       getCurrentProfileAvatar(),
     ]);
     const post = result.data;
-    showModal(createPostCard(post, true, currentProfileAvatar));
+    showModal(createPostCard(post, true, currentProfileAvatar, true));
+
+    const deleteButton = document.querySelector(
+      ".modal-overlay .delete-post-button",
+    );
+    deleteButton?.addEventListener("click", async () => {
+      await handleDeletePost(deleteButton, { closeAfterDelete: true });
+    });
   } catch (error) {
     console.error("Failed to load post:", error);
+  }
+}
+
+export async function handleDeletePost(
+  deleteButton,
+  { closeAfterDelete = false } = {},
+) {
+  const postArticle = deleteButton.closest("article[data-post-id]");
+  if (!postArticle) return;
+
+  const shouldDelete = window.confirm(
+    "Are you sure you want to delete this post?",
+  );
+  if (!shouldDelete) return;
+
+  deleteButton.disabled = true;
+  deleteButton.textContent = "Deleting...";
+
+  try {
+    const postId = postArticle.dataset.postId;
+    await deletePost(postId);
+
+    document
+      .querySelectorAll("article[data-post-id]")
+      .forEach((renderedPost) => {
+        if (renderedPost.dataset.postId === postId) {
+          renderedPost.remove();
+        }
+      });
+
+    if (closeAfterDelete) {
+      closeModal();
+    }
+  } catch (error) {
+    deleteButton.disabled = false;
+    deleteButton.textContent = "Delete";
+    console.error("Could not delete post:", error);
   }
 }
 
