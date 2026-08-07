@@ -1,6 +1,10 @@
-import { getCurrentLogInCredentials } from "../api/auth.js";
 import { getPostsByProfile } from "../api/posts.js";
-import { getProfileByName, getLoggedInProfile } from "../api/profiles.js";
+import {
+  followProfile,
+  getProfileByName,
+  getLoggedInProfile,
+  unfollowProfile,
+} from "../api/profiles.js";
 import { setupPostFeed } from "./postFeedHandlers.js";
 import { setupNewPostButton } from "./postHandlers.js";
 import { ProfileBanner } from "../components/profile/profileHeaders.js";
@@ -20,14 +24,23 @@ export async function setupProfilePage() {
   const info = document.querySelector("#profile-info");
 
   if (!banner) return;
-  const user = await getProfileForCurrentRoute();
-  const { userName } = getCurrentLogInCredentials();
-  const isOwnProfile = user.name === userName;
+  const [user, loggedInProfile] = await Promise.all([
+    getProfileForCurrentRoute(),
+    getLoggedInProfile(),
+  ]);
+
+  const isOwnProfile = user.name === loggedInProfile.name;
+
+  const isFollowing =
+    !isOwnProfile &&
+    loggedInProfile.following?.some((profile) => profile.name === user.name);
+
   banner.innerHTML = ProfileBanner({
     name: user.name,
     avatar: user.avatar,
     banner: user.banner,
     isOwnProfile,
+    isFollowing,
   });
   bio.innerHTML = ProfileBio(user.bio);
   info.innerHTML = ProfileInformation({
@@ -35,6 +48,15 @@ export async function setupProfilePage() {
     following: user._count.following,
     posts: user._count.posts,
   });
+
+  if (!isOwnProfile) {
+    connectFollowButton({
+      viewedProfile: user,
+      initialIsFollowing: isFollowing,
+      infoContainer: info,
+    });
+  }
+
   if (isOwnProfile) {
     const newPostContainer = document.querySelector("#new-post");
 
@@ -43,6 +65,7 @@ export async function setupProfilePage() {
       setupNewPostButton();
     }
   }
+
   setupPostFeed({
     containerSelector: "#profile-post-feed",
     loadMoreButtonSelector: "#load-more-posts-btn",
@@ -83,4 +106,57 @@ function connectProfileEdits(isOwnProfile) {
   //   showModal(popUp);
   //   // imagePreviewHandler();
   // });
+}
+
+function connectFollowButton({
+  viewedProfile,
+  initialIsFollowing,
+  infoContainer,
+}) {
+  const followButton = document.querySelector("#follow-button");
+
+  if (!followButton) return;
+
+  let currentlyFollowing = initialIsFollowing;
+
+  followButton.addEventListener("click", async () => {
+    followButton.disabled = true;
+
+    followButton.textContent = currentlyFollowing
+      ? "Unfollowing..."
+      : "Following...";
+
+    try {
+      const result = currentlyFollowing
+        ? await unfollowProfile(viewedProfile.name)
+        : await followProfile(viewedProfile.name);
+
+      currentlyFollowing = !currentlyFollowing;
+
+      followButton.textContent = currentlyFollowing ? "Unfollow" : "Follow";
+
+      followButton.setAttribute("aria-pressed", String(currentlyFollowing));
+
+      const returnedFollowerCount = result.data.followers?.length;
+
+      viewedProfile._count.followers =
+        returnedFollowerCount ??
+        Math.max(
+          0,
+          viewedProfile._count.followers + (currentlyFollowing ? 1 : -1),
+        );
+
+      infoContainer.innerHTML = ProfileInformation({
+        followers: viewedProfile._count.followers,
+        following: viewedProfile._count.following,
+        posts: viewedProfile._count.posts,
+      });
+    } catch (error) {
+      followButton.textContent = currentlyFollowing ? "Unfollow" : "Follow";
+
+      console.error("Could not update follow status:", error);
+    } finally {
+      followButton.disabled = false;
+    }
+  });
 }
