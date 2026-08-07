@@ -40,10 +40,9 @@ export function FormTextarea({
         <textarea
             id="${id}"
             name="${name}"
-            value="${value}"
             placeholder="${placeholder}"
             ${isRequired ? "required" : ""}
-        ></textarea>
+        >${value}</textarea>
     </div>
     `;
 }

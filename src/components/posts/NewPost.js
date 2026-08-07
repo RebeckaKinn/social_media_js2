@@ -16,6 +16,7 @@ export async function NewPost() {
             id: "new-post-title",
             name: "title",
             placeholder: "Title (REQUIRED)",
+            isRequired: true,
           })}
           ${FormTextarea({
             labelText: "",

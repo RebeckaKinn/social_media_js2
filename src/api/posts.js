@@ -47,3 +47,10 @@ export async function deletePost(id) {
     method: "DELETE",
   });
 }
+
+export async function updatePost(id, postData) {
+  return await apiRequest(`/social/posts/${id}`, {
+    method: "PUT",
+    body: JSON.stringify(postData),
+  });
+}

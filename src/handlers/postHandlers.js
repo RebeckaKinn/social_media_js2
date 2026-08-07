@@ -1,8 +1,14 @@
-import { createNewPost, deletePost, getPostById } from "../api/posts.js";
+import {
+  createNewPost,
+  deletePost,
+  getPostById,
+  updatePost,
+} from "../api/posts.js";
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { closeModal, showModal } from "../components/modal.js";
 import { NewPost, ImagePreview } from "../components/posts/NewPost.js";
+import { EditPost } from "../components/posts/EditPost.js";
 
 export async function showPostModal(postId) {
   try {
@@ -13,6 +19,12 @@ export async function showPostModal(postId) {
     const post = result.data;
     showModal(createPostCard(post, true, currentProfileAvatar, true));
 
+    const editButton = document.querySelector(
+      ".modal-overlay .edit-post-button",
+    );
+    editButton?.addEventListener("click", async () => {
+      await showEditPostForm(post.id);
+    });
     const deleteButton = document.querySelector(
       ".modal-overlay .delete-post-button",
     );
@@ -120,9 +132,12 @@ export async function showNewPostSection() {
   });
 }
 
-function imagePreviewHandler() {
-  const urlInput = document.querySelector("#post-media-url");
-  const altInput = document.querySelector("#post-media-alt");
+function imagePreviewHandler({
+  urlSelector = "#post-media-url",
+  altSelector = "#post-media-alt",
+} = {}) {
+  const urlInput = document.querySelector(urlSelector);
+  const altInput = document.querySelector(altSelector);
   const message = document.querySelector("#post-error-message");
   const previewContainer = document.querySelector(
     "#image-url-preview-container",
@@ -149,4 +164,85 @@ function imagePreviewHandler() {
       alt,
     });
   });
+}
+
+export async function showEditPostForm(postId) {
+  try {
+    const result = await getPostById(postId);
+    const post = result.data;
+
+    showModal(await EditPost(post));
+
+    const form = document.querySelector(".modal-overlay #edit-post-form");
+
+    const message = document.querySelector(
+      ".modal-overlay #post-error-message",
+    );
+
+    if (!form || !message) return;
+    const cancelButton = document.querySelector(
+      ".modal-overlay #cancel-edit-post",
+    );
+    cancelButton?.addEventListener("click", async () => {
+      await showPostModal(postId);
+    });
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const submitButton = form.querySelector('button[type="submit"]');
+
+      const formData = new FormData(form);
+
+      const postData = {
+        title: formData.get("title").trim(),
+        body: formData.get("body").trim(),
+        tags: (formData.get("post-tags") || "")
+          .split(",")
+          .map((tag) => tag.trim())
+          .filter(Boolean),
+      };
+
+      const mediaUrl = formData.get("url").trim();
+      const mediaAlt = formData.get("media-alt").trim();
+
+      if (mediaUrl) {
+        postData.media = {
+          url: mediaUrl,
+          alt: mediaAlt,
+        };
+      } else {
+        postData.media = null;
+      }
+
+      message.textContent = "";
+      submitButton.disabled = true;
+      submitButton.textContent = "Saving...";
+
+      try {
+        await updatePost(postId, postData);
+        const updatedResult = await getPostById(postId);
+        const updatedPost = updatedResult.data;
+
+        const renderedCards = document.querySelectorAll(
+          "#posts-feed > article[data-post-id], " +
+            "#profile-post-feed > article[data-post-id]",
+        );
+
+        renderedCards.forEach((card) => {
+          if (card.dataset.postId === String(postId)) {
+            card.outerHTML = createPostCard(updatedPost);
+          }
+        });
+
+        await showPostModal(postId);
+      } catch (error) {
+        message.textContent = error.message;
+        submitButton.disabled = false;
+        submitButton.textContent = "Save changes";
+        console.error("Could not update post:", error);
+      }
+    });
+  } catch (error) {
+    console.error("Could not load post for editing:", error);
+  }
 }
