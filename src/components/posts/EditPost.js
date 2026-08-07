@@ -1,7 +1,7 @@
 import { getCurrentProfileAvatar } from "../profile/profileHeaders.js";
-import { CloseModalOriginalButton } from "./CloseModalButton.js";
 import { GeneralPlaceholder } from "../placeholder.js";
 import { FormInput, FormTextarea } from "../forms/fields.js";
+import { ImagePreview } from "./ImagePreview.js";
 
 export async function EditPost(post) {
   const profileAvatar = await getCurrentProfileAvatar();
@@ -75,11 +75,5 @@ function ImageUploaderPreview(post) {
          }
       </div>
     </section>
-  `;
-}
-
-export function ImagePreview({ url = "", alt = "" }) {
-  return /*HTML*/ `
-    <img id="image-url-preview" src="${url}" alt="${alt}" loading="lazy">
   `;
 }

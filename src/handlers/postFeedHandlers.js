@@ -37,6 +37,7 @@ export function setupPostFeed({
   loadPosts,
   postsPerPage = 4,
   fallbackTitle = "Could not load posts",
+  emptyMessage = "This user has no posts yet",
   showDeleteButton = false,
 }) {
   let currentPage = 1;
@@ -61,9 +62,7 @@ export function setupPostFeed({
       const posts = await loadPosts(currentPage, postsPerPage);
 
       if (posts.length === 0) {
-        postsContainer.innerHTML = GeneralPlaceholder(
-          "This user has no posts yet",
-        );
+        postsContainer.innerHTML = GeneralPlaceholder(emptyMessage);
 
         setLoadButtonState(loadButton, {
           hidden: true,

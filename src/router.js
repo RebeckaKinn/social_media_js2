@@ -15,7 +15,9 @@ const routes = [
 ];
 
 function getPath() {
-  const path = window.location.hash.slice(1) || "/";
+  const hashPath = window.location.hash.slice(1) || "/";
+  const path = hashPath.split("?")[0];
+
   return path.startsWith("/") ? path : `/${path}`;
 }
 

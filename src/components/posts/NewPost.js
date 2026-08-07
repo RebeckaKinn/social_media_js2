@@ -1,5 +1,4 @@
 import { getCurrentProfileAvatar } from "../profile/profileHeaders.js";
-import { CloseModalOriginalButton } from "./CloseModalButton.js";
 import { GeneralPlaceholder } from "../placeholder.js";
 import { FormInput, FormTextarea } from "../forms/fields.js";
 
@@ -62,11 +61,5 @@ function ImageUploaderPreview() {
          ${GeneralPlaceholder("Your image will be displayed here")}
       </div>
     </section>
-  `;
-}
-
-export function ImagePreview({ url = "", alt = "" }) {
-  return /*HTML*/ `
-    <img id="image-url-preview" src="${url}" alt="${alt}" loading="lazy">
   `;
 }

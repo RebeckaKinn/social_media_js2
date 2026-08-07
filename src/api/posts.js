@@ -18,16 +18,17 @@ export async function searchPosts(query, page = 1, limit = 10) {
     q: query,
     limit,
     page,
+    _author: "true",
   });
 
   return await apiRequest(`/social/posts/search?${params}`);
 }
 
-export async function getFollowingPosts(page = 1, limit = 10) {
-  return await apiRequest(
-    `/social/posts/following?limit=${limit}&page=${page}`,
-  );
-}
+// export async function getFollowingPosts(page = 1, limit = 10) {
+//   return await apiRequest(
+//     `/social/posts/following?limit=${limit}&page=${page}`,
+//   );
+// }
 
 export async function getPostsByProfile(name, page = 1, limit = 10) {
   return await apiRequest(

@@ -1,6 +1,9 @@
 import { GeneralPlaceholder } from "../placeholder.js";
 
 export function ProfileBio(bio) {
+  if (bio === null || bio === undefined || bio === "") {
+    bio = "No bio available.";
+  }
   return /*HTML*/ `
     <div class="bio-container small-txt">
       <p>${bio}</p>

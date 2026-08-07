@@ -2,7 +2,7 @@ import { getCurrentLogInCredentials } from "../api/auth.js";
 import { getPostsByProfile } from "../api/posts.js";
 import { getProfileByName, getLoggedInProfile } from "../api/profiles.js";
 import { setupPostFeed } from "./postFeedHandlers.js";
-import { showNewPostSection } from "./postHandlers.js";
+import { setupNewPostButton } from "./postHandlers.js";
 import { ProfileBanner } from "../components/profile/profileHeaders.js";
 import {
   ProfileBio,
@@ -10,6 +10,7 @@ import {
 } from "../components/profile/profileInformation.js";
 import { showModal } from "../components/modal.js";
 import { EditProfile } from "../components/profile/profileEdit.js";
+import { NewPostButton } from "../components/NewPostButton.js";
 
 const POSTS_PER_PAGE = 4;
 
@@ -34,7 +35,14 @@ export async function setupProfilePage() {
     following: user._count.following,
     posts: user._count.posts,
   });
-  showNewPostSection();
+  if (isOwnProfile) {
+    const newPostContainer = document.querySelector("#new-post");
+
+    if (newPostContainer) {
+      newPostContainer.innerHTML = NewPostButton();
+      setupNewPostButton();
+    }
+  }
   setupPostFeed({
     containerSelector: "#profile-post-feed",
     loadMoreButtonSelector: "#load-more-posts-btn",
@@ -69,10 +77,10 @@ async function getProfileForCurrentRoute() {
 function connectProfileEdits(isOwnProfile) {
   if (!isOwnProfile) return;
   const profileEdit = document.querySelector("#profile-edit");
-  profileEdit.addEventListener("click", (event) => {
-    event.preventDefault();
-    const popUp = EditProfile();
-    showModal(popUp);
-    // imagePreviewHandler();
-  });
+  // profileEdit.addEventListener("click", (event) => {
+  //   event.preventDefault();
+  //   const popUp = EditProfile();
+  //   showModal(popUp);
+  //   // imagePreviewHandler();
+  // });
 }

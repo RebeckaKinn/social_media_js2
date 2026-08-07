@@ -1,16 +1,34 @@
 import logo from "../assets/hero.png";
 import { logout } from "../api/auth.js";
 import { getProfileAvatar } from "./ProfileAvatar.js";
+import { setupPostSearch } from "./search.js";
 import footer from "./footer.js";
 let headerController;
 
 export default function Header(profileAvatar = getProfileAvatar()) {
   return /*html*/ `
   <header class="flex">
-  <div class="header-search flex row align-center">
-        <img class="header-search-logo" src="${logo}" alt="" loading="lazy">
-        <input id="search" class="header-search-input" type="search" placeholder="Search..." aria-label="Search">
-      </div>
+    <form
+    id="post-search-form"
+    class="header-search flex row align-center"
+    role="search"
+    >
+    <img
+      class="header-search-logo"
+      src="${logo}"
+      alt=""
+      loading="lazy"
+    >
+
+    <input
+      id="post-search-input"
+      class="header-search-input"
+      type="search"
+      name="q"
+      placeholder="Search posts..."
+      aria-label="Search posts"
+    >
+  </form>
     <button
       class="menu-toggle"
       type="button"
@@ -61,6 +79,7 @@ export function setupHeader() {
   if (!menuToggle || !navigation || !menuContainer) return;
 
   const { signal } = headerController;
+  setupPostSearch({ signal });
 
   function closeMenu() {
     menuContainer.classList.remove("is-open");

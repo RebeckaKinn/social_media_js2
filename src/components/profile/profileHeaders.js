@@ -1,5 +1,5 @@
 import { getLoggedInProfile } from "../../api/profiles.js";
-import { getProfileAvatar } from "../Profileavatar.js";
+import { getProfileAvatar } from "../ProfileAvatar.js";
 
 export async function getCurrentProfileAvatar() {
   try {

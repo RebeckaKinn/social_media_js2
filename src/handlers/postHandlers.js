@@ -7,8 +7,9 @@ import {
 import { getCurrentProfileAvatar } from "../components/profile/profileHeaders.js";
 import { createPostCard } from "../components/posts/PostCard.js";
 import { closeModal, showModal } from "../components/modal.js";
-import { NewPost, ImagePreview } from "../components/posts/NewPost.js";
+import { NewPost } from "../components/posts/NewPost.js";
 import { EditPost } from "../components/posts/EditPost.js";
+import { ImagePreview } from "../components/posts/ImagePreview.js";
 
 export async function showPostModal(postId) {
   try {
@@ -73,29 +74,42 @@ export async function handleDeletePost(
   }
 }
 
-export async function showNewPostSection() {
-  const newPost = document.querySelector("#new-post");
-  if (!newPost) return;
+export function setupNewPostButton() {
+  const openButton = document.querySelector("#open-new-post-button");
 
-  newPost.innerHTML = await NewPost();
-  imagePreviewHandler(newPost);
-  const form = newPost.querySelector("#new-post-form");
-  const message = document.querySelector("#post-error-message");
+  if (!openButton) return;
+
+  openButton.addEventListener("click", async () => {
+    showModal(await NewPost());
+    setupNewPostForm();
+  });
+}
+
+function setupNewPostForm() {
+  const modal = document.querySelector(".modal-overlay");
+  if (!modal) return;
+
+  const form = modal.querySelector("#new-post-form");
+  const message = modal.querySelector("#post-error-message");
 
   if (!form || !message) return;
+
+  imagePreviewHandler(modal);
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const submitButton = form.querySelector('button[type="submit"]');
+
     const formData = new FormData(form);
 
     const postData = {
       title: formData.get("title").trim(),
     };
 
-    const body = formData.get("body").trim() || "";
-    const mediaUrl = formData.get("url").trim() || "";
-    const mediaAlt = formData.get("media-alt").trim() || "";
+    const body = formData.get("body").trim();
+    const mediaUrl = formData.get("url").trim();
+    const mediaAlt = formData.get("media-alt").trim();
 
     if (body) {
       postData.body = body;
@@ -107,6 +121,7 @@ export async function showNewPostSection() {
         alt: mediaAlt,
       };
     }
+
     const tags = (formData.get("post-tags") || "")
       .split(",")
       .map((tag) => tag.trim())
@@ -115,19 +130,21 @@ export async function showNewPostSection() {
     if (tags.length > 0) {
       postData.tags = tags;
     }
+
     message.textContent = "";
     submitButton.disabled = true;
+    submitButton.textContent = "Posting...";
 
     try {
-      const result = await createNewPost(postData);
-      form.reset();
-
+      await createNewPost(postData);
+      closeModal();
       window.location.reload();
     } catch (error) {
       message.textContent = error.message;
-      console.error("Could not create post:", error);
-    } finally {
       submitButton.disabled = false;
+      submitButton.textContent = "Post";
+
+      console.error("Could not create post:", error);
     }
   });
 }
