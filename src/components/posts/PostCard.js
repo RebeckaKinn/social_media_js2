@@ -38,13 +38,23 @@ export function createPostCard(
     <article data-post-id="${post.id}" class="post-card">
     ${
       showDeleteButton && isOwnPost
-        ? /*HTML*/ `<button
+        ? /*HTML*/ `
+        <div>
+          <button
+          type="button"
+          class="delete-post-button"
+          aria-label="Delete ${post.title || "post"}"
+        >
+          Delete
+        </button>
+        <button
          type="button"
-         class="delete-post-button"
-         aria-label="Delete ${post.title || "post"}"
-       >
-         Delete
-       </button>`
+         class="edit-post-button"
+         aria-label="Edit ${post.title || "post"}"
+        >
+          Edit
+        </button>
+       </div>`
         : ""
     }
       ${creatorInfo}

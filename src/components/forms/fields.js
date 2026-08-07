@@ -2,6 +2,7 @@ export function FormInput({
   labelText,
   id,
   name,
+  value = "",
   type = "text",
   autocomplete = "",
   placeholder = "",
@@ -15,6 +16,7 @@ export function FormInput({
             id="${id}"
             name="${name}"
             type="${type}"
+            value="${value}"
             autocomplete="${autocomplete}"
             placeholder="${placeholder}"
             ${isRequired ? "required" : ""}
@@ -28,6 +30,7 @@ export function FormTextarea({
   labelText,
   id,
   name,
+  value = "",
   placeholder = "",
   isRequired = false,
 }) {
@@ -37,6 +40,7 @@ export function FormTextarea({
         <textarea
             id="${id}"
             name="${name}"
+            value="${value}"
             placeholder="${placeholder}"
             ${isRequired ? "required" : ""}
         ></textarea>

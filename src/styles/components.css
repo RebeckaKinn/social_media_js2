@@ -122,10 +122,16 @@ footer {
   z-index: 1;
 }
 
-.delete-post-button {
+.delete-post-button,
+.edit-post-button {
   background-color: var(--shadow-color);
   color: var(--text-color);
   font-size: var(--font-size-small);
   font-weight: 400;
   margin-bottom: 0.5rem;
+}
+
+.edit-post-button {
+  background-color: var(--color-primary);
+  color: inherit;
 }
