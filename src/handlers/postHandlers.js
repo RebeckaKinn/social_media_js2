@@ -78,7 +78,7 @@ export async function showNewPostSection() {
   if (!newPost) return;
 
   newPost.innerHTML = await NewPost();
-  imagePreviewHandler();
+  imagePreviewHandler(newPost);
   const form = newPost.querySelector("#new-post-form");
   const message = document.querySelector("#post-error-message");
 
@@ -132,14 +132,14 @@ export async function showNewPostSection() {
   });
 }
 
-function imagePreviewHandler({
-  urlSelector = "#post-media-url",
-  altSelector = "#post-media-alt",
-} = {}) {
-  const urlInput = document.querySelector(urlSelector);
-  const altInput = document.querySelector(altSelector);
-  const message = document.querySelector("#post-error-message");
-  const previewContainer = document.querySelector(
+function imagePreviewHandler(
+  container,
+  { urlSelector = "#post-media-url", altSelector = "#post-media-alt" } = {},
+) {
+  const urlInput = container.querySelector(urlSelector);
+  const altInput = container.querySelector(altSelector);
+  const message = container.querySelector("#post-error-message");
+  const previewContainer = container.querySelector(
     "#image-url-preview-container",
   );
 
@@ -172,7 +172,12 @@ export async function showEditPostForm(postId) {
     const post = result.data;
 
     showModal(await EditPost(post));
+    const editModal = document.querySelector(".modal-overlay");
 
+    imagePreviewHandler(editModal, {
+      urlSelector: "#edit-media-url",
+      altSelector: "#edit-media-alt",
+    });
     const form = document.querySelector(".modal-overlay #edit-post-form");
 
     const message = document.querySelector(
