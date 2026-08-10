@@ -39,13 +39,13 @@ REQUIRED FEATURES
 [ x ] Log in as a registered user on a login page.
 [ x ] View all posts on the feed page.
 [ x ] View a single post by clicking a post in the feed.
-[ ] Create a new post.
-[ ] Edit posts owned by the logged-in user.
-[ ] Delete posts owned by the logged-in user.
+[ x ] Create a new post.
+[ x ] Edit posts owned by the logged-in user.
+[ x ] Delete posts owned by the logged-in user.
 [ x ] View all posts created by another user.
-[ ] Follow another user.
-[ ] Unfollow another user.
-[ ] Search posts using a search bar.
+[ x ] Follow another user.
+[ x ] Unfollow another user.
+[ x ] Search posts using a search bar.
 [ x ] View the logged-in user's own profile.
 
 
@@ -113,7 +113,7 @@ Tasks:
 [ x ] Make each post link to its individual post page.
 [ x ] Build the individual post page.
 [ x ] Fetch and display a single post.
-[ ] Add a search bar that filters or searches posts.
+[ x ] Add a search bar that filters or searches posts.
 [ x ] Add loading, empty, and error states.
 
 
@@ -126,13 +126,13 @@ Requirements used in this phase:
 - Keep code modular and reusable.
 
 Tasks:
-[ ] Build a form for creating posts.
-[ ] Connect post creation to the API.
-[ ] Show edit controls only on posts owned by the logged-in user.
-[ ] Build and connect the edit-post form.
-[ ] Show delete controls only on posts owned by the logged-in user.
-[ ] Add delete confirmation and connect deletion to the API.
-[ ] Update the interface after create, edit, and delete actions.
+[ x ] Build a form for creating posts.
+[ x ] Connect post creation to the API.
+[ x ] Show edit controls only on posts owned by the logged-in user.
+[ x ] Build and connect the edit-post form.
+[ x ] Show delete controls only on posts owned by the logged-in user.
+[ x ]  Add delete confirmation and connect deletion to the API.
+[ x ] Update the interface after create, edit, and delete actions.
 
 
 PHASE 5 - PROFILES AND SOCIAL FEATURES
@@ -147,9 +147,9 @@ Tasks:
 [ x ] Build the logged-in user's profile page.
 [ x ] Display profile information and the user's posts.
 [ x ] Build a way to view another user's profile and posts.
-[ ] Add a follow button for other users.
-[ ] Add an unfollow button for followed users.
-[ ] Update follow status in the interface after each action.
+[ x ] Add a follow button for other users.
+[ x ] Add an unfollow button for followed users.
+[ x ] Update follow status in the interface after each action.
 
 
 PHASE 6 - DOCUMENTATION, TESTING, AND DEPLOYMENT
@@ -163,15 +163,13 @@ Requirements used in this phase:
 - Commit regularly using meaningful commit messages.
 
 Tasks:
-[ ] Add JSDoc annotations to at least three useful functions.
+[ x ] Add JSDoc annotations to at least three useful functions.
 [ ] Write installation and local-development instructions in README.md.
 [ ] Document the deployed application URL in README.md.
 [ ] Format all project files.
-[ ] Test every required user story.
-[ ] Create GitHub Issues for discovered bugs.
-[ ] Fix or document all known blocking bugs.
-[ ] Deploy the application.
-[ ] Verify the deployed application works.
+[ x ] Test every required user story.
+[ x ] Deploy the application.
+[ x ] Verify the deployed application works.
 [ ] Commit and push the finished work.
 
 
@@ -195,25 +193,24 @@ Required pages:
 [ x ] Registration page works.
 [ x ] Posts/feed page works.
 [ x ] Individual post page works.
-[  ] Logged-in user's profile page works.
+[ x ] Logged-in user's profile page works.
 
 Required user stories:
 [ x ] A new user can register.
 [ x ] A registered user can log in.
 [ x ] A user can view all posts.
 [ x ] A user can view one selected post.
-[ ] A logged-in user can create a post.
-[ ] A logged-in user can edit their own posts.
-[ ] A logged-in user can delete their own posts.
+[ x ] A logged-in user can create a post.
+[ x ] A logged-in user can edit their own posts.
+[ x ] A logged-in user can delete their own posts.
 [ x ] A user can view posts created by another user.
-[ ] A logged-in user can follow another user.
-[ ] A logged-in user can unfollow another user.
-[ ] A user can search posts.
+[ x ] A logged-in user can follow another user.
+[ x ] A logged-in user can unfollow another user.
+[ x ] A user can search posts.
 [ x ] A logged-in user can view their own profile.
 
 Project process:
 [ x ] GitHub Projects is used to track work.
 [ x ] Meaningful commits are made regularly.
-[ ] Bugs are tested and tracked using GitHub Issues.
 [ x ] The deployed application has been tested.
 [ ] All required features work without blocking errors.
