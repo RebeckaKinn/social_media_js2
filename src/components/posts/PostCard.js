@@ -5,18 +5,7 @@ import { PostTags } from "./PostTags.js";
 import { ShowCommentSection } from "./CommentSection.js";
 import { PostTimestamp } from "./PostTimestamp.js";
 import { getCurrentLogInCredentials } from "../../api/auth.js";
-/*
 
-  ],
-  "reactions": [
-    {
-      "symbol": "👍",
-      "count": 1,
-      "reactors": ["Nicklasoeen"]
-    }
-  ]
-}
-*/
 export function createPostCard(
   post,
   additionalInfo = false,

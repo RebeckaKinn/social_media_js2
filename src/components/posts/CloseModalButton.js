@@ -7,9 +7,3 @@ export function CloseModalButton() {
     </button>
   `;
 }
-
-export function CloseModalOriginalButton() {
-  return /*html*/ `
-    <button aria-label="Close overlay" id="close-modal-btn" class="inverted-button">cancle</button>
-  `;
-}

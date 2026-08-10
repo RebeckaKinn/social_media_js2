@@ -35,23 +35,3 @@ function ProfileStats(number, text) {
       </div>
   `;
 }
-
-/*
-{
-  x name: "rebecka_test",
-  email: "rebecka_testing_05@stud.noroff.no",
-  x bio: "",
-  x avatar: {
-    url: "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=400&w=400",
-    alt: "A blurry multi-colored rainbow background",
-  },
-  x banner: {
-    url: "https://images.unsplash.com/photo-1579547945413-497e1b99dac0?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&q=80&h=500&w=1500",
-    alt: "A blurry multi-colored rainbow background",
-  },
-  _count: {
-    followers: 0,
-    following: 0,
-    posts: 0,
-  },
-*/

@@ -12,7 +12,6 @@ import {
   ProfileBio,
   ProfileInformation,
 } from "../components/profile/profileInformation.js";
-import { showModal } from "../components/modal.js";
 import { NewPostButton } from "../components/NewPostButton.js";
 
 const POSTS_PER_PAGE = 4;
@@ -23,10 +22,12 @@ export async function setupProfilePage() {
   const info = document.querySelector("#profile-info");
 
   if (!banner) return;
-  const [user, loggedInProfile] = await Promise.all([
-    getProfileForCurrentRoute(),
-    getLoggedInProfile(),
-  ]);
+  const loggedInProfile = await getLoggedInProfile();
+  const profileName = getProfileNameFromRoute();
+
+  const user = profileName
+    ? (await getProfileByName(profileName)).data
+    : loggedInProfile;
 
   const isOwnProfile = user.name === loggedInProfile.name;
 
@@ -76,24 +77,12 @@ export async function setupProfilePage() {
     fallbackTitle: "Could not load profile posts",
     showDeleteButton: isOwnProfile,
   });
-  connectProfileEdits(isOwnProfile);
 }
 
 function getProfileNameFromRoute() {
   const path = window.location.hash.slice(1) || "/profile";
   const match = path.match(/^\/profile\/([^/]+)$/);
   return match ? decodeURIComponent(match[1]) : "";
-}
-
-async function getProfileForCurrentRoute() {
-  const profileName = getProfileNameFromRoute();
-
-  if (!profileName) {
-    return await getLoggedInProfile();
-  }
-
-  const result = await getProfileByName(profileName);
-  return result.data;
 }
 
 function connectFollowButton({

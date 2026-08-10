@@ -4,7 +4,7 @@ function isSameDate(created, updated) {
   return created === updated;
 }
 
-export function TimestampItem(label, time) {
+function TimestampItem(label, time) {
   return /*HTML*/ `
         <div>
             <span>${label}:</span>
