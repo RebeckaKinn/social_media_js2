@@ -26,15 +26,9 @@ export function ProfileBanner({
         <div class="profile-banner-content flex gap-2 align-center">
           ${getProfileAvatar(avatar?.url, avatar?.alt)}
           <h2>${name}</h2>
-          ${isOwnProfile ? EditProfileButton(isOwnProfile) : FollowButton({ following: isFollowing })}
+          ${!isOwnProfile ? FollowButton({ following: isFollowing }) : ""}
         </div>
       </div>
-  `;
-}
-
-function EditProfileButton() {
-  return /*HTML*/ `
-    <button id="profile-edit">edit</button>
   `;
 }
 

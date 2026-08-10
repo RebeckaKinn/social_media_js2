@@ -13,7 +13,6 @@ import {
   ProfileInformation,
 } from "../components/profile/profileInformation.js";
 import { showModal } from "../components/modal.js";
-import { EditProfile } from "../components/profile/profileEdit.js";
 import { NewPostButton } from "../components/NewPostButton.js";
 
 const POSTS_PER_PAGE = 4;
@@ -95,17 +94,6 @@ async function getProfileForCurrentRoute() {
 
   const result = await getProfileByName(profileName);
   return result.data;
-}
-
-function connectProfileEdits(isOwnProfile) {
-  if (!isOwnProfile) return;
-  const profileEdit = document.querySelector("#profile-edit");
-  // profileEdit.addEventListener("click", (event) => {
-  //   event.preventDefault();
-  //   const popUp = EditProfile();
-  //   showModal(popUp);
-  //   // imagePreviewHandler();
-  // });
 }
 
 function connectFollowButton({
