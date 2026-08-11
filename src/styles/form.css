@@ -51,10 +51,6 @@ textarea {
   text-align: center;
 }
 
-input[type="file"] {
-  display: none;
-}
-
 @media (prefers-color-scheme: dark) {
   form div input,
   textarea {

@@ -1,12 +1,7 @@
-import { getProfileAvatar } from "../ProfileAvatar.js";
 import { CommentCard } from "./CommentCard.js";
-import { FormTextarea } from "../forms/fields.js";
+import { GeneralPlaceholder } from "../placeholder.js";
 
-export function ShowCommentSection(
-  postId,
-  comments = [],
-  currentProfileAvatar = getProfileAvatar(),
-) {
+export function ShowCommentSection(postId, comments = []) {
   let commentSection = "";
   if (comments.length > 0) {
     comments.forEach((c) => {
@@ -20,23 +15,12 @@ export function ShowCommentSection(
         postBody: c.body,
       });
     });
+  } else {
+    commentSection = GeneralPlaceholder("No comments on this post yet.");
   }
   return /*HTML*/ `
     <section class="comment-section flex column gap-1">
-      <div class="new-comment flex column">
-        <div class="flex gap-1">
-          ${currentProfileAvatar}
-          <form>
-            ${FormTextarea({
-              labelText: "",
-              id: "new-comment",
-              name: "comment",
-              placeholder: "What's on your mind?",
-            })}
-          </form>
-        </div>
-        <button>comment</button>
-      </div>
+      
     ${commentSection}
     </section>
   `;

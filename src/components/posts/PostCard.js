@@ -18,7 +18,7 @@ export function createPostCard(
     ? PostHeader({ creator: post.author, showCloseButton: true })
     : "";
   const commentSection = additionalInfo
-    ? ShowCommentSection(post.id, post.comments, currentProfileAvatar)
+    ? ShowCommentSection(post.id, post.comments)
     : "";
   const { userName } = getCurrentLogInCredentials();
   const isOwnPost = post.author?.name === userName;

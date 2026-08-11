@@ -7,9 +7,6 @@
 .row {
   flex-direction: row;
 }
-.baseline {
-  align-items: baseline;
-}
 .center {
   justify-content: center;
   align-items: center;
@@ -28,12 +25,6 @@
 }
 .space-evenly {
   justify-content: space-evenly;
-}
-.self-center {
-  align-self: center;
-}
-.wrap {
-  flex-wrap: wrap;
 }
 .gap-1 {
   gap: 1rem;
