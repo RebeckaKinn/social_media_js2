@@ -213,4 +213,4 @@ Project process:
 [ x ] GitHub Projects is used to track work.
 [ x ] Meaningful commits are made regularly.
 [ x ] The deployed application has been tested.
-[ ] All required features work without blocking errors.
+[ x ] All required features work without blocking errors.
