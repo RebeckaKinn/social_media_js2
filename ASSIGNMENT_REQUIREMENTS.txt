@@ -164,8 +164,8 @@ Requirements used in this phase:
 
 Tasks:
 [ x ] Add JSDoc annotations to at least three useful functions.
-[ ] Write installation and local-development instructions in README.md.
-[ ] Document the deployed application URL in README.md.
+[ x ] Write installation and local-development instructions in README.md.
+[ x ] Document the deployed application URL in README.md.
 [ ] Format all project files.
 [ x ] Test every required user story.
 [ x ] Deploy the application.
@@ -182,7 +182,7 @@ Technical requirements:
 [ x ] ES6 modules are used throughout the application.
 [ x ] Noroff Auth, Posts, and Profiles API endpoints are used.
 [ x ] At least three functions include JSDoc annotations.
-[ ] README.md explains how to install and run the project.
+[ x ] README.md explains how to install and run the project.
 [ x ] The interface has basic usable styling.
 [ x ] The code is consistently formatted.
 [ x ] The code is split into modular, reusable files.
