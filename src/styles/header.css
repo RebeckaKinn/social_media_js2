@@ -51,8 +51,8 @@ header {
 
 .header-search {
   gap: 0.5rem;
-
-  max-width: 25rem;
+  width: calc(100% - 2rem);
+  max-width: 18rem;
   margin: 0 1rem;
   padding: 0.25rem 0.75rem 0.25rem 0.35rem;
   background-color: var(--surface-color);
@@ -110,7 +110,9 @@ header {
 
 @media (max-width: 850px) {
   .header-search {
-    width: 100%;
+    width: calc(100% - 4rem);
+    max-width: 25rem;
+    margin: 0 auto 0 0;
   }
 
   header {
