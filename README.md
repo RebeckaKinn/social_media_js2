@@ -9,13 +9,13 @@ PinkRipple is a social media application built with JavaScript and the Noroff AP
 - HTML
 - Node
 
-No frameworks or libraries were used due to spesified requirements.
+No front-end frameworks were used due to specified requirements. Vite is used as a build tool.
 
 ### Required pages
 
 - Login page
 - Register page
-- Individal Post page
+- Individual post page
 - Feed page
 - User's own profile page
 
