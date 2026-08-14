@@ -14,7 +14,7 @@ export function setupFeedPage() {
   const feedTitle = document.querySelector(".feed-title");
 
   if (query && feedTitle) {
-    feedTitle.textContent = `Search results for “${query}”`;
+    feedTitle.textContent = `Search results for "${query}"`;
   }
 
   setupNewPostButton();
