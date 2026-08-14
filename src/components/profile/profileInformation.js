@@ -4,6 +4,7 @@ export function ProfileBio(bio) {
   if (bio === null || bio === undefined || bio === "") {
     bio = "No bio available.";
   }
+
   return /*HTML*/ `
     <div class="bio-container small-txt">
       <p>${bio}</p>
@@ -29,9 +30,9 @@ export function ProfileInformation({
 
 function ProfileStats(number, text) {
   return /*HTML*/ `
-      <div class="profile-stats flex column center">
-        <b>${number}</b>
-        <p class="small-txt">${text}</p>
-      </div>
+    <div class="profile-stats flex column center">
+      <b>${number}</b>
+      <p class="small-txt">${text}</p>
+    </div>
   `;
 }

@@ -6,10 +6,10 @@ export async function NewPost() {
   const profileAvatar = await getCurrentProfileAvatar();
 
   return /*HTML*/ `
-  <article class="post-card new-post">
-        <div class="flex gap-1">
-          ${profileAvatar}
-          <form id="new-post-form" class="flex column gap-1">
+    <article class="post-card new-post">
+      <div class="flex gap-1">
+        ${profileAvatar}
+        <form id="new-post-form" class="flex column gap-1">
           ${FormInput({
             labelText: "",
             id: "new-post-title",
@@ -45,12 +45,17 @@ export async function NewPost() {
             placeholder: "Post tags (comma-separated)",
           })}
           <div class="flex row gap-1 justify-end">
-              <button type="submit">post</button>
+            <button type="submit">post</button>
           </div>
-          </form>
-          <p id="post-error-message" class="small-txt" role="status" aria-live="polite"></p>
-        </div>
-      </article>
+        </form>
+        <p
+          id="post-error-message"
+          class="small-txt"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+    </article>
   `;
 }
 
@@ -58,7 +63,7 @@ function ImageUploaderPreview() {
   return /*HTML*/ `
     <section class="post-card image-uploader-container flex column gap-2">
       <div id="image-url-preview-container" class="post-image">
-         ${GeneralPlaceholder("Your image will be displayed here")}
+        ${GeneralPlaceholder("Your image will be displayed here")}
       </div>
     </section>
   `;

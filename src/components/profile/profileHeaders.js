@@ -22,13 +22,13 @@ export function ProfileBanner({
 } = {}) {
   return /*HTML*/ `
     <div class="profile-banner flex gap-2 align-center">
-        ${profileBannerBackgorund(banner.url, banner.alt)}
-        <div class="profile-banner-content flex gap-2 align-center">
-          ${getProfileAvatar(avatar?.url, avatar?.alt)}
-          <h2>${name}</h2>
-          ${!isOwnProfile ? FollowButton({ following: isFollowing }) : ""}
-        </div>
+      ${profileBannerBackgorund(banner.url, banner.alt)}
+      <div class="profile-banner-content flex gap-2 align-center">
+        ${getProfileAvatar(avatar?.url, avatar?.alt)}
+        <h2>${name}</h2>
+        ${!isOwnProfile ? FollowButton({ following: isFollowing }) : ""}
       </div>
+    </div>
   `;
 }
 

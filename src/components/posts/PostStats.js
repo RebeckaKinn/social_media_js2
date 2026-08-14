@@ -13,7 +13,7 @@ function SocialCount({ count, icon, label }) {
 }
 
 export function PostStats(counts = {}) {
-  return /*html*/ `
+  return /*HTML*/ `
     <section class="post-count flex gap-2">
       ${SocialCount({
         count: counts.comments,

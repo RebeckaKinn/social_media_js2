@@ -11,19 +11,19 @@ export function FormInput({
 }) {
   return /*HTML*/ `
     <div class="flex column">
-        <label for="${id}">${labelText}</label>
-        <input
-            id="${id}"
-            name="${name}"
-            type="${type}"
-            value="${value}"
-            autocomplete="${autocomplete}"
-            placeholder="${placeholder}"
-            ${isRequired ? "required" : ""}
-            ${maxlength ? `maxlength="${maxlength}"` : ""}
-        >
+      <label for="${id}">${labelText}</label>
+      <input
+        id="${id}"
+        name="${name}"
+        type="${type}"
+        value="${value}"
+        autocomplete="${autocomplete}"
+        placeholder="${placeholder}"
+        ${isRequired ? "required" : ""}
+        ${maxlength ? `maxlength="${maxlength}"` : ""}
+      >
     </div>
-    `;
+  `;
 }
 
 export function FormTextarea({
@@ -36,13 +36,13 @@ export function FormTextarea({
 }) {
   return /*HTML*/ `
     <div class="flex column">
-        <label for="${id}">${labelText}</label>
-        <textarea
-            id="${id}"
-            name="${name}"
-            placeholder="${placeholder}"
-            ${isRequired ? "required" : ""}
-        >${value}</textarea>
+      <label for="${id}">${labelText}</label>
+      <textarea
+        id="${id}"
+        name="${name}"
+        placeholder="${placeholder}"
+        ${isRequired ? "required" : ""}
+      >${value}</textarea>
     </div>
-    `;
+  `;
 }

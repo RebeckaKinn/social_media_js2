@@ -1,9 +1,9 @@
 import { FormInput, FormTextarea } from "../components/forms/fields.js";
 
 export default function RegisterPage() {
-  return /*html*/ `
+  return /*HTML*/ `
     <section class="form flex justify-center" aria-labelledby="register-heading">
-      <div class="form-container flex column align-center">  
+      <div class="form-container flex column align-center">
         <h1>pinkripple</h1>
         <p>Create an account to join the community.</p>
 
@@ -48,14 +48,18 @@ export default function RegisterPage() {
             type: "url",
             placeholder: "https://img.service.com/avatar.jpg",
           })}
-            <span class="small-txt italic">* Required fields</span>
-            <button type="submit">Register</button>
-            <span class="small-txt flex column center">
-              <div>Already have an account?</div>
-              <a href="#/login">Log in here!</a>
-            </span>
-            <p id="register-message" class="small-txt" role="status" aria-live="polite"></p>
-  
+          <span class="small-txt italic">* Required fields</span>
+          <button type="submit">Register</button>
+          <span class="small-txt flex column center">
+            <div>Already have an account?</div>
+            <a href="#/login">Log in here!</a>
+          </span>
+          <p
+            id="register-message"
+            class="small-txt"
+            role="status"
+            aria-live="polite"
+          ></p>
         </form>
       </div>
     </section>

@@ -15,15 +15,21 @@ async function Main() {
   const profileAvatar = showShell ? await getCurrentProfileAvatar() : "";
 
   app.innerHTML = showShell
-    ? /*html*/ `
+    ? /*HTML*/ `
       <section class="main-parent">
         ${header(profileAvatar)}
-        <main id="main-content" class="main-content flex column align-center gap-2">${content}</main>
-        
+        <main
+          id="main-content"
+          class="main-content flex column align-center gap-2"
+        >
+          ${content}
+        </main>
       </section>
     `
-    : /*html*/ `
-      <main id="main-content" class="flex column gap-2">${content}</main>
+    : /*HTML*/ `
+      <main id="main-content" class="flex column gap-2">
+        ${content}
+      </main>
     `;
 
   setupHeader();

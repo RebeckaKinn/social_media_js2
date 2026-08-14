@@ -18,10 +18,10 @@ export function ShowCommentSection(postId, comments = []) {
   } else {
     commentSection = GeneralPlaceholder("No comments on this post yet.");
   }
+
   return /*HTML*/ `
     <section class="comment-section flex column gap-1">
-      
-    ${commentSection}
+      ${commentSection}
     </section>
   `;
 }

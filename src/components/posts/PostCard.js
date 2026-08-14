@@ -23,31 +23,32 @@ export function createPostCard(
   const { userName } = getCurrentLogInCredentials();
   const isOwnPost = post.author?.name === userName;
 
-  return /*html*/ `
+  return /*HTML*/ `
     <article data-post-id="${post.id}" class="post-card">
-    ${
-      showDeleteButton && isOwnPost
-        ? /*HTML*/ `
-        <div>
-          <button
-          type="button"
-          class="delete-post-button"
-          aria-label="Delete ${post.title || "post"}"
-        >
-          Delete
-        </button>
-        <button
-         type="button"
-         class="edit-post-button"
-         aria-label="Edit ${post.title || "post"}"
-        >
-          Edit
-        </button>
-       </div>`
-        : ""
-    }
+      ${
+        showDeleteButton && isOwnPost
+          ? /*HTML*/ `
+            <div>
+              <button
+                type="button"
+                class="delete-post-button"
+                aria-label="Delete ${post.title || "post"}"
+              >
+                Delete
+              </button>
+              <button
+                type="button"
+                class="edit-post-button"
+                aria-label="Edit ${post.title || "post"}"
+              >
+                Edit
+              </button>
+            </div>
+          `
+          : ""
+      }
       ${creatorInfo}
-      
+
       <section class="flex column">
         <h3 class="post-title">${post.title || "Untitled"}</h3>
       </section>
@@ -57,17 +58,17 @@ export function createPostCard(
         ${
           imageUrl != ""
             ? /*HTML*/ `
-          <div class="post-image">
-            <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
-          </div>
-          `
+              <div class="post-image">
+                <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
+              </div>
+            `
             : ""
         }
         ${PostTimestamp(post.created, post.updated)}
       </section>
       ${PostTags(post.tags)}
       ${PostStats(post._count)}
-      
+
       ${commentSection}
     </article>
   `;

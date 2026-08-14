@@ -3,7 +3,7 @@ import { NewPostButton } from "../components/NewPostButton.js";
 
 export default function FeedPage() {
   const user = getCurrentLogInCredentials();
-  return /*html*/ `
+  return /*HTML*/ `
     <h1 class="feed-title">Welcome ${user.userName}</h1>
     ${NewPostButton()}
     <section id="posts-feed" class="flex column align-center gap-2" aria-live="polite">

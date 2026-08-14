@@ -7,10 +7,10 @@ export async function EditPost(post) {
   const profileAvatar = await getCurrentProfileAvatar();
 
   return /*HTML*/ `
-  <article class="post-card new-post">
-        <div class="flex gap-1">
-          ${profileAvatar}
-          <form id="edit-post-form" class="flex column gap-1">
+    <article class="post-card new-post">
+      <div class="flex gap-1">
+        ${profileAvatar}
+        <form id="edit-post-form" class="flex column gap-1">
           ${FormInput({
             labelText: "",
             id: "edit-post-title",
@@ -51,13 +51,18 @@ export async function EditPost(post) {
             placeholder: "Post tags (comma-separated)",
           })}
           <div class="flex row gap-1 justify-end">
-              <button type="submit">save changes</button>
-              <button type="button" id="cancel-edit-post">cancel</button>
+            <button type="submit">save changes</button>
+            <button type="button" id="cancel-edit-post">cancel</button>
           </div>
-          </form>
-          <p id="post-error-message" class="small-txt" role="status" aria-live="polite"></p>
-        </div>
-      </article>
+        </form>
+        <p
+          id="post-error-message"
+          class="small-txt"
+          role="status"
+          aria-live="polite"
+        ></p>
+      </div>
+    </article>
   `;
 }
 
@@ -65,14 +70,14 @@ function ImageUploaderPreview(post) {
   return /*HTML*/ `
     <section class="post-card image-uploader-container flex column gap-2">
       <div id="image-url-preview-container" class="post-image">
-         ${
-           post.media?.url
-             ? ImagePreview({
-                 url: post.media.url,
-                 alt: post.media.alt || "Post image",
-               })
-             : GeneralPlaceholder("Your image will be displayed here")
-         }
+        ${
+          post.media?.url
+            ? ImagePreview({
+                url: post.media.url,
+                alt: post.media.alt || "Post image",
+              })
+            : GeneralPlaceholder("Your image will be displayed here")
+        }
       </div>
     </section>
   `;

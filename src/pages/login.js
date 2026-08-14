@@ -1,9 +1,9 @@
 import { FormInput } from "../components/forms/fields.js";
 
 export default function LoginPage() {
-  return /*html*/ `
+  return /*HTML*/ `
     <section class="form flex justify-center" aria-labelledby="login-heading">
-      <div class="form-container flex column align-center">  
+      <div class="form-container flex column align-center">
         <h1>pinkripple</h1>
         <p>Log in to view and share posts.</p>
 
@@ -32,7 +32,12 @@ export default function LoginPage() {
             <div>Don't have an account?</div>
             <a href="#/register">Register here!</a>
           </span>
-            <p id="login-message" class="small-txt" role="status" aria-live="polite"></p>
+          <p
+            id="login-message"
+            class="small-txt"
+            role="status"
+            aria-live="polite"
+          ></p>
         </form>
       </div>
     </section>

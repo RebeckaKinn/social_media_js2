@@ -1,5 +1,5 @@
 export default function ProfilePage() {
-  return /*html*/ `
+  return /*HTML*/ `
     <section id="profile-banner" class="flex center"></section>
     <section id="profile-info" class="flex center"></section>
     <section id="profile-bio" class="flex center"></section>
