@@ -11,6 +11,17 @@ PinkRipple is a social media application built with JavaScript and the Noroff AP
 
 No frameworks or libraries were used due to spesified requirements.
 
+### Required pages
+
+- Login page
+- Register page
+- Individal Post page
+- Feed page
+- User's own profile page
+
+The individual post page is made into a modal / overlay instead of a standalone page. This is because I think it is easier for a user to get access to a post, as well as easy access back to the original page. In the future, I would like to either add a "share" button on each post, or add the post-information in the URL to make it easily shared between users. 
+
+
 ## Live application
 
 [https://pinkripple.netlify.app/](https://pinkripple.netlify.app/)
