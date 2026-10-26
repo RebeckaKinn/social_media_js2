@@ -1,11 +1,12 @@
-@import "reset.css";
-@import "variables.css";
-@import "layout.css";
-@import "components.css";
-@import "header.css";
-@import "form.css";
-@import "pages.css";
-@import "posts.css";
+@import "tailwindcss";
+@import "./reset.css";
+@import "./variables.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./header.css";
+@import "./form.css";
+@import "./pages.css";
+@import "./posts.css";
 
 .main-parent {
   display: grid;
