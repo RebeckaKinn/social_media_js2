@@ -7,3 +7,8 @@
 6. Since `vite` uses the "dev" and "build" scripts, I added two new scripts. The "build" has "&&" since it runs the next call after the other one is finished. The "dev" cannot do this since the "watch" is continuously and will result in "vite" not running. 
 
 
+### Pages to update using tailwind
+
+1. login.js - form and HTML-valitadion (required)
+2. fallback.js
+3. main.js or feed.js
