@@ -13,6 +13,7 @@ By using `[]` with the tailwind classes, I can specify my own values or variable
 
 ### Pages to update using tailwind
 
-1. login.js - form and HTML-valitadion (required) (Including fields.js)
-2. register.js
-3. main.js or feed.js
+1. DONE - login.js - form and HTML-valitadion (required) 
+2. DONE - fields.js
+3. register.js
+4. main.js or feed.js
