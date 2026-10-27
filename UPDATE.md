@@ -7,8 +7,12 @@
 6. Since `vite` uses the "dev" and "build" scripts, I added two new scripts. The "build" has "&&" since it runs the next call after the other one is finished. The "dev" cannot do this since the "watch" is continuously and will result in "vite" not running. 
 
 
+### Tips I learned by doing
+
+By using `[]` with the tailwind classes, I can specify my own values or variables.
+
 ### Pages to update using tailwind
 
-1. login.js - form and HTML-valitadion (required)
-2. fallback.js
+1. login.js - form and HTML-valitadion (required) (Including fields.js)
+2. register.js
 3. main.js or feed.js

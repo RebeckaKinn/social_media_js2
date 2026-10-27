@@ -1,4 +1,5 @@
-import "./styles/base.css";
+//import "./styles/base.css";
+import "./styles/output.css";
 import header, { setupHeader } from "./components/header.js";
 import { setupFeedPage } from "./handlers/feedHandlers.js";
 import { setupLoginPage, setupRegisterPage } from "./handlers/authHandlers.js";
