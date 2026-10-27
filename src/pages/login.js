@@ -18,8 +18,8 @@ export default function LoginPage() {
       flex justify-center"
       >
       <div class="w-full max-w-100 h-fit p-8 mx-4 my-0 bg-[var(--surface-color)] rounded-[var(--border-radius)] shadow-[0_4px_8px_var(--shadow-color)] backdrop-blur-[10px] flex flex-col items-center">
-        <h1>pinkripple</h1>
-        <p>Log in to view and share posts.</p>
+        <h1 class="font-bold">pinkripple</h1>
+        <p class="my-4">Log in to view and share posts.</p>
 
         <form id="login-form" class="flex flex-col gap-4 w-full">
           ${FormInput({

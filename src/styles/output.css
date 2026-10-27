@@ -8,9 +8,11 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --font-weight-thin: 100;
     --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --radius-md: 0.375rem;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -182,6 +184,9 @@
   .my-0 {
     margin-block: 0px;
   }
+  .my-4 {
+    margin-block: calc(var(--spacing) * 4);
+  }
   .flex {
     display: flex;
   }
@@ -258,11 +263,17 @@
       border-color: color-mix(in srgb,var(--color-primary) 30%,transparent);
     }
   }
+  .bg-\[Field\] {
+    background-color: Field;
+  }
   .bg-\[var\(--color-primary\)\] {
     background-color: var(--color-primary);
   }
   .bg-\[var\(--surface-color\)\] {
     background-color: var(--surface-color);
+  }
+  .bg-white {
+    background-color: var(--color-white);
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
@@ -291,6 +302,10 @@
   .text-\[length\:var\(--font-size-small\)\] {
     font-size: var(--font-size-small);
   }
+  .font-bold {
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
+  }
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
@@ -305,6 +320,9 @@
   }
   .text-\[\#131313\] {
     color: #131313;
+  }
+  .text-\[FieldText\] {
+    color: FieldText;
   }
   .italic {
     font-style: italic;
@@ -386,6 +404,9 @@
   @media (prefers-color-scheme: dark) {
     .dark\:border-\[var\(--surface-color\)\] {
       border-color: var(--surface-color);
+    }
+    .dark\:bg-\[\#262626\] {
+      background-color: #262626;
     }
   }
 }

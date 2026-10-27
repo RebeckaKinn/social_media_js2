@@ -14,6 +14,7 @@ export function FormInput({
       <label for="${id}" class="font-thin text-[length:var(--font-size-small)]">${labelText}</label>
       <input
         class="
+          bg-[Field] text-[FieldText]
           font-[family-name:var(--secondary-font)]
           text-[length:var(--font-size-small)]
           p-[0.7rem]
@@ -47,6 +48,7 @@ export function FormTextarea({
       <label for="${id}" class="font-thin text-[length:var(--font-size-small)]">${labelText}</label>
       <textarea
         class="
+            bg-[Field] text-[FieldText]
             font-[family-name:var(--secondary-font)]
             text-[length:var(--font-size-small)]
             p-[0.7rem]
