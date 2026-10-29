@@ -59,7 +59,10 @@ export default function LoginPage() {
             >Log in</button>
           <span class="text-[length:var(--font-size-small)] flex flex-col items-center justify-center">
             <div>Don't have an account?</div>
-            <a href="#/register">Register here!</a>
+            <a 
+              href="#/register"
+              class="inline-block font-medium transition-[color,transform] duration-150 ease-[ease] text-[var(--color-secondary)] dark:text-[var(--color-primary)]"
+              >Register here!</a>
           </span>
           <p
             id="login-message"

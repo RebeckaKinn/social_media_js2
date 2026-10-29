@@ -2,12 +2,27 @@ import { FormInput, FormTextarea } from "../components/forms/fields.js";
 
 export default function RegisterPage() {
   return /*HTML*/ `
-    <section class="form flex justify-center" aria-labelledby="register-heading">
-      <div class="form-container flex column align-center">
-        <h1>pinkripple</h1>
-        <p>Create an account to join the community.</p>
+    <section class="
+      relative
+      isolate
+      grow
+      before:content-['']
+      before:absolute
+      before:inset-0
+      before:-z-10
+      before:bg-[url('../assets/hero.png')]
+      before:bg-no-repeat
+      before:bg-bottom-right
+      before:bg-size-[auto_50%]
+      before:opacity-35
+      flex justify-center"
+      aria-labelledby="register-heading">
+      <div class="w-full max-w-100 h-fit p-8 mx-4 my-0 bg-[var(--surface-color)] rounded-[var(--border-radius)] shadow-[0_4px_8px_var(--shadow-color)] backdrop-blur-[10px] flex flex-col items-center">
+        <h1 class="font-bold">pinkripple</h1>
+        <p class="my-4">Create an account to join the community.</p>
 
-        <form id="register-form" class="flex column gap-1">
+
+        <form id="register-form" class="flex flex-col gap-4 w-full">
           ${FormInput({
             labelText: "Name*",
             id: "register-name",
@@ -48,15 +63,33 @@ export default function RegisterPage() {
             type: "url",
             placeholder: "https://img.service.com/avatar.jpg",
           })}
-          <span class="small-txt italic">* Required fields</span>
-          <button type="submit">Register</button>
-          <span class="small-txt flex column center">
+          <span class="text-[length:var(--font-size-small)] italic">* Required fields</span>
+          <button
+            type="submit"
+            class="
+              tracking-[0.03em]
+              font-[family-name:var(--main-font)]
+              py-2.5 px-5
+              rounded-md
+              text-[#131313]
+              bg-[var(--color-primary)]
+              text-[length:inherit]
+              font-semibold
+              cursor-pointer
+              transition-[background-color,transform]
+              duration-150
+              ease-[ease]"
+            >Register</button>
+          <span class="text-[length:var(--font-size-small)] flex flex-col items-center justify-center">
             <div>Already have an account?</div>
-            <a href="#/login">Log in here!</a>
+            <a
+              href="#/login"
+              class="inline-block font-medium transition-[color,transform] duration-150 ease-[ease] text-[var(--color-secondary)] dark:text-[var(--color-primary)]"
+              >Log in here!</a>
           </span>
           <p
             id="register-message"
-            class="small-txt"
+            class="text-[length:var(--font-size-small)]"
             role="status"
             aria-live="polite"
           ></p>

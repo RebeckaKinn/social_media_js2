@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-  "dev": "vite",
-  "build": "npm run tailwind:build && vite build",
-  "preview": "vite preview",
-  "tailwind:watch": "npx @tailwindcss/cli -i ./src/styles/base.css -o ./src/styles/output.css --watch",
-  "tailwind:build": "npx @tailwindcss/cli -i ./src/styles/base.css -o ./src/styles/output.css --minify"
-},
+    "dev": "vite",
+    "build": "npm run tailwind:build && vite build",
+    "preview": "vite preview",
+    "tailwind:watch": "npx @tailwindcss/cli -i ./src/styles/base.css -o ./src/styles/output.css --watch",
+    "tailwind:build": "npx @tailwindcss/cli -i ./src/styles/base.css -o ./src/styles/output.css --minify"
+  },
   "devDependencies": {
     "vite": "^8.0.12"
   },
