@@ -17,7 +17,7 @@ export default function RegisterPage() {
       before:opacity-35
       flex justify-center"
       aria-labelledby="register-heading">
-      <div class="w-full max-w-100 h-fit p-8 mx-4 my-0 bg-[var(--surface-color)] rounded-[var(--border-radius)] shadow-[0_4px_8px_var(--shadow-color)] backdrop-blur-[10px] flex flex-col items-center">
+      <div class="w-full max-w-100 h-fit p-8 mx-4 my-0 bg-(--surface-color) rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] backdrop-blur-[10px] flex flex-col items-center">
         <h1 class="font-bold">pinkripple</h1>
         <p class="my-4">Create an account to join the community.</p>
 
@@ -63,16 +63,16 @@ export default function RegisterPage() {
             type: "url",
             placeholder: "https://img.service.com/avatar.jpg",
           })}
-          <span class="text-[length:var(--font-size-small)] italic">* Required fields</span>
+          <span class="text-(length:--font-size-small) italic">* Required fields</span>
           <button
             type="submit"
             class="
               tracking-[0.03em]
-              font-[family-name:var(--main-font)]
+              font-(family-name:--main-font)
               py-2.5 px-5
               rounded-md
               text-[#131313]
-              bg-[var(--color-primary)]
+              bg-(--color-primary)
               text-[length:inherit]
               font-semibold
               cursor-pointer
@@ -80,16 +80,16 @@ export default function RegisterPage() {
               duration-150
               ease-[ease]"
             >Register</button>
-          <span class="text-[length:var(--font-size-small)] flex flex-col items-center justify-center">
+          <span class="text-(length:--font-size-small) flex flex-col items-center justify-center">
             <div>Already have an account?</div>
             <a
               href="#/login"
-              class="inline-block font-medium transition-[color,transform] duration-150 ease-[ease] text-[var(--color-secondary)] dark:text-[var(--color-primary)]"
+              class="inline-block font-medium transition-[color,transform] duration-150 ease-[ease] text-(--color-secondary) dark:text-(--color-primary)"
               >Log in here!</a>
           </span>
           <p
             id="register-message"
-            class="text-[length:var(--font-size-small)]"
+            class="text-(length:--font-size-small)"
             role="status"
             aria-live="polite"
           ></p>

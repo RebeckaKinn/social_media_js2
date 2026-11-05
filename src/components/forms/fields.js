@@ -11,17 +11,17 @@ export function FormInput({
 }) {
   return /*HTML*/ `
     <div class="flex flex-col">
-      <label for="${id}" class="font-thin text-[length:var(--font-size-small)]">${labelText}</label>
+      <label for="${id}" class="font-thin text-(length:--font-size-small)">${labelText}</label>
       <input
         class="
           bg-[Field] text-[FieldText]
-          font-[family-name:var(--secondary-font)]
-          text-[length:var(--font-size-small)]
+          font-(family-name:--secondary-font)
+          text-(length:--font-size-small)
           p-[0.7rem]
           border
           border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)]
-          rounded-[var(--border-radius)]
-          dark:border-[var(--surface-color)]"
+          rounded-(--border-radius)
+          dark:border-(--surface-color)"
         id="${id}"
         name="${name}"
         type="${type}"
@@ -45,17 +45,17 @@ export function FormTextarea({
 }) {
   return /*HTML*/ `
     <div class="flex flex-col">
-      <label for="${id}" class="font-thin text-[length:var(--font-size-small)]">${labelText}</label>
+      <label for="${id}" class="font-thin text-(length:--font-size-small)">${labelText}</label>
       <textarea
         class="
             bg-[Field] text-[FieldText]
-            font-[family-name:var(--secondary-font)]
-            text-[length:var(--font-size-small)]
+            font-(family-name:--secondary-font)
+            text-(length:--font-size-small)
             p-[0.7rem]
             border
             border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)]
-            rounded-[var(--border-radius)]
-            dark:border-[var(--surface-color)]"
+            rounded-(--border-radius)
+            dark:border-(--surface-color)"
           id="${id}"
           name="${name}"
           placeholder="${placeholder}"

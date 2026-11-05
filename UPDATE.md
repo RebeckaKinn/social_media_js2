@@ -9,12 +9,14 @@
 
 By using `[]` with the tailwind classes, I can specify my own values or variables.
 
+Use `@layer base{}` for base style in CSS files, and `@layer components{}` for styles that is for the component styles.
+
 ### Pages to update using tailwind
 
 1. DONE - login.js - form and HTML-valitadion (required)
 2. DONE - fields.js
 3. DONE - register.js
-4. main.js or feed.js
+4. feed.js
 
 ### Things to remember
 

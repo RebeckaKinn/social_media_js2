@@ -8,7 +8,6 @@
       "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-white: #fff;
     --spacing: 0.25rem;
     --font-weight-thin: 100;
     --font-weight-medium: 500;
@@ -197,6 +196,9 @@
   .inline-block {
     display: inline-block;
   }
+  .table {
+    display: table;
+  }
   .h-fit {
     height: fit-content;
   }
@@ -206,14 +208,26 @@
   .max-w-100 {
     max-width: calc(var(--spacing) * 100);
   }
+  .max-w-160 {
+    max-width: calc(var(--spacing) * 160);
+  }
+  .flex-grow {
+    flex-grow: 1;
+  }
   .grow {
     flex-grow: 1;
+  }
+  .border-collapse {
+    border-collapse: collapse;
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .cursor-pointer {
     cursor: pointer;
+  }
+  .resize {
+    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -236,6 +250,9 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .rounded-\(--border-radius\) {
+    border-radius: var(--border-radius);
+  }
   .rounded-\[var\(--border-radius\)\] {
     border-radius: var(--border-radius);
   }
@@ -251,6 +268,12 @@
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in srgb,var(--color-primary) 30%,transparent);
     }
+  }
+  .bg-\(--color-primary\) {
+    background-color: var(--color-primary);
+  }
+  .bg-\(--surface-color\) {
+    background-color: var(--surface-color);
   }
   .bg-\[Field\] {
     background-color: Field;
@@ -270,14 +293,29 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
+  .py-2 {
+    padding-block: calc(var(--spacing) * 2);
+  }
   .py-2\.5 {
     padding-block: calc(var(--spacing) * 2.5);
+  }
+  .font-\(family-name\:--main-font\) {
+    font-family: var(--main-font);
+  }
+  .font-\(family-name\:--secondary-font\) {
+    font-family: var(--secondary-font);
   }
   .font-\[family-name\:var\(--main-font\)\] {
     font-family: var(--main-font);
   }
   .font-\[family-name\:var\(--secondary-font\)\] {
     font-family: var(--secondary-font);
+  }
+  .text-\(length\:--font-size-h3\) {
+    font-size: var(--font-size-h3);
+  }
+  .text-\(length\:--font-size-small\) {
+    font-size: var(--font-size-small);
   }
   .text-\[length\:inherit\] {
     font-size: inherit;
@@ -305,6 +343,12 @@
     --tw-tracking: 0.03em;
     letter-spacing: 0.03em;
   }
+  .text-\(--color-primary\) {
+    color: var(--color-primary);
+  }
+  .text-\(--color-secondary\) {
+    color: var(--color-secondary);
+  }
   .text-\[\#131313\] {
     color: #131313;
   }
@@ -317,9 +361,16 @@
   .italic {
     font-style: italic;
   }
+  .underline {
+    text-decoration-line: underline;
+  }
   .shadow-\[0_4px_8px_var\(--shadow-color\)\] {
     --tw-shadow: 0 4px 8px var(--tw-shadow-color, var(--shadow-color));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .outline {
+    outline-style: var(--tw-outline-style);
+    outline-width: 1px;
   }
   .backdrop-blur-\[10px\] {
     --tw-backdrop-blur: blur(10px);
@@ -329,6 +380,11 @@
   .backdrop-filter {
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .transition {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-\[background-color\,transform\] {
     transition-property: background-color,transform;
@@ -385,8 +441,14 @@
     content: var(--tw-content);
   }
   @media (prefers-color-scheme: dark) {
+    .dark\:border-\(--surface-color\) {
+      border-color: var(--surface-color);
+    }
     .dark\:border-\[var\(--surface-color\)\] {
       border-color: var(--surface-color);
+    }
+    .dark\:text-\(--color-primary\) {
+      color: var(--color-primary);
     }
     .dark\:text-\[var\(--color-primary\)\] {
       color: var(--color-primary);
@@ -449,41 +511,43 @@ fieldset {
   --font-size-h2: clamp(1.875rem, 1.5rem + 1.75vw, 2.5rem);
   --font-size-h1: clamp(2.25rem, 1.5rem + 3vw, 3.5rem);
 }
-body {
-  font-family: var(--secondary-font);
-  font-size: var(--font-size-body);
-  font-weight: 400;
-  line-height: 1.5;
-  color: var(--text-color);
-  background-color: var(--background-color);
-}
-h1, h2, h3, a, button {
-  font-family: var(--main-font);
-}
-h1 {
-  font-size: var(--font-size-h1);
-  margin: 0;
-}
-h2 {
-  font-size: var(--font-size-h2);
-}
-h3 {
-  font-size: var(--font-size-h3);
-}
-a, button {
-  letter-spacing: 0.03em;
-}
-.small-txt {
-  font-size: var(--font-size-small);
-}
-.italic {
-  font-style: italic;
-}
-a {
-  color: var(--color-secondary);
-}
-header a {
-  color: var(--text-color);
+@layer base {
+  body {
+    font-family: var(--secondary-font);
+    font-size: var(--font-size-body);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  h1, h2, h3, a, button {
+    font-family: var(--main-font);
+  }
+  h1 {
+    font-size: var(--font-size-h1);
+    margin: 0;
+  }
+  h2 {
+    font-size: var(--font-size-h2);
+  }
+  h3 {
+    font-size: var(--font-size-h3);
+  }
+  a, button {
+    letter-spacing: 0.03em;
+  }
+  .small-txt {
+    font-size: var(--font-size-small);
+  }
+  .italic {
+    font-style: italic;
+  }
+  a {
+    color: var(--color-secondary);
+  }
+  header a {
+    color: var(--text-color);
+  }
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -1194,6 +1258,11 @@ body.modal-open {
   inherits: false;
   initial-value: 0 0 #0000;
 }
+@property --tw-outline-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
 @property --tw-backdrop-blur {
   syntax: "*";
   inherits: false;
@@ -1268,6 +1337,7 @@ body.modal-open {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
+      --tw-outline-style: solid;
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
       --tw-backdrop-contrast: initial;
