@@ -16,7 +16,7 @@ Use `@layer base{}` for base style in CSS files, and `@layer components{}` for s
 1. DONE - login.js - form and HTML-valitadion (required)
 2. DONE - fields.js
 3. DONE - register.js
-4. feed.js (only the components for this page left)
+4. feed.js (only post and the components for this page left)
 
 ### Things to remember
 
