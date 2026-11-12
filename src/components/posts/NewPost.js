@@ -7,9 +7,9 @@ export async function NewPost() {
 
   return /*HTML*/ `
     <article class="post-card new-post">
-      <div class="flex gap-1">
+      <div class="flex gap-4">
         ${profileAvatar}
-        <form id="new-post-form" class="flex column gap-1">
+        <form id="new-post-form" class="flex column gap-4">
           ${FormInput({
             labelText: "",
             id: "new-post-title",
@@ -44,7 +44,7 @@ export async function NewPost() {
             name: "post-tags",
             placeholder: "Post tags (comma-separated)",
           })}
-          <div class="flex row gap-1 justify-end">
+          <div class="flex row gap-4 justify-end">
             <button type="submit">post</button>
           </div>
         </form>
@@ -61,7 +61,7 @@ export async function NewPost() {
 
 function ImageUploaderPreview() {
   return /*HTML*/ `
-    <section class="post-card image-uploader-container flex column gap-2">
+    <section class="post-card image-uploader-container flex column 8">
       <div id="image-url-preview-container" class="post-image">
         ${GeneralPlaceholder("Your image will be displayed here")}
       </div>

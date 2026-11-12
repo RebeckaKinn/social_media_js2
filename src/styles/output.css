@@ -10,6 +10,7 @@
       "Courier New", monospace;
     --spacing: 0.25rem;
     --font-weight-thin: 100;
+    --font-weight-extralight: 200;
     --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
@@ -182,6 +183,9 @@
   .m-0 {
     margin: 0px;
   }
+  .mx-2 {
+    margin-inline: calc(var(--spacing) * 2);
+  }
   .mx-4 {
     margin-inline: calc(var(--spacing) * 4);
   }
@@ -227,6 +231,12 @@
   .min-h-40 {
     min-height: calc(var(--spacing) * 40);
   }
+  .w-6 {
+    width: calc(var(--spacing) * 6);
+  }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -263,9 +273,6 @@
   .justify-end {
     justify-content: flex-end;
   }
-  .gap-1 {
-    gap: var(--spacing);
-  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
   }
@@ -274,6 +281,9 @@
   }
   .gap-8 {
     gap: calc(var(--spacing) * 8);
+  }
+  .gap-\[0\.3rem\] {
+    gap: 0.3rem;
   }
   .self-center {
     align-self: center;
@@ -324,6 +334,9 @@
   .p-\[0\.7rem\] {
     padding: 0.7rem;
   }
+  .px-2 {
+    padding-inline: calc(var(--spacing) * 2);
+  }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
@@ -354,6 +367,10 @@
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
+  }
+  .font-extralight {
+    --tw-font-weight: var(--font-weight-extralight);
+    font-weight: var(--font-weight-extralight);
   }
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
@@ -462,6 +479,14 @@
   .before\:content-\[\'\'\]::before {
     --tw-content: '';
     content: var(--tw-content);
+  }
+  @media (width < 500px) {
+    .max-\[500px\]\:hidden {
+      display: none;
+    }
+    .max-\[500px\]\:flex-col {
+      flex-direction: column;
+    }
   }
   @media (prefers-color-scheme: dark) {
     .dark\:border-\(--surface-color\) {
@@ -606,12 +631,6 @@ fieldset {
 }
 .space-evenly {
   justify-content: space-evenly;
-}
-.gap-1 {
-  gap: 1rem;
-}
-.gap-2 {
-  gap: 2rem;
 }
 footer {
   margin-top: auto;
@@ -995,30 +1014,6 @@ form div input, textarea {
 .post-image img {
   object-fit: contain;
 }
-.post-tags li {
-  width: fit-content;
-  background-color: var(--shadow-color);
-  padding: 0 0.5rem;
-  border-radius: var(--border-radius);
-}
-.post-timestamp {
-  font-size: var(--font-size-small);
-  font-weight: 200;
-  color: var(--color-primary);
-}
-.post-timestamp .separator {
-  color: var(--text-color);
-  margin: 0 0.5rem;
-}
-.post-count .count-element {
-  gap: 0.3rem;
-  margin-top: 1rem;
-  color: var(--text-color);
-}
-.post-count .count-element div {
-  aspect-ratio: 1/1;
-  width: 1.5rem;
-}
 .profile-heading {
   padding-bottom: 2rem;
 }
@@ -1048,14 +1043,6 @@ form div input, textarea {
   border: none;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-}
-@media (max-width: 500px) {
-  .post-timestamp {
-    flex-direction: column;
-  }
-  .post-timestamp .separator {
-    display: none;
-  }
 }
 .main-parent {
   display: grid;

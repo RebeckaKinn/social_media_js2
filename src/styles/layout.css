@@ -26,9 +26,3 @@
 .space-evenly {
   justify-content: space-evenly;
 }
-.gap-1 {
-  gap: 1rem;
-}
-.gap-2 {
-  gap: 2rem;
-}

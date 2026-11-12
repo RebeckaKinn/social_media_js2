@@ -21,14 +21,14 @@ async function Main() {
         ${header(profileAvatar)}
         <main
           id="main-content"
-          class="main-content flex column align-center gap-2"
+          class="main-content flex column align-center gap-8"
         >
           ${content}
         </main>
       </section>
     `
     : /*HTML*/ `
-      <main id="main-content" class="flex column gap-2">
+      <main id="main-content" class="flex column gap-8">
         ${content}
       </main>
     `;
