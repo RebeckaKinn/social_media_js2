@@ -81,11 +81,11 @@
   max-height: 3rem;
 }
 
-.comment-section {
+/* .comment-section {
   margin-top: 1rem;
   width: 100%;
   padding: 0.7rem;
-}
+} */
 .comment-section .post-card {
   background-color: var(--surface-color);
 }

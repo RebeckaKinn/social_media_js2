@@ -10,10 +10,10 @@ export function CommentCard({
   postBody,
 }) {
   return /*HTML*/ `
-    <article class="post-card" data-post-id="${id}">
+    <article class="bg-(--surface-color) w-full max-w-160 min-h-40 p-4 rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)]" data-post-id="${id}">
       <a
         href="#/profile/${encodeURIComponent(authorName)}"
-        class="profile-heading flex gap-1 align-center"
+        class="profile-heading flex gap-4 items-center"
       >
         ${getProfileAvatar(authorUrl, authorAlt)}
         <h3>${authorName}</h3>
