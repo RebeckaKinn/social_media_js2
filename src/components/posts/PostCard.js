@@ -31,14 +31,16 @@ export function createPostCard(
             <div>
               <button
                 type="button"
-                class="delete-post-button"
+                id="delete-post-button"
+                class="bg-(--shadow-color) text-(--text-color) text-(length:--font-size-small) font-normal mb-2"
                 aria-label="Delete ${post.title || "post"}"
               >
                 Delete
               </button>
               <button
                 type="button"
-                class="edit-post-button"
+                id="edit-post-button"
+                class="bg-(--color-primary) text-inherit text-(length:--font-size-small) font-normal mb-2"
                 aria-label="Edit ${post.title || "post"}"
               >
                 Edit
@@ -49,8 +51,8 @@ export function createPostCard(
       }
       ${creatorInfo}
 
-      <section class="flex column">
-        <h3 class="post-title">${post.title || "Untitled"}</h3>
+      <section class="flex flex-col">
+        <h3 class="font-medium m-0">${post.title || "Untitled"}</h3>
       </section>
 
       <section>
@@ -58,8 +60,8 @@ export function createPostCard(
         ${
           imageUrl != ""
             ? /*HTML*/ `
-              <div class="post-image">
-                <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
+              <div>
+                <img class="object-contain" src="${imageUrl}" alt="${imageAlt}" loading="lazy">
               </div>
             `
             : ""

@@ -21,13 +21,13 @@ export async function showPostModal(postId) {
     showModal(createPostCard(post, true, currentProfileAvatar, true));
 
     const editButton = document.querySelector(
-      ".modal-overlay .edit-post-button",
+      ".modal-overlay #edit-post-button",
     );
     editButton?.addEventListener("click", async () => {
       await showEditPostForm(post.id);
     });
     const deleteButton = document.querySelector(
-      ".modal-overlay .delete-post-button",
+      ".modal-overlay #delete-post-button",
     );
     deleteButton?.addEventListener("click", async () => {
       await handleDeletePost(deleteButton, { closeAfterDelete: true });

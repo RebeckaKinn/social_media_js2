@@ -10,6 +10,7 @@
       "Courier New", monospace;
     --spacing: 0.25rem;
     --font-weight-thin: 100;
+    --font-weight-normal: 400;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
@@ -178,6 +179,9 @@
   .isolate {
     isolation: isolate;
   }
+  .m-0 {
+    margin: 0px;
+  }
   .mx-4 {
     margin-inline: calc(var(--spacing) * 4);
   }
@@ -190,6 +194,9 @@
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
   .flex {
     display: flex;
   }
@@ -199,11 +206,23 @@
   .inline-block {
     display: inline-block;
   }
-  .table {
-    display: table;
+  .aspect-square {
+    aspect-ratio: 1 / 1;
   }
   .h-fit {
     height: fit-content;
+  }
+  .h-full {
+    height: 100%;
+  }
+  .max-h-12 {
+    max-height: calc(var(--spacing) * 12);
+  }
+  .min-h-12 {
+    min-height: calc(var(--spacing) * 12);
+  }
+  .min-h-20 {
+    min-height: calc(var(--spacing) * 20);
   }
   .min-h-40 {
     min-height: calc(var(--spacing) * 40);
@@ -220,14 +239,8 @@
   .max-w-\[20rem\] {
     max-width: 20rem;
   }
-  .flex-grow {
-    flex-grow: 1;
-  }
   .grow {
     flex-grow: 1;
-  }
-  .border-collapse {
-    border-collapse: collapse;
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -235,14 +248,14 @@
   .cursor-pointer {
     cursor: pointer;
   }
-  .resize {
-    resize: both;
-  }
   .flex-col {
     flex-direction: column;
   }
   .items-center {
     align-items: center;
+  }
+  .justify-between {
+    justify-content: space-between;
   }
   .justify-center {
     justify-content: center;
@@ -268,12 +281,18 @@
   .rounded-\(--border-radius\) {
     border-radius: var(--border-radius);
   }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
   .rounded-md {
     border-radius: var(--radius-md);
   }
   .border {
     border-style: var(--tw-border-style);
     border-width: 1px;
+  }
+  .border-\(--text-color\) {
+    border-color: var(--text-color);
   }
   .border-\[color-mix\(in_srgb\,var\(--color-primary\)_30\%\,transparent\)\] {
     border-color: var(--color-primary);
@@ -284,11 +303,17 @@
   .bg-\(--color-primary\) {
     background-color: var(--color-primary);
   }
+  .bg-\(--shadow-color\) {
+    background-color: var(--shadow-color);
+  }
   .bg-\(--surface-color\) {
     background-color: var(--surface-color);
   }
   .bg-\[Field\] {
     background-color: Field;
+  }
+  .object-contain {
+    object-fit: contain;
   }
   .p-4 {
     padding: calc(var(--spacing) * 4);
@@ -302,11 +327,14 @@
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
-  .py-2 {
-    padding-block: calc(var(--spacing) * 2);
-  }
   .py-2\.5 {
     padding-block: calc(var(--spacing) * 2.5);
+  }
+  .pb-8 {
+    padding-bottom: calc(var(--spacing) * 8);
+  }
+  .text-center {
+    text-align: center;
   }
   .font-\(family-name\:--main-font\) {
     font-family: var(--main-font);
@@ -330,6 +358,10 @@
   .font-medium {
     --tw-font-weight: var(--font-weight-medium);
     font-weight: var(--font-weight-medium);
+  }
+  .font-normal {
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
   }
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
@@ -358,19 +390,15 @@
   .text-\[FieldText\] {
     color: FieldText;
   }
+  .text-inherit {
+    color: inherit;
+  }
   .italic {
     font-style: italic;
-  }
-  .underline {
-    text-decoration-line: underline;
   }
   .shadow-\[0_4px_8px_var\(--shadow-color\)\] {
     --tw-shadow: 0 4px 8px var(--tw-shadow-color, var(--shadow-color));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
   }
   .backdrop-blur-\[10px\] {
     --tw-backdrop-blur: blur(10px);
@@ -380,11 +408,6 @@
   .backdrop-filter {
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
-  }
-  .transition {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;
-    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
-    transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
   .transition-\[background-color\,transform\] {
     transition-property: background-color,transform;
@@ -693,17 +716,6 @@ footer {
   position: relative;
   z-index: 1;
 }
-.delete-post-button, .edit-post-button {
-  background-color: var(--shadow-color);
-  color: var(--text-color);
-  font-size: var(--font-size-small);
-  font-weight: 400;
-  margin-bottom: 0.5rem;
-}
-.edit-post-button {
-  background-color: var(--color-primary);
-  color: inherit;
-}
 header {
   position: sticky;
   top: 0;
@@ -989,10 +1001,6 @@ form div input, textarea {
   padding: 0 0.5rem;
   border-radius: var(--border-radius);
 }
-.post-title {
-  font-weight: 500;
-  margin: 0;
-}
 .post-timestamp {
   font-size: var(--font-size-small);
   font-weight: 200;
@@ -1016,16 +1024,6 @@ form div input, textarea {
 }
 .profile-heading h2 {
   margin: 0;
-}
-.profile-icon {
-  height: 100%;
-  max-height: 10rem;
-  min-height: 3rem;
-  aspect-ratio: 1/1;
-}
-.profile-icon img {
-  border-radius: 50%;
-  box-shadow: 0 4px 8px var(--shadow-color);
 }
 .modal-overlay .profile-icon {
   max-height: 5rem;
@@ -1247,11 +1245,6 @@ body.modal-open {
   inherits: false;
   initial-value: 0 0 #0000;
 }
-@property --tw-outline-style {
-  syntax: "*";
-  inherits: false;
-  initial-value: solid;
-}
 @property --tw-backdrop-blur {
   syntax: "*";
   inherits: false;
@@ -1326,7 +1319,6 @@ body.modal-open {
       --tw-ring-offset-width: 0px;
       --tw-ring-offset-color: #fff;
       --tw-ring-offset-shadow: 0 0 #0000;
-      --tw-outline-style: solid;
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
       --tw-backdrop-contrast: initial;

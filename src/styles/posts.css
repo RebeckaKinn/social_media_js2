@@ -28,11 +28,6 @@
   border-radius: var(--border-radius);
 }
 
-.post-title {
-  font-weight: 500;
-  margin: 0;
-}
-
 .post-timestamp {
   font-size: var(--font-size-small);
   font-weight: 200;
@@ -61,16 +56,16 @@
   margin: 0;
 }
 
-.profile-icon {
+/* .profile-icon {
   height: 100%;
   max-height: 10rem;
   min-height: 3rem;
   aspect-ratio: 1/1;
-}
-.profile-icon img {
+} */
+/* .profile-icon img {
   border-radius: 50%;
   box-shadow: 0 4px 8px var(--shadow-color);
-}
+} */
 
 .modal-overlay .profile-icon {
   max-height: 5rem;
