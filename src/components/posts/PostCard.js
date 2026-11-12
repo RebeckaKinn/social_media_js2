@@ -24,7 +24,7 @@ export function createPostCard(
   const isOwnPost = post.author?.name === userName;
 
   return /*HTML*/ `
-    <article data-post-id="${post.id}" class="post-card">
+    <article data-post-id="${post.id}" class="bg-(--surface-color) w-full max-w-160 min-h-40 p-4 rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] post-card">
       ${
         showDeleteButton && isOwnPost
           ? /*HTML*/ `
@@ -56,7 +56,7 @@ export function createPostCard(
       </section>
 
       <section>
-        <p>${post.body || ""}</p>
+        <p class="leading-[1.3] my-[1em]">${post.body || ""}</p>
         ${
           imageUrl != ""
             ? /*HTML*/ `
