@@ -23,3 +23,4 @@ Use `@layer base{}` for base style in CSS files, and `@layer components{}` for s
 1. Remember to add in readme.md the updates
 2. Add in readme.md that you have to install the dependency of tailwind as well `npm install tailwindcss @tailwindcss/cli`
 3. Double check that the form and HTML-validation required is done correctly
+4. Remove unessecary classes that is overriding tailwind
