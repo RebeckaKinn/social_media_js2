@@ -18,7 +18,7 @@ export default function RegisterPage() {
       flex justify-center"
       aria-labelledby="register-heading">
       <div class="w-full max-w-100 h-fit p-8 mx-4 my-0 bg-(--surface-color) rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] backdrop-blur-[10px] flex flex-col items-center">
-        <h1 class="font-bold">pinkripple</h1>
+        <h1 class="font-bold" id="register-heading">pinkripple</h1>
         <p class="my-4">Create an account to join the community.</p>
 
 
