@@ -1,11 +1,4 @@
-.feed-title {
-  font-size: var(--font-size-h3);
-  color: var(--color-primary);
-}
-
-.feed-title,
 #new-post,
-#posts-feed,
 #profile-post-feed {
   width: 100%;
   max-width: 40rem;

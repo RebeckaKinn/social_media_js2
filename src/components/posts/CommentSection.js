@@ -20,7 +20,7 @@ export function ShowCommentSection(postId, comments = []) {
   }
 
   return /*HTML*/ `
-    <section class="comment-section flex column gap-1">
+    <section class="comment-section mt-4 w-full p-[0.7rem] flex flex-col gap-4">
       ${commentSection}
     </section>
   `;

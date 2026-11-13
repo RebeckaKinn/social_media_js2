@@ -23,13 +23,15 @@ menu {
   margin: 0;
 }
 
-a,
-button {
-  font-style: normal;
-  text-decoration: none;
-  color: inherit;
-  background: transparent;
-  border: none;
+@layer base {
+  a,
+  button {
+    font-style: normal;
+    text-decoration: none;
+    color: inherit;
+    background: transparent;
+    border: none;
+  }
 }
 
 fieldset {

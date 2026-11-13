@@ -1,4 +1,5 @@
-import "./styles/base.css";
+//import "./styles/base.css";
+import "./styles/output.css";
 import header, { setupHeader } from "./components/header.js";
 import { setupFeedPage } from "./handlers/feedHandlers.js";
 import { setupLoginPage, setupRegisterPage } from "./handlers/authHandlers.js";
@@ -20,14 +21,14 @@ async function Main() {
         ${header(profileAvatar)}
         <main
           id="main-content"
-          class="main-content flex column align-center gap-2"
+          class="main-content flex column align-center gap-8"
         >
           ${content}
         </main>
       </section>
     `
     : /*HTML*/ `
-      <main id="main-content" class="flex column gap-2">
+      <main id="main-content" class="flex column gap-8">
         ${content}
       </main>
     `;

@@ -11,7 +11,7 @@ export function setupFeedPage() {
   if (!postsContainer) return;
 
   const query = getSearchQuery();
-  const feedTitle = document.querySelector(".feed-title");
+  const feedTitle = document.querySelector("#feed-title");
 
   if (query && feedTitle) {
     feedTitle.textContent = `Search results for "${query}"`;

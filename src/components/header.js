@@ -49,11 +49,11 @@ export default function Header(profileAvatar = getProfileAvatar()) {
           class="header-nav"
           aria-label="Main navigation"
         >
-          <ul class="flex row gap-2">
+          <ul class="flex row gap-8">
             <li>
               <a
                 href="#/profile"
-                class="header-profile-link flex row align-center gap-1"
+                class="header-profile-link flex row align-center gap-4"
               >
                 ${profileAvatar}
                 <span>PROFILE</span>

@@ -19,12 +19,12 @@ export function PostTimestamp(created, updated = null) {
   if (updated === null) timeIsAlike = true;
 
   return /*HTML*/ `
-    <section class="post-timestamp flex">
+    <section class="flex text-(length:--font-size-small) font-extralight text-(--color-primary) max-[500px]:flex-col ">
       ${TimestampItem("created", created)}
       ${
         !timeIsAlike
           ? /*HTML*/ `
-            <span class="separator">|</span>
+            <span class="text-(--text-color) mx-2 max-[500px]:hidden">|</span>
             ${TimestampItem("updated", updated)}
           `
           : ""

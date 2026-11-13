@@ -130,7 +130,7 @@ export function setupPostFeed({
 
   postsContainer.addEventListener("click", async (event) => {
     const postArticle = event.target.closest("article[data-post-id]");
-    const deleteButton = event.target.closest(".delete-post-button");
+    const deleteButton = event.target.closest("#delete-post-button");
 
     if (deleteButton) {
       await handleDeletePost(deleteButton);

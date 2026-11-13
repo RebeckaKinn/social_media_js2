@@ -24,21 +24,23 @@ export function createPostCard(
   const isOwnPost = post.author?.name === userName;
 
   return /*HTML*/ `
-    <article data-post-id="${post.id}" class="post-card">
+    <article data-post-id="${post.id}" class="bg-(--surface-color) w-full max-w-160 min-h-40 p-4 rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] post-card">
       ${
         showDeleteButton && isOwnPost
           ? /*HTML*/ `
             <div>
               <button
                 type="button"
-                class="delete-post-button"
+                id="delete-post-button"
+                class="bg-(--shadow-color) text-(--text-color) text-(length:--font-size-small) font-normal mb-2"
                 aria-label="Delete ${post.title || "post"}"
               >
                 Delete
               </button>
               <button
                 type="button"
-                class="edit-post-button"
+                id="edit-post-button"
+                class="bg-(--color-primary) text-inherit text-(length:--font-size-small) font-normal mb-2"
                 aria-label="Edit ${post.title || "post"}"
               >
                 Edit
@@ -49,17 +51,17 @@ export function createPostCard(
       }
       ${creatorInfo}
 
-      <section class="flex column">
-        <h3 class="post-title">${post.title || "Untitled"}</h3>
+      <section class="flex flex-col">
+        <h3 class="font-medium m-0">${post.title || "Untitled"}</h3>
       </section>
 
       <section>
-        <p>${post.body || ""}</p>
+        <p class="leading-[1.3] my-[1em]">${post.body || ""}</p>
         ${
           imageUrl != ""
             ? /*HTML*/ `
-              <div class="post-image">
-                <img src="${imageUrl}" alt="${imageAlt}" loading="lazy">
+              <div>
+                <img class="object-contain" src="${imageUrl}" alt="${imageAlt}" loading="lazy">
               </div>
             `
             : ""

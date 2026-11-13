@@ -4,7 +4,7 @@ export default function Fallback({
 } = {}) {
   return /*HTML*/ `
     <section class="fallback flex center">
-      <div class="flex column center gap-1">
+      <div class="flex column center gap-4">
         <h1>${title}</h1>
         <p>${message}</p>
       </div>

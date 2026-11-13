@@ -10,9 +10,18 @@ export function FormInput({
   maxlength = "",
 }) {
   return /*HTML*/ `
-    <div class="flex column">
-      <label for="${id}">${labelText}</label>
+    <div class="flex flex-col">
+      <label for="${id}" class="font-thin text-(length:--font-size-small)">${labelText}</label>
       <input
+        class="
+          bg-[Field] text-[FieldText]
+          font-(family-name:--secondary-font)
+          text-(length:--font-size-small)
+          p-[0.7rem]
+          border
+          border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)]
+          rounded-(--border-radius)
+          dark:border-(--surface-color)"
         id="${id}"
         name="${name}"
         type="${type}"
@@ -35,12 +44,21 @@ export function FormTextarea({
   isRequired = false,
 }) {
   return /*HTML*/ `
-    <div class="flex column">
-      <label for="${id}">${labelText}</label>
+    <div class="flex flex-col">
+      <label for="${id}" class="font-thin text-(length:--font-size-small)">${labelText}</label>
       <textarea
-        id="${id}"
-        name="${name}"
-        placeholder="${placeholder}"
+        class="
+            bg-[Field] text-[FieldText]
+            font-(family-name:--secondary-font)
+            text-(length:--font-size-small)
+            p-[0.7rem]
+            border
+            border-[color-mix(in_srgb,var(--color-primary)_30%,transparent)]
+            rounded-(--border-radius)
+            dark:border-(--surface-color)"
+          id="${id}"
+          name="${name}"
+          placeholder="${placeholder}"
         ${isRequired ? "required" : ""}
       >${value}</textarea>
     </div>
