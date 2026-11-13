@@ -7,7 +7,7 @@ export async function EditPost(post) {
   const profileAvatar = await getCurrentProfileAvatar();
 
   return /*HTML*/ `
-    <article class="post-card new-post">
+    <article class="bg-(--surface-color) w-full max-w-160 min-h-40 p-4 rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] post-card new-post">
       <div class="flex gap-4">
         ${profileAvatar}
         <form id="edit-post-form" class="flex column gap-4">
@@ -68,7 +68,7 @@ export async function EditPost(post) {
 
 function ImageUploaderPreview(post) {
   return /*HTML*/ `
-    <section class="post-card image-uploader-container flex column gap-8">
+    <section class="bg-(--surface-color) w-full max-w-160 min-h-40 p-4 rounded-(--border-radius) shadow-[0_4px_8px_var(--shadow-color)] post-card image-uploader-container flex column gap-8">
       <div id="image-url-preview-container" class="post-image">
         ${
           post.media?.url

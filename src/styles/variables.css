@@ -62,9 +62,6 @@
   .small-txt {
     font-size: var(--font-size-small);
   }
-  .italic {
-    font-style: italic;
-  }
   a {
     color: var(--color-secondary);
   }
